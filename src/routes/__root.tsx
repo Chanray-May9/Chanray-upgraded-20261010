@@ -78,6 +78,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "Chanray" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Chanray · 郭权锐" },
+      { name: "twitter:title", content: "Chanray · 郭权锐" },
+      { property: "og:description", content: "Chanray (郭权锐) — 二次元 × 粉色科幻机甲风格的个人主页。" },
+      { name: "twitter:description", content: "Chanray (郭权锐) — 二次元 × 粉色科幻机甲风格的个人主页。" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/npoAbxK36dTpgHzpRBusrCtSDJV2/social-images/social-1778936530755-头像.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/npoAbxK36dTpgHzpRBusrCtSDJV2/social-images/social-1778936530755-头像.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
