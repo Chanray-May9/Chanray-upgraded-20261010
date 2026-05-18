@@ -1,27 +1,58 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { animate } from "animejs";
-import { useScrollReveal, useSplitReveal, useMagnetic, ScrambleHover, GlowOrb, TiltCard } from "@/components/Fx";
+import {
+  useScrollReveal,
+  useSplitReveal,
+  useMagnetic,
+  ScrambleHover,
+  GlowOrb,
+  TiltCard,
+} from "@/components/Fx";
 import { DecryptedText } from "@/components/DecryptedText";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact · Chanray" },
+      { title: "是锐锐呀" },
       { name: "description", content: "通讯频段：GitHub / X / TikTok / 抖音 / 微信 / Mail。" },
-      { property: "og:title", content: "Contact · Chanray" },
+      { property: "og:title", content: "是锐锐呀" },
     ],
   }),
   component: Contact,
 });
 
 const SOCIALS = [
-  { label: "GitHub", handle: "Chanray-May9", href: "https://github.com/Chanray-May9", code: "GH-04", copy: "Chanray-May9" },
-  { label: "X / Twitter", handle: "@PowersharpGuo", href: "https://x.com/PowersharpGuo", code: "X-07", copy: "@PowersharpGuo" },
-  { label: "TikTok", handle: "@may9_chanray", href: "https://www.tiktok.com/@may9_chanray", code: "TT-11", copy: "@may9_chanray" },
+  {
+    label: "GitHub",
+    handle: "Chanray-May9",
+    href: "https://github.com/Chanray-May9",
+    code: "GH-04",
+    copy: "Chanray-May9",
+  },
+  {
+    label: "X / Twitter",
+    handle: "@PowersharpGuo",
+    href: "https://x.com/PowersharpGuo",
+    code: "X-07",
+    copy: "@PowersharpGuo",
+  },
+  {
+    label: "TikTok",
+    handle: "@may9_chanray",
+    href: "https://www.tiktok.com/@may9_chanray",
+    code: "TT-11",
+    copy: "@may9_chanray",
+  },
   { label: "Douyin / 抖音", handle: "SCPQ", href: "#", code: "DY-09", copy: "SCPQ" },
   { label: "WeChat / 微信", handle: "May9-QR", href: "#", code: "WX-02", copy: "May9-QR" },
-  { label: "E-Mail", handle: "gqr20080509@gmail.com", href: "mailto:gqr20080509@gmail.com", code: "ML-01", copy: "gqr20080509@gmail.com" },
+  {
+    label: "E-Mail",
+    handle: "gqr20080509@gmail.com",
+    href: "mailto:gqr20080509@gmail.com",
+    code: "ML-01",
+    copy: "gqr20080509@gmail.com",
+  },
 ];
 
 function Contact() {
@@ -52,12 +83,18 @@ function Contact() {
         <div className="absolute inset-0 bg-mecha-grid opacity-50" />
         <GlowOrb className="opacity-50" />
         <div className="relative mx-auto max-w-7xl px-6">
-          <div className="font-mono text-xs uppercase tracking-[0.4em] text-primary">// 05 — CONTACT</div>
-          <h1 id="contact-title" className="mt-4 font-display text-[clamp(3rem,8vw,7rem)] font-black leading-[0.9] text-gradient text-glow">
+          <div className="font-mono text-xs uppercase tracking-[0.4em] text-primary">
+            // 05 — CONTACT
+          </div>
+          <h1
+            id="contact-title"
+            className="mt-4 font-display text-[clamp(3rem,8vw,7rem)] font-black leading-[0.9] text-gradient text-glow"
+          >
             TRANSMIT
           </h1>
           <p data-reveal className="mt-6 max-w-2xl text-lg text-muted-foreground">
-            选择一个频段连接 <span className="text-primary">UNIT-may9</span>。点击卡片复制账号 / 跳转外站。
+            选择一个频段连接 <span className="text-primary">UNIT-may9</span>。点击卡片复制账号 /
+            跳转外站。
           </p>
         </div>
       </section>
@@ -75,7 +112,9 @@ function Contact() {
                 className="mecha-clip mecha-panel group relative block overflow-hidden p-7 transition-all hover:border-primary"
               >
                 <div className="flex items-start justify-between">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">CH.{s.code}</div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+                    CH.{s.code}
+                  </div>
                   <button
                     onClick={(e) => copy(s.copy, s.label, e)}
                     className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-primary"
@@ -102,17 +141,35 @@ function Contact() {
           ))}
         </div>
 
-        <div data-reveal className="mecha-clip mecha-panel mt-20 grid gap-6 p-10 sm:grid-cols-[1fr_auto] sm:items-center">
+        <div
+          data-reveal
+          className="mecha-clip mecha-panel mt-20 grid gap-6 p-10 sm:grid-cols-[1fr_auto] sm:items-center"
+        >
           <div>
-            <div className="font-mono text-xs uppercase tracking-[0.3em] text-primary">// QUICK · MAIL</div>
+            <div className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
+              // QUICK · MAIL
+            </div>
             <div className="mt-2 font-display text-3xl font-bold">
               <ScrambleHover text="gqr20080509@gmail.com" />
             </div>
-            <div className="mt-1 font-mono text-xs text-muted-foreground">主要联系邮箱 · 工作 / 合作优先</div>
+            <div className="mt-1 font-mono text-xs text-muted-foreground">
+              主要联系邮箱 · 工作 / 合作优先
+            </div>
           </div>
-          <a data-magnet href="mailto:gqr20080509@gmail.com" className="btn-mecha primary mecha-clip">
+          <a
+            data-magnet
+            href="mailto:gqr20080509@gmail.com"
+            className="btn-mecha primary mecha-clip"
+          >
             SEND TRANSMISSION →
           </a>
+        </div>
+
+        <div
+          data-reveal
+          className="mt-8 text-center font-mono text-xs uppercase tracking-[0.3em] text-primary"
+        >
+          即将上线AI分身,敬请期待！
         </div>
       </section>
     </main>

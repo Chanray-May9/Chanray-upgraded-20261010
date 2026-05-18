@@ -73,17 +73,39 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Chanray · 郭权锐" },
-      { name: "description", content: "Chanray (郭权锐) — 二次元 × 粉色科幻机甲风格的个人主页。" },
-      { name: "author", content: "Chanray" },
+      { title: "是锐锐呀" },
+      {
+        name: "description",
+        content: "是锐锐呀，郭权锐的个人主页，记录学习、作品、影像与成长时间线。",
+      },
+      {
+        name: "keywords",
+        content:
+          "郭权锐, 权锐, 锐锐, Chanray, chanray, 长寿二中, 重庆科技大学, 重庆建筑工程职业学院, Charlie, Kuo, 长二中, 单招",
+      },
+      { name: "author", content: "郭权锐" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Chanray · 郭权锐" },
-      { name: "twitter:title", content: "Chanray · 郭权锐" },
-      { property: "og:description", content: "Chanray (郭权锐) — 二次元 × 粉色科幻机甲风格的个人主页。" },
-      { name: "twitter:description", content: "Chanray (郭权锐) — 二次元 × 粉色科幻机甲风格的个人主页。" },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/npoAbxK36dTpgHzpRBusrCtSDJV2/social-images/social-1778936530755-头像.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/npoAbxK36dTpgHzpRBusrCtSDJV2/social-images/social-1778936530755-头像.webp" },
+      { property: "og:title", content: "是锐锐呀" },
+      { name: "twitter:title", content: "是锐锐呀" },
+      {
+        property: "og:description",
+        content: "郭权锐的个人主页：成长时间线、AI 生成照片与联系方式。",
+      },
+      {
+        name: "twitter:description",
+        content: "郭权锐的个人主页：成长时间线、AI 生成照片与联系方式。",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/npoAbxK36dTpgHzpRBusrCtSDJV2/social-images/social-1778936530755-头像.webp",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/npoAbxK36dTpgHzpRBusrCtSDJV2/social-images/social-1778936530755-头像.webp",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

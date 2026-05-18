@@ -6,23 +6,63 @@ import { useScrollReveal, useSplitReveal, ScrambleHover, GlowOrb } from "@/compo
 export const Route = createFileRoute("/log")({
   head: () => ({
     meta: [
-      { title: "Log · Chanray" },
-      { name: "description", content: "Chanray 的时间线日志：项目、灵感、想法。" },
-      { property: "og:title", content: "Log · Chanray" },
+      { title: "是锐锐呀" },
+      { name: "description", content: "郭权锐的成长与求学时间线。" },
+      { property: "og:title", content: "是锐锐呀" },
     ],
   }),
   component: Log,
 });
 
 const ENTRIES = [
-  { date: "2026.05", code: "0014", title: "粉色协议上线", body: "重新设计并部署个人主页，引入 anime.js 全套交互系统。" },
-  { date: "2025.11", code: "0013", title: "MAY9.ENGINE", body: "开始写一个为二次元 UI 服务的微动效引擎，包含粒子、磁吸、解密文字、机甲转场。" },
-  { date: "2025.06", code: "0012", title: "学习 GLSL", body: "在不写正式项目时，写一些片元着色器：粉色噪声、扫描线、辉光。" },
-  { date: "2024.12", code: "0011", title: "SCPQ 突破 10k", body: "抖音账号阶段性数字目标达成，开始尝试更长形式的剪辑。" },
-  { date: "2024.05", code: "0010", title: "16 岁", body: "在键盘上度过的又一年。开始相信代码、霓虹与机甲都是同一种语言。" },
-  { date: "2023.09", code: "0009", title: "进入 React 世界", body: "第一次使用 TypeScript + React 写完一个真正可以部署的网站，从此回不去了。" },
-  { date: "2022.04", code: "0008", title: "二次元觉醒", body: "看了太多机甲番，决定以后做的所有东西都要会发光。" },
-  { date: "2008.05.09", code: "0001", title: "BOOT", body: "UNIT-may9 上线。" },
+  {
+    date: "2029.09.01",
+    code: "0008",
+    title: "新的坐标 · 重庆科技大学",
+    body: "计划进入重庆科技大学继续向前，把下一段学习和成长写进更大的地图。",
+  },
+  {
+    date: "2026.09.01",
+    code: "0007",
+    title: "建工新程",
+    body: "即将进入重庆建筑工程职业学院，让新的专业方向和校园生活正式启动。",
+  },
+  {
+    date: "2026.03.22",
+    code: "0006",
+    title: "单招节点达成",
+    body: "完成普通高校招生高职分类考试，为下一阶段的升学路线按下确认键。",
+  },
+  {
+    date: "2023.09.01",
+    code: "0005",
+    title: "长二中信号接入",
+    body: "进入长寿二中，在新的课堂、节奏和同伴关系里继续积累能量。",
+  },
+  {
+    date: "2020.09.01",
+    code: "0004",
+    title: "松树桥阶段开启",
+    body: "进入渝北区松树桥中学校，青春的第一段长线任务从这里展开。",
+  },
+  {
+    date: "2014.09.01",
+    code: "0003",
+    title: "新牌坊初启航",
+    body: "进入重庆新牌坊小学校，开始把世界一点点写进自己的坐标系。",
+  },
+  {
+    date: "2011.09.01",
+    code: "0002",
+    title: "汇景台第一站",
+    body: "走进汇景台幼儿园，人生里的第一批朋友、游戏和好奇心开始发光。",
+  },
+  {
+    date: "2008.05.09",
+    code: "0001",
+    title: "锐锐上线",
+    body: "这一天，属于郭权锐的故事正式开始。",
+  },
 ];
 
 function Log() {
@@ -48,12 +88,17 @@ function Log() {
         <div className="absolute inset-0 bg-mecha-grid opacity-50" />
         <GlowOrb className="opacity-40" />
         <div className="relative mx-auto max-w-7xl px-6">
-          <div className="font-mono text-xs uppercase tracking-[0.4em] text-primary">// 04 — LOG</div>
-          <h1 id="log-title" className="mt-4 font-display text-[clamp(3rem,8vw,7rem)] font-black leading-[0.9] text-gradient text-glow">
+          <div className="font-mono text-xs uppercase tracking-[0.4em] text-primary">
+            // 04 — LOG
+          </div>
+          <h1
+            id="log-title"
+            className="mt-4 font-display text-[clamp(3rem,8vw,7rem)] font-black leading-[0.9] text-gradient text-glow"
+          >
             TIMELINE
           </h1>
           <p data-reveal className="mt-6 max-w-2xl text-lg text-muted-foreground">
-            从 2008.05.09 开机到现在的日志条目。倒序排列。
+            从出生到求学，再到未来计划的时间坐标。由下至上，记录锐锐一路走来的关键节点。
           </p>
         </div>
       </section>
@@ -83,7 +128,9 @@ function Log() {
                   </div>
 
                   <div className={`${left ? "sm:text-right sm:pr-12" : "sm:pl-12 sm:col-start-2"}`}>
-                    <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">LOG · {e.code}</div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+                      LOG · {e.code}
+                    </div>
                     <div className="mt-1 font-display text-2xl font-bold">
                       <ScrambleHover text={e.title} className="text-gradient" />
                     </div>

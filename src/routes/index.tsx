@@ -1,11 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import { animate, createTimeline, utils } from "animejs";
-import {
-  ParticleField,
-  SakuraRain,
-  MechaRings,
-} from "@/components/AnimeBackground";
+import { ParticleField, SakuraRain, MechaRings } from "@/components/AnimeBackground";
 import { DecryptedText } from "@/components/DecryptedText";
 import {
   useSplitReveal,
@@ -19,16 +15,17 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Chanray · 郭权锐 — Pink Mecha Portfolio" },
-      { name: "description", content: "Chanray (郭权锐) 的二次元粉色科幻机甲风个人主页。" },
-      { property: "og:title", content: "Chanray · 郭权锐" },
-      { property: "og:description", content: "二次元 × 粉色 × 机甲 personal site." },
+      { title: "是锐锐呀" },
+      { name: "description", content: "是锐锐呀，郭权锐的个人主页。" },
+      { property: "og:title", content: "是锐锐呀" },
+      { property: "og:description", content: "郭权锐的个人主页，记录成长、影像与连接方式。" },
     ],
   }),
   component: Home,
 });
 
-const AVATAR = "https://raw.githubusercontent.com/Chanray-May9/Chanray/refs/heads/main/%E5%A4%B4%E5%83%8F.jpg";
+const AVATAR =
+  "https://raw.githubusercontent.com/Chanray-May9/Chanray/refs/heads/main/%E5%A4%B4%E5%83%8F.jpg";
 
 function Home() {
   useSplitReveal("#hero-name", 200);
@@ -58,9 +55,19 @@ function Home() {
 
   useEffect(() => {
     const tl = createTimeline({ delay: 300 });
-    tl.add("#avatar-wrap", { scale: [0.4, 1], opacity: [0, 1], rotate: [-12, 0], duration: 1100, ease: "out(5)" })
+    tl.add("#avatar-wrap", {
+      scale: [0.4, 1],
+      opacity: [0, 1],
+      rotate: [-12, 0],
+      duration: 1100,
+      ease: "out(5)",
+    })
       .add("#avatar-ring-1", { opacity: [0, 1], duration: 800 }, "-=600")
-      .add(".hero-chip", { y: [20, 0], opacity: [0, 1], duration: 700, delay: utils.stagger(80) }, "-=500");
+      .add(
+        ".hero-chip",
+        { y: [20, 0], opacity: [0, 1], duration: 700, delay: utils.stagger(80) },
+        "-=500",
+      );
   }, []);
 
   return (
@@ -70,8 +77,15 @@ function Home() {
         <div className="absolute inset-0 bg-mecha-grid" data-depth="14" />
         <ParticleField />
         <SakuraRain />
-        <div className="absolute -left-40 top-1/4 h-[480px] w-[480px] rounded-full bg-primary/30 blur-[140px] float-slow" data-depth="30" />
-        <div className="absolute -right-32 bottom-10 h-[420px] w-[420px] rounded-full bg-accent/30 blur-[120px] float-slow" data-depth="40" style={{ animationDelay: "-3s" }} />
+        <div
+          className="absolute -left-40 top-1/4 h-[480px] w-[480px] rounded-full bg-primary/30 blur-[140px] float-slow"
+          data-depth="30"
+        />
+        <div
+          className="absolute -right-32 bottom-10 h-[420px] w-[420px] rounded-full bg-accent/30 blur-[120px] float-slow"
+          data-depth="40"
+          style={{ animationDelay: "-3s" }}
+        />
 
         <div className="relative z-10 mx-auto grid min-h-screen max-w-7xl grid-cols-1 items-center gap-10 px-6 pt-32 lg:grid-cols-[1.1fr_0.9fr]">
           <div data-depth="6">
@@ -80,16 +94,22 @@ function Home() {
               <DecryptedText text="SYSTEM ONLINE · UNIT-may9" trigger="mount" speed={35} />
             </div>
 
-            <h1 id="hero-name" className="font-display text-[clamp(3.5rem,11vw,9rem)] font-black leading-[0.85] tracking-tight text-gradient text-glow">
+            <h1
+              id="hero-name"
+              className="font-display text-[clamp(3.5rem,11vw,9rem)] font-black leading-[0.85] tracking-tight text-gradient text-glow"
+            >
               CHANRAY
             </h1>
-            <h2 id="hero-cn" className="mt-2 font-display text-[clamp(2rem,6vw,4rem)] font-bold leading-none text-foreground">
+            <h2
+              id="hero-cn"
+              className="mt-2 font-display text-[clamp(2rem,6vw,4rem)] font-bold leading-none text-foreground"
+            >
               郭 权 锐
             </h2>
 
             <p className="hero-chip mt-8 max-w-xl text-base leading-relaxed text-muted-foreground">
-              一个出生于 <span className="text-primary">2008.05.09</span> 的二次元 / 科幻迷与代码爱好者。
-              在屏幕的像素之间搭建会发光的机甲、会呼吸的粉色界面。
+              一个出生于 <span className="text-primary">2008.05.09</span> 的二次元 /
+              科幻迷与代码爱好者。 在屏幕的像素之间搭建会发光的机甲、会呼吸的粉色界面。
               <br />
               <span className="font-mono text-xs text-foreground/60">
                 <DecryptedText text="// HOBBY: anime · synthwave · web magic" trigger="view" />
@@ -98,12 +118,19 @@ function Home() {
 
             <div className="hero-chip mt-10 flex flex-wrap gap-4">
               <Link to="/works" data-magnet className="btn-mecha primary mecha-clip">
-                <span>查看作品</span><Arrow />
+                <span>查看作品</span>
+                <Arrow />
               </Link>
               <Link to="/contact" data-magnet className="btn-mecha mecha-clip">
                 <span>建立连接</span>
               </Link>
-              <a data-magnet href="https://github.com/Chanray-May9" target="_blank" rel="noreferrer" className="btn-mecha mecha-clip">
+              <a
+                data-magnet
+                href="https://github.com/Chanray-May9"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-mecha mecha-clip"
+              >
                 <GithubIcon /> <span>GITHUB</span>
               </a>
             </div>
@@ -117,15 +144,33 @@ function Home() {
 
           <div className="relative mx-auto aspect-square w-full max-w-[520px]" data-depth="20">
             <MechaRings className="absolute inset-0" />
-            <div className="absolute inset-6 ring-spin-rev"><MechaRings className="h-full w-full" /></div>
-            <div id="avatar-ring-1" className="absolute inset-12 rounded-full border border-primary/40 shadow-[0_0_60px_oklch(0.78_0.18_350/0.5)_inset]" />
-            <div id="avatar-wrap" className="absolute inset-16 overflow-hidden rounded-full border-2 border-primary/60 shadow-[var(--shadow-neon)]">
+            <div className="absolute inset-6 ring-spin-rev">
+              <MechaRings className="h-full w-full" />
+            </div>
+            <div
+              id="avatar-ring-1"
+              className="absolute inset-12 rounded-full border border-primary/40 shadow-[0_0_60px_oklch(0.78_0.18_350/0.5)_inset]"
+            />
+            <div
+              id="avatar-wrap"
+              className="absolute inset-16 overflow-hidden rounded-full border-2 border-primary/60 shadow-[var(--shadow-neon)]"
+            >
               <img src={AVATAR} alt="Chanray avatar" className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent mix-blend-overlay" />
             </div>
 
-            {["top-2 left-2", "top-2 right-2 rotate-90", "bottom-2 left-2 -rotate-90", "bottom-2 right-2 rotate-180"].map((c) => (
-              <svg key={c} className={`absolute ${c} h-10 w-10 text-primary`} viewBox="0 0 40 40" fill="none">
+            {[
+              "top-2 left-2",
+              "top-2 right-2 rotate-90",
+              "bottom-2 left-2 -rotate-90",
+              "bottom-2 right-2 rotate-180",
+            ].map((c) => (
+              <svg
+                key={c}
+                className={`absolute ${c} h-10 w-10 text-primary`}
+                viewBox="0 0 40 40"
+                fill="none"
+              >
                 <path d="M2 14V2h12" stroke="currentColor" strokeWidth="1.5" />
                 <circle cx="6" cy="6" r="1.5" fill="currentColor" />
               </svg>
@@ -147,8 +192,22 @@ function Home() {
         <div className="marquee-track flex w-max gap-12 whitespace-nowrap font-display text-3xl uppercase tracking-widest">
           {Array.from({ length: 2 }).map((_, k) => (
             <div key={k} className="flex items-center gap-12">
-              {["二次元", "★", "CHANRAY", "◆", "PINK PROTOCOL", "✦", "MECHA / NEON", "❀", "MAY9 / 2008", "★", "Powered by anime.js"].map((t, i) => (
-                <span key={i} className={i % 2 === 0 ? "text-gradient" : "text-foreground/40"}>{t}</span>
+              {[
+                "二次元",
+                "★",
+                "CHANRAY",
+                "◆",
+                "PINK PROTOCOL",
+                "✦",
+                "MECHA / NEON",
+                "❀",
+                "MAY9 / 2008",
+                "★",
+                "Powered by anime.js",
+              ].map((t, i) => (
+                <span key={i} className={i % 2 === 0 ? "text-gradient" : "text-foreground/40"}>
+                  {t}
+                </span>
               ))}
             </div>
           ))}
@@ -165,9 +224,17 @@ function Home() {
             { k: "GRAPHICS", t: "图形 / 着色", d: "Canvas · WebGL · SVG", icon: "▣" },
             { k: "DESIGN", t: "视觉设计", d: "Mecha UI · Glassmorphism", icon: "❖" },
           ].map((c) => (
-            <div key={c.k} data-reveal className="mecha-clip mecha-panel group relative overflow-hidden p-6">
-              <div className="absolute -right-4 -top-4 font-display text-6xl text-primary/10 transition-all group-hover:text-primary/30">{c.icon}</div>
-              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">{c.k}</div>
+            <div
+              key={c.k}
+              data-reveal
+              className="mecha-clip mecha-panel group relative overflow-hidden p-6"
+            >
+              <div className="absolute -right-4 -top-4 font-display text-6xl text-primary/10 transition-all group-hover:text-primary/30">
+                {c.icon}
+              </div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+                {c.k}
+              </div>
               <div className="mt-3 font-display text-xl font-bold text-foreground">{c.t}</div>
               <div className="mt-1 font-mono text-xs text-muted-foreground">{c.d}</div>
               <div className="mt-6 h-px w-0 bg-gradient-to-r from-primary to-transparent transition-all duration-500 group-hover:w-full" />
@@ -182,7 +249,9 @@ function Home() {
           <GlowOrb className="opacity-50" />
           <div className="relative z-10 flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
             <div>
-              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">// NEXT.SECTOR</div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+                // NEXT.SECTOR
+              </div>
               <h3 className="mt-3 font-display text-3xl font-bold text-foreground sm:text-5xl">
                 <ScrambleHover text="进入更深层的协议。" className="text-gradient" />
               </h3>
@@ -191,9 +260,15 @@ function Home() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Link to="/works" data-magnet className="btn-mecha primary mecha-clip">WORKS <Arrow /></Link>
-              <Link to="/gallery" data-magnet className="btn-mecha mecha-clip">GALLERY</Link>
-              <Link to="/log" data-magnet className="btn-mecha mecha-clip">LOG</Link>
+              <Link to="/works" data-magnet className="btn-mecha primary mecha-clip">
+                WORKS <Arrow />
+              </Link>
+              <Link to="/gallery" data-magnet className="btn-mecha mecha-clip">
+                GALLERY
+              </Link>
+              <Link to="/log" data-magnet className="btn-mecha mecha-clip">
+                LOG
+              </Link>
             </div>
           </div>
         </div>
@@ -208,28 +283,42 @@ function SectionLabel({ code, title }: { code: string; title: string }) {
     <div data-reveal className="flex items-baseline gap-6">
       <div className="font-mono text-sm text-primary">// {code}</div>
       <div className="h-px flex-1 bg-gradient-to-r from-primary/60 to-transparent" />
-      <h3 className="font-display text-3xl font-bold tracking-wide text-foreground sm:text-5xl">{title}</h3>
+      <h3 className="font-display text-3xl font-bold tracking-wide text-foreground sm:text-5xl">
+        {title}
+      </h3>
     </div>
   );
 }
 function Stat({ label, value }: { label: string; value: number }) {
   return (
     <div>
-      <div data-count={value} className="font-display text-3xl font-bold text-gradient">0</div>
-      <div className="mt-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{label}</div>
+      <div data-count={value} className="font-display text-3xl font-bold text-gradient">
+        0
+      </div>
+      <div className="mt-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+        {label}
+      </div>
     </div>
   );
 }
 function FloatingTag({ className = "", text }: { className?: string; text: string }) {
   return (
-    <div className={`absolute ${className} float-slow mecha-clip border border-primary/50 bg-background/70 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary backdrop-blur`}>
+    <div
+      className={`absolute ${className} float-slow mecha-clip border border-primary/50 bg-background/70 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary backdrop-blur`}
+    >
       {text}
     </div>
   );
 }
 function Arrow({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={`h-4 w-4 ${className}`} fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      viewBox="0 0 24 24"
+      className={`h-4 w-4 ${className}`}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="square" />
     </svg>
   );

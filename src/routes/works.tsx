@@ -1,5 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { TiltCard, ScrambleHover, useScrollReveal, useMagnetic, useSplitReveal, GlowOrb } from "@/components/Fx";
+import {
+  TiltCard,
+  ScrambleHover,
+  useScrollReveal,
+  useMagnetic,
+  useSplitReveal,
+  GlowOrb,
+} from "@/components/Fx";
 import gal1 from "@/assets/gal-1.jpg";
 import gal3 from "@/assets/gal-3.jpg";
 import gal5 from "@/assets/gal-5.jpg";
@@ -7,9 +14,9 @@ import gal5 from "@/assets/gal-5.jpg";
 export const Route = createFileRoute("/works")({
   head: () => ({
     meta: [
-      { title: "Works · Chanray" },
+      { title: "是锐锐呀" },
       { name: "description", content: "Chanray 的项目与实验作品集。" },
-      { property: "og:title", content: "Works · Chanray" },
+      { property: "og:title", content: "是锐锐呀" },
     ],
   }),
   component: Works,
@@ -72,8 +79,13 @@ function Works() {
         <div className="absolute inset-0 bg-mecha-grid opacity-50" />
         <GlowOrb className="opacity-40" />
         <div className="relative mx-auto max-w-7xl px-6">
-          <div className="font-mono text-xs uppercase tracking-[0.4em] text-primary">// 02 — WORKS</div>
-          <h1 id="works-title" className="mt-4 font-display text-[clamp(3rem,8vw,7rem)] font-black leading-[0.9] text-gradient text-glow">
+          <div className="font-mono text-xs uppercase tracking-[0.4em] text-primary">
+            // 02 — WORKS
+          </div>
+          <h1
+            id="works-title"
+            className="mt-4 font-display text-[clamp(3rem,8vw,7rem)] font-black leading-[0.9] text-gradient text-glow"
+          >
             ARCHIVE
           </h1>
           <p data-reveal className="mt-6 max-w-2xl text-lg text-muted-foreground">
@@ -88,8 +100,15 @@ function Works() {
           <article key={p.code} data-reveal className="grid items-center gap-10 lg:grid-cols-2">
             <TiltCard className={i % 2 ? "lg:order-2" : ""}>
               <div className="mecha-clip relative aspect-[4/3] overflow-hidden border border-primary/40 shadow-[var(--shadow-deep)]">
-                <img src={p.img} alt={p.name} className="h-full w-full object-cover transition-transform duration-1000 hover:scale-110" loading="lazy" />
-                <div className={`absolute inset-0 bg-gradient-to-tr ${p.accent} opacity-25 mix-blend-overlay`} />
+                <img
+                  src={p.img}
+                  alt={p.name}
+                  className="h-full w-full object-cover transition-transform duration-1000 hover:scale-110"
+                  loading="lazy"
+                />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-tr ${p.accent} opacity-25 mix-blend-overlay`}
+                />
                 <div className="absolute left-3 top-3 font-mono text-[10px] uppercase tracking-[0.25em] text-primary backdrop-blur">
                   ◉ {p.code}
                 </div>
@@ -100,20 +119,33 @@ function Works() {
             </TiltCard>
 
             <div>
-              <div className="font-mono text-xs uppercase tracking-[0.3em] text-primary">{p.tag}</div>
+              <div className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
+                {p.tag}
+              </div>
               <h3 className="mt-3 font-display text-4xl font-black sm:text-5xl">
                 <ScrambleHover text={p.name} className="text-gradient" />
               </h3>
-              <p className="mt-4 max-w-lg text-base leading-relaxed text-foreground/80">{p.blurb}</p>
+              <p className="mt-4 max-w-lg text-base leading-relaxed text-foreground/80">
+                {p.blurb}
+              </p>
 
               <dl className="mt-6 grid grid-cols-2 gap-y-3 font-mono text-xs">
-                <dt className="text-muted-foreground">role</dt><dd className="text-foreground">{p.role}</dd>
-                <dt className="text-muted-foreground">stack</dt><dd className="text-foreground">{p.stack.join(" · ")}</dd>
-                <dt className="text-muted-foreground">year</dt><dd className="text-foreground">{p.year}</dd>
+                <dt className="text-muted-foreground">role</dt>
+                <dd className="text-foreground">{p.role}</dd>
+                <dt className="text-muted-foreground">stack</dt>
+                <dd className="text-foreground">{p.stack.join(" · ")}</dd>
+                <dt className="text-muted-foreground">year</dt>
+                <dd className="text-foreground">{p.year}</dd>
               </dl>
 
               <div className="mt-8 flex gap-3">
-                <a data-magnet href="https://github.com/Chanray-May9" target="_blank" rel="noreferrer" className="btn-mecha mecha-clip">
+                <a
+                  data-magnet
+                  href="https://github.com/Chanray-May9"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-mecha mecha-clip"
+                >
                   <span>VIEW SOURCE</span>
                 </a>
               </div>
@@ -137,7 +169,9 @@ function Works() {
               className="group flex items-center justify-between gap-6 px-2 py-6 transition-all hover:bg-card/40"
             >
               <div className="flex items-center gap-6">
-                <span className="font-mono text-xs text-primary">EXP.{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-mono text-xs text-primary">
+                  EXP.{String(i + 1).padStart(2, "0")}
+                </span>
                 <span className="font-display text-xl font-bold transition-transform group-hover:translate-x-2 sm:text-3xl">
                   <ScrambleHover text={e.name} />
                 </span>
@@ -145,14 +179,18 @@ function Works() {
               <div className="hidden font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground sm:flex sm:items-center sm:gap-6">
                 <span>{e.tech}</span>
                 <span className="text-primary">'{e.year}</span>
-                <span className="text-primary transition-transform group-hover:translate-x-1">→</span>
+                <span className="text-primary transition-transform group-hover:translate-x-1">
+                  →
+                </span>
               </div>
             </li>
           ))}
         </ul>
 
         <div className="mt-16 flex justify-center">
-          <Link to="/contact" data-magnet className="btn-mecha primary mecha-clip">想要合作？建立连接 →</Link>
+          <Link to="/contact" data-magnet className="btn-mecha primary mecha-clip">
+            想要合作？建立连接 →
+          </Link>
         </div>
       </section>
     </main>

@@ -3,31 +3,41 @@ import { useEffect, useRef, useState } from "react";
 import { animate } from "animejs";
 import { useScrollReveal, useSplitReveal, TiltCard, GlowOrb } from "@/components/Fx";
 import { SakuraRain } from "@/components/AnimeBackground";
-import gal1 from "@/assets/gal-1.jpg";
-import gal2 from "@/assets/gal-2.jpg";
-import gal3 from "@/assets/gal-3.jpg";
-import gal4 from "@/assets/gal-4.jpg";
-import gal5 from "@/assets/gal-5.jpg";
-import gal6 from "@/assets/gal-6.jpg";
+import photo01 from "../../photo/70d8e1f7600126b775d01129021192e0.jpg";
+import photo02 from "../../photo/b9f115589a8e88d0b1dc18ea2e9c7a32.jpg";
+import photo03 from "../../photo/0eb387efdbbdadbd4b14e93a7447cc51.jpg";
+import photo04 from "../../photo/fd5b3e7859bc18b2c079fc68732d9d8a.jpg";
+import photo05 from "../../photo/1c053df0f74cb25941e8d1955d39c128.jpg";
+import photo06 from "../../photo/a746c50bbd8ddaf02dbd32a18c0ef662.jpg";
+import photo07 from "../../photo/96670c4013fd6518c4fa8c09049a4c44.jpg";
+import photo08 from "../../photo/a21189df6c5be0d88f886453abeeff19.jpg";
+import photo09 from "../../photo/56c39aec580fb53ef85cabaae90677e7.jpg";
+import photo10 from "../../photo/e7d8139ce6e03e298cb837f7a5b23562.jpg";
+import photo11 from "../../photo/66dfd9d731ad3ae8524b338d0fbfaac9.jpg";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery · Chanray" },
-      { name: "description", content: "粉色科幻 / 二次元 / 机甲图像档案。" },
-      { property: "og:title", content: "Gallery · Chanray" },
+      { title: "是锐锐呀" },
+      { name: "description", content: "锐锐的 AI 生成照片档案，收录随机生成的视觉照片。" },
+      { property: "og:title", content: "是锐锐呀" },
     ],
   }),
   component: Gallery,
 });
 
 const ITEMS = [
-  { src: gal1, w: 896, h: 1280, title: "UNIT-01 · Hangar", tag: "MECHA" },
-  { src: gal2, w: 1536, h: 896, title: "Neo-Pink City", tag: "SCENE" },
-  { src: gal3, w: 1024, h: 1024, title: "Helmet Visor", tag: "DETAIL" },
-  { src: gal4, w: 896, h: 1280, title: "Sakura Shrine", tag: "DREAM" },
-  { src: gal5, w: 1536, h: 896, title: "Schematic.HOLO", tag: "BLUEPRINT" },
-  { src: gal6, w: 1024, h: 1024, title: "Idol · Stage 04", tag: "PORTRAIT" },
+  { src: photo01, w: 960, h: 1219, title: "AI PHOTO · R-01", tag: "GENERATED" },
+  { src: photo02, w: 1170, h: 1164, title: "AI PHOTO · R-02", tag: "PORTRAIT" },
+  { src: photo03, w: 904, h: 1215, title: "AI PHOTO · R-03", tag: "VISUAL" },
+  { src: photo04, w: 1156, h: 1455, title: "AI PHOTO · R-04", tag: "DREAM" },
+  { src: photo05, w: 960, h: 1219, title: "AI PHOTO · R-05", tag: "LIGHT" },
+  { src: photo06, w: 1152, h: 1453, title: "AI PHOTO · R-06", tag: "FRAME" },
+  { src: photo07, w: 968, h: 1218, title: "AI PHOTO · R-07", tag: "SIGNAL" },
+  { src: photo08, w: 720, h: 1227, title: "AI PHOTO · R-08", tag: "MEMORY" },
+  { src: photo09, w: 960, h: 1220, title: "AI PHOTO · R-09", tag: "SCENE" },
+  { src: photo10, w: 960, h: 1219, title: "AI PHOTO · R-10", tag: "ARCHIVE" },
+  { src: photo11, w: 1162, h: 1458, title: "AI PHOTO · R-11", tag: "MOMENT" },
 ];
 
 function Gallery() {
@@ -59,7 +69,8 @@ function Gallery() {
       if (open === null) return;
       if (e.key === "Escape") setOpen(null);
       if (e.key === "ArrowRight") setOpen((o) => (o === null ? 0 : (o + 1) % ITEMS.length));
-      if (e.key === "ArrowLeft") setOpen((o) => (o === null ? 0 : (o - 1 + ITEMS.length) % ITEMS.length));
+      if (e.key === "ArrowLeft")
+        setOpen((o) => (o === null ? 0 : (o - 1 + ITEMS.length) % ITEMS.length));
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -72,12 +83,17 @@ function Gallery() {
         <SakuraRain count={14} />
         <GlowOrb className="opacity-40" />
         <div className="relative mx-auto max-w-7xl px-6">
-          <div className="font-mono text-xs uppercase tracking-[0.4em] text-primary">// 03 — GALLERY</div>
-          <h1 id="gal-title" className="mt-4 font-display text-[clamp(3rem,8vw,7rem)] font-black leading-[0.9] text-gradient text-glow">
+          <div className="font-mono text-xs uppercase tracking-[0.4em] text-primary">
+            // 03 — GALLERY
+          </div>
+          <h1
+            id="gal-title"
+            className="mt-4 font-display text-[clamp(3rem,8vw,7rem)] font-black leading-[0.9] text-gradient text-glow"
+          >
             ARCHIVE.IMG
           </h1>
           <p data-reveal className="mt-6 max-w-2xl text-lg text-muted-foreground">
-            收藏的二次元 × 机甲 × 粉色霓虹的图像信号。点击放大，← / → 切换。
+            这里收录锐锐生成的一组随机 AI 照片。每一张都是独立的视觉切片，点击放大，← / → 切换。
           </p>
         </div>
       </section>
@@ -101,8 +117,12 @@ function Gallery() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent opacity-90" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-left">
-                    <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">{it.tag}</div>
-                    <div className="mt-1 font-display text-lg font-bold text-foreground">{it.title}</div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+                      {it.tag}
+                    </div>
+                    <div className="mt-1 font-display text-lg font-bold text-foreground">
+                      {it.title}
+                    </div>
                   </div>
                   <div className="absolute right-3 top-3 mecha-clip border border-primary/50 bg-background/60 px-2 py-1 font-mono text-[10px] text-primary backdrop-blur">
                     {String(i + 1).padStart(3, "0")}
@@ -121,27 +141,51 @@ function Gallery() {
           onClick={() => setOpen(null)}
         >
           <button
-            onClick={(e) => { e.stopPropagation(); setOpen((o) => (o === null ? 0 : (o - 1 + ITEMS.length) % ITEMS.length)); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpen((o) => (o === null ? 0 : (o - 1 + ITEMS.length) % ITEMS.length));
+            }}
             className="btn-mecha mecha-clip absolute left-6 top-1/2 -translate-y-1/2"
             aria-label="prev"
-          >←</button>
+          >
+            ←
+          </button>
           <button
-            onClick={(e) => { e.stopPropagation(); setOpen((o) => (o === null ? 0 : (o + 1) % ITEMS.length)); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpen((o) => (o === null ? 0 : (o + 1) % ITEMS.length));
+            }}
             className="btn-mecha mecha-clip absolute right-6 top-1/2 -translate-y-1/2"
             aria-label="next"
-          >→</button>
+          >
+            →
+          </button>
           <button
-            onClick={(e) => { e.stopPropagation(); setOpen(null); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpen(null);
+            }}
             className="btn-mecha mecha-clip absolute right-6 top-6"
             aria-label="close"
-          >ESC</button>
+          >
+            ESC
+          </button>
 
-          <div className="mecha-clip relative max-h-[85vh] max-w-5xl border border-primary/60 shadow-[var(--shadow-neon)]" onClick={(e) => e.stopPropagation()}>
-            <img src={ITEMS[open].src} alt={ITEMS[open].title} className="block max-h-[85vh] w-auto object-contain" />
+          <div
+            className="mecha-clip relative max-h-[85vh] max-w-5xl border border-primary/60 shadow-[var(--shadow-neon)]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={ITEMS[open].src}
+              alt={ITEMS[open].title}
+              className="block max-h-[85vh] w-auto object-contain"
+            />
             <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between bg-background/80 p-4 font-mono text-xs backdrop-blur">
               <span className="text-primary">{ITEMS[open].tag}</span>
               <span className="text-foreground">{ITEMS[open].title}</span>
-              <span className="text-muted-foreground">{String(open + 1).padStart(3, "0")} / {String(ITEMS.length).padStart(3, "0")}</span>
+              <span className="text-muted-foreground">
+                {String(open + 1).padStart(3, "0")} / {String(ITEMS.length).padStart(3, "0")}
+              </span>
             </div>
           </div>
         </div>
