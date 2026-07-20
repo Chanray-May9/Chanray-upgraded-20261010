@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>论坛 ✿ 是锐锐呀</title>
+<link rel="icon" href="photo/avatar.jpg">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@300;400;500;700&family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+<main>
+  <section class="section page-top">
+    <h2 class="sec-title reveal">💬 小树洞论坛</h2>
+    <p class="sec-sub reveal">聊番剧、聊代码、聊人生都行 · 不用注册，起个名就能发</p>
+
+    <div class="board-box reveal" id="newThreadBox">
+      <form id="threadForm" class="forum-form">
+        <div class="row">
+          <input id="tName" maxlength="16" placeholder="你的昵称" required>
+          <input id="tTitle" maxlength="40" placeholder="帖子标题" required>
+        </div>
+        <textarea id="tBody" maxlength="500" rows="3" placeholder="正文…想说啥说啥" required></textarea>
+        <button class="btn primary" type="submit">发帖 🚀</button>
+      </form>
+    </div>
+
+    <div id="threadList" class="thread-list"></div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script type="module">
+import { boot } from "./js/ui.js";
+import { forumThreads, forumNew, forumReply, esc, fmtTime, myName } from "./js/api.js";
+
+boot("forum.html", async () => {
+  const listEl = document.querySelector("#threadList");
+  let threads = await forumThreads();
+  const open = new Set();
+
+  function render() {
+    listEl.innerHTML = threads.length ? threads.map((t) => `
+      <div class="thread card ${open.has(t.id) ? "open" : ""}" data-id="${t.id}">
+        <div class="t-head">
+          <span class="t-title">${esc(t.title)}</span>
+          <span class="t-meta">${esc(t.name)} · ${fmtTime(t.t)} · ${t.replies.length} 回复</span>
+        </div>
+        <div class="t-body">${esc(t.body)}</div>
+        <div class="t-replies">
+          ${t.replies.map((r) => `<div class="t-reply${r.ai ? " is-ai" : ""}"><b>${esc(r.name)}</b>：${esc(r.text)} <small>${fmtTime(r.t)}</small></div>`).join("")}
+          <form class="reply-form" data-id="${t.id}">
+            <input class="r-name" maxlength="16" placeholder="昵称" value="${esc(myName.get())}" required>
+            <input class="r-text" maxlength="200" placeholder="回复一下…（@锐锐酱 可以召唤AI）" required>
+            <button class="btn primary" type="submit">回复</button>
+          </form>
+        </div>
+      </div>`).join("")
+      : `<div class="card" style="text-align:center">还没有帖子，抢个一楼？</div>`;
+  }
+  render();
+
+  listEl.addEventListener("click", (e) => {
+    if (e.target.closest("form")) return;
+    const th = e.target.closest(".thread");
+    if (!th) return;
+    open.has(th.dataset.id) ? open.delete(th.dataset.id) : open.add(th.dataset.id);
+    render();
+  });
+
+  listEl.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const name = f.querySelector(".r-name").value.trim();
+    const text = f.querySelector(".r-text").value.trim();
+    if (!name || !text) return;
+    myName.set(name);
+    threads = await forumReply(f.dataset.id, { name, text });
+    render();
+  });
+
+  document.querySelector("#threadForm").onsubmit = async (e) => {
+    e.preventDefault();
+    const name = document.querySelector("#tName").value.trim();
+    const title = document.querySelector("#tTitle").value.trim();
+    const body = document.querySelector("#tBody").value.trim();
+    if (!name || !title || !body) return;
+    myName.set(name);
+    document.querySelector("#tTitle").value = "";
+    document.querySelector("#tBody").value = "";
+    threads = await forumNew({ name, title, body });
+    render();
+  };
+  document.querySelector("#tName").value = myName.get();
+});
+</script>
+</body>
+</html>

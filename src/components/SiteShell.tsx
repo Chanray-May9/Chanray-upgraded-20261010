@@ -8,6 +8,7 @@ const NAV = [
   { to: "/gallery", label: "GALLERY", code: "03" },
   { to: "/log", label: "LOG", code: "04" },
   { to: "/contact", label: "CONTACT", code: "05" },
+  { to: "/model", label: "3D", code: "06" },
 ] as const;
 
 export function SiteHeader() {

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>找到我 ✿ 是锐锐呀</title>
+<link rel="icon" href="photo/avatar.jpg">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@300;400;500;700&family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+<main>
+  <section class="section page-top">
+    <h2 class="sec-title reveal">📮 找到锐锐</h2>
+    <p class="sec-sub reveal">没链接的点一下就复制</p>
+    <div class="contact-grid" id="contactGrid"></div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script type="module">
+import { boot } from "./js/ui.js";
+
+const SOCIALS = [
+  ["🐙", "GitHub", "Chanray-May9", "https://github.com/Chanray-May9"],
+  ["🐦", "X / Twitter", "@PowersharpGuo", "https://x.com/PowersharpGuo"],
+  ["🎵", "TikTok", "@may9_chanray", "https://www.tiktok.com/@may9_chanray"],
+  ["📱", "抖音", "SCPQ", null],
+  ["💬", "微信", "May9-QR", null],
+  ["📧", "E-Mail", "gqr20080509@gmail.com", "mailto:gqr20080509@gmail.com"],
+];
+
+boot("contact.html", (io) => {
+  const grid = document.querySelector("#contactGrid");
+  grid.innerHTML = SOCIALS.map(([ic, lb, hd, href], i) =>
+    `<a class="contact-card reveal" data-i="${i}" ${href ? `href="${href}" target="_blank" rel="noopener"` : `href="#" title="点击复制"`}>
+      <span class="ic">${ic}</span><span><div class="lb">${lb}</div><div class="hd">${hd}</div></span></a>`).join("");
+  grid.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  grid.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (!a || a.getAttribute("href") !== "#") return;
+    e.preventDefault();
+    navigator.clipboard.writeText(SOCIALS[+a.dataset.i][2]);
+    a.querySelector(".lb").textContent = "已复制！";
+    setTimeout(() => (a.querySelector(".lb").textContent = SOCIALS[+a.dataset.i][1]), 1200);
+  });
+});
+</script>
+</body>
+</html>

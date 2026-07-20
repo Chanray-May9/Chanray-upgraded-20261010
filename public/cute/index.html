@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>是锐锐呀 ✿ Chanray</title>
+<meta name="description" content="锐锐（郭权锐）的个人小站 — 二次元 · 代码 · 一点点魔法">
+<link rel="icon" href="photo/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@300;400;500;700&family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+<main id="top">
+
+  <section id="hero">
+    <div class="hero-inner reveal">
+      <div class="avatar-wrap">
+        <div class="avatar-ring r1"></div>
+        <div class="avatar-ring r2"></div>
+        <img src="photo/avatar.jpg" alt="锐锐的头像" class="avatar">
+        <span class="avatar-emoji e1">🌸</span>
+        <span class="avatar-emoji e2">✨</span>
+        <span class="avatar-emoji e3">🍡</span>
+      </div>
+      <h1 class="hero-title"><span class="grad">CHANRAY</span></h1>
+      <h2 class="hero-cn">郭 权 锐</h2>
+      <p class="hero-sub">08 年 5 月 9 号出生，白天上学，晚上写代码看番。<br>
+      这个站是我自己一行行搭的——花瓣是 3D 的，你晃晃鼠标就知道了。</p>
+      <div class="hero-chips">
+        <span class="chip">🌸 二次元</span>
+        <span class="chip">💻 写代码的</span>
+        <span class="chip">🎵 Synthwave</span>
+        <span class="chip">🛸 科幻迷</span>
+      </div>
+      <div class="hero-btns">
+        <a href="gallery.html" class="btn primary">✿ 相册</a>
+        <a href="forum.html" class="btn ghost">💬 来论坛坐坐</a>
+      </div>
+    </div>
+    <div class="scroll-hint">往下滑呀 ⌄</div>
+  </section>
+
+<section id="about" class="section">
+    <h2 class="sec-title reveal">关于锐锐</h2>
+    <div class="about-grid">
+      <div class="card tilt reveal">
+        <div class="card-emoji">🎂</div>
+        <h3>2008.05.09</h3>
+        <p>金牛座，据说很固执。写不出来的 bug 确实会跟它耗到凌晨。</p>
+      </div>
+      <div class="card tilt reveal">
+        <div class="card-emoji">🌸</div>
+        <h3>二次元住民</h3>
+        <p>追番进行时。头像就是我的精神状态，别问，问就是很元气。</p>
+      </div>
+      <div class="card tilt reveal">
+        <div class="card-emoji">💻</div>
+        <h3>代码</h3>
+        <p>从"Hello World"到这个网站，中间隔着无数个报错。但是好玩啊。</p>
+      </div>
+      <div class="card tilt reveal">
+        <div class="card-emoji">🛸</div>
+        <h3>科幻</h3>
+        <p>三体、星际、机甲都吃。未来要是真有脑机接口，第一个报名。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="magic" class="section">
+    <h2 class="sec-title reveal">🪄 AI 换装间</h2>
+    <p class="sec-sub reveal">说说你想看到什么样的网站，AI 会当场把这里改成那个样子（只对你生效，刷新还原）</p>
+    <div class="magic-box reveal">
+      <div class="magic-presets">
+        <button class="chip btn-preset" data-p="梦幻紫色的星空感觉">💜 梦幻紫</button>
+        <button class="chip btn-preset" data-p="清新薄荷绿，像春天的森林">🌿 薄荷绿</button>
+        <button class="chip btn-preset" data-p="温暖的橘色夕阳氛围">🍊 夕阳橘</button>
+        <button class="chip btn-preset" data-p="回到最初的樱花粉">🌸 樱花粉</button>
+      </div>
+      <form id="magicForm" class="board-form">
+        <input id="magicInput" maxlength="80" placeholder="例如：深蓝色的海底世界，字大一点…">
+        <button class="btn primary" type="submit">施法 ✨</button>
+      </form>
+      <div class="magic-status" id="magicStatus"></div>
+    </div>
+  </section>
+
+  <section id="board" class="section">
+    <h2 class="sec-title reveal">💌 留言板</h2>
+    <p class="sec-sub reveal">路过留个脚印，我真的会看</p>
+    <div class="board-box reveal">
+      <div class="board-list" id="boardList"></div>
+      <form id="boardForm" class="board-form">
+        <input id="boardName" maxlength="16" placeholder="你的昵称" required>
+        <input id="boardMsg" maxlength="120" placeholder="想说点什么…" required>
+        <button class="btn primary" type="submit">投递 💌</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script type="module">
+import { boot } from "./js/ui.js";
+import { boardList, boardPost, aiTheme, esc, fmtTime, myName } from "./js/api.js";
+
+boot("index.html", () => {
+  /* guestbook */
+  const list = document.querySelector("#boardList");
+  const render = (items) => {
+    list.innerHTML = items.length
+      ? items.map((m) => `<div class="board-item"><span class="who">${esc(m.name)}</span> <span class="when">${fmtTime(m.t)}</span><div class="txt">${esc(m.msg)}</div></div>`).join("")
+      : `<div class="board-item"><div class="txt">还没有留言，来做第一个吧！(๑˃̵ᴗ˂̵)</div></div>`;
+  };
+  boardList().then(render);
+  document.querySelector("#boardForm").onsubmit = async (e) => {
+    e.preventDefault();
+    const name = document.querySelector("#boardName").value.trim();
+    const msg = document.querySelector("#boardMsg").value.trim();
+    if (!name || !msg) return;
+    myName.set(name);
+    document.querySelector("#boardMsg").value = "";
+    render(await boardPost({ name, msg, t: Date.now() }));
+  };
+  document.querySelector("#boardName").value = myName.get();
+
+  /* AI restyle */
+  const VARS = ["--bg", "--bg2", "--pri", "--pri-deep", "--acc", "--ink", "--ink-soft", "--fs", "--radius"];
+  const apply = (t) => VARS.forEach((k) => t[k] && document.documentElement.style.setProperty(k, t[k]));
+  const LOCAL = {
+    "紫": { "--bg": "#f7f2ff", "--bg2": "#efe4ff", "--pri": "#b794f6", "--pri-deep": "#8b5cf6", "--acc": "#fbc2eb" },
+    "绿": { "--bg": "#f0fbf4", "--bg2": "#e0f5e9", "--pri": "#7ed9a2", "--pri-deep": "#38b26f", "--acc": "#c3f0e8" },
+    "橘": { "--bg": "#fff8f0", "--bg2": "#ffeeda", "--pri": "#ffb26b", "--pri-deep": "#f2892e", "--acc": "#ffd6a5" },
+    "蓝": { "--bg": "#f0f7ff", "--bg2": "#e1efff", "--pri": "#7fb8f0", "--pri-deep": "#3f8ad8", "--acc": "#c3e0f7" },
+    "粉": { "--bg": "#fff6fa", "--bg2": "#ffeef5", "--pri": "#ff8fb8", "--pri-deep": "#f4679d", "--acc": "#a5d8ff" },
+  };
+  const status = document.querySelector("#magicStatus");
+  async function cast(desc) {
+    status.textContent = "✨ 施法中…";
+    try {
+      const { theme, comment } = await aiTheme(desc);
+      apply(theme);
+      status.textContent = "✨ " + (comment || "变身完成！");
+    } catch {
+      const key = Object.keys(LOCAL).find((k) => desc.includes(k)) ||
+        (/海|天|冰/.test(desc) ? "蓝" : /森|薄荷|春/.test(desc) ? "绿" : /夕阳|暖|秋/.test(desc) ? "橘" : /星|梦|夜/.test(desc) ? "紫" : "粉");
+      apply(LOCAL[key]);
+      status.textContent = "✨ 变身完成！（预览模式的简易魔法，部署后 AI 更聪明）";
+    }
+  }
+  document.querySelector("#magicForm").onsubmit = (e) => { e.preventDefault(); const v = document.querySelector("#magicInput").value.trim(); if (v) cast(v); };
+  document.querySelectorAll(".btn-preset").forEach((b) => (b.onclick = () => cast(b.dataset.p)));
+});
+</script>
+</body>
+</html>

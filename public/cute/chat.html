@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>聊天室 ✿ 是锐锐呀</title>
+<link rel="icon" href="photo/avatar.jpg">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@300;400;500;700&family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+<main>
+  <section class="section page-top">
+    <h2 class="sec-title reveal">🎐 樱花树下 · 公共聊天室</h2>
+    <p class="sec-sub reveal">谁都能说话 · 消息全站共享 · 发 <b>@锐锐酱</b> 可以把 AI 叫出来一起聊</p>
+
+    <div class="room-box reveal">
+      <div class="room-body" id="roomBody">
+        <div class="room-msg sys">—— 欢迎来到樱花树下 ——</div>
+      </div>
+      <form class="room-form" id="roomForm">
+        <input id="roomName" maxlength="16" placeholder="昵称" required>
+        <input id="roomText" maxlength="200" placeholder="说点什么…" required autocomplete="off">
+        <button class="btn primary" type="submit">发送 ➤</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script type="module">
+import { boot } from "./js/ui.js";
+import { roomFetch, roomSend, esc, fmtTime, myName } from "./js/api.js";
+
+boot("chat.html", () => {
+  const body = document.querySelector("#roomBody");
+  let since = 0;
+  const seen = new Set();
+
+  function addAll(msgs) {
+    for (const m of msgs) {
+      if (seen.has(m.t + m.name)) continue;
+      seen.add(m.t + m.name);
+      since = Math.max(since, m.t);
+      const d = document.createElement("div");
+      const mine = m.name === myName.get();
+      d.className = "room-msg" + (m.ai ? " is-ai" : mine ? " mine" : "");
+      d.innerHTML = `<span class="rm-name">${m.ai ? "🌸 " : ""}${esc(m.name)}</span><span class="rm-time">${fmtTime(m.t)}</span><div class="rm-text">${esc(m.text)}</div>`;
+      body.appendChild(d);
+    }
+    if (msgs.length) body.scrollTop = body.scrollHeight;
+  }
+
+  async function poll() { try { addAll(await roomFetch(since)); } catch {} }
+  poll();
+  const timer = setInterval(poll, 4000);
+  addEventListener("beforeunload", () => clearInterval(timer));
+
+  document.querySelector("#roomForm").onsubmit = async (e) => {
+    e.preventDefault();
+    const name = document.querySelector("#roomName").value.trim();
+    const text = document.querySelector("#roomText").value.trim();
+    if (!name || !text) return;
+    myName.set(name);
+    document.querySelector("#roomText").value = "";
+    addAll(await roomSend({ name, text }));
+    setTimeout(poll, 1500); // pick up AI reply quickly after an @锐锐酱
+  };
+  document.querySelector("#roomName").value = myName.get();
+});
+</script>
+</body>
+</html>

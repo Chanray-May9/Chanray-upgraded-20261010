@@ -2,8 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import { animate, createTimeline, utils } from "animejs";
 import { ParticleField, SakuraRain, MechaRings } from "@/components/AnimeBackground";
-import { DecryptedText } from "@/components/DecryptedText";
-import {
+import { DecryptedText } from "@/components/DecryptedText";import {
   useSplitReveal,
   useMagnetic,
   useScrollReveal,
@@ -133,6 +132,17 @@ function Home() {
               >
                 <GithubIcon /> <span>GITHUB</span>
               </a>
+              <a
+                data-magnet
+                href={import.meta.env.BASE_URL + "cute/index.html"}
+                className="btn-mecha primary mecha-clip"
+              >
+                <span>❀ 樱花协议 · 进入新界面</span>
+                <Arrow />
+              </a>
+              <Link to="/model" data-magnet className="btn-mecha mecha-clip">
+                <span>UNIT-3D · 模型</span>
+              </Link>
             </div>
 
             <div className="hero-chip mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-border/60 pt-6 font-mono">
@@ -214,7 +224,7 @@ function Home() {
         </div>
       </section>
 
-      {/* CAPABILITIES */}
+{/* CAPABILITIES */}
       <section className="relative mx-auto max-w-7xl px-6 py-32">
         <SectionLabel code="01" title="CAPABILITY · 核心能力" />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

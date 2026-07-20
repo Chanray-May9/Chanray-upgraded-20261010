@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>相册 ✿ 是锐锐呀</title>
+<link rel="icon" href="photo/avatar.jpg">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@300;400;500;700&family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+<main>
+  <section class="section page-top">
+    <h2 class="sec-title reveal">📷 相册</h2>
+    <p class="sec-sub reveal">拍立得墙 · 点照片放大 · 底下的星星可以给照片打分（每张只能投一次哦）</p>
+    <div class="polaroid-wall" id="wall"></div>
+  </section>
+</main>
+
+<div id="lightbox"><img src="" alt=""><span class="lb-close">✕</span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script type="module">
+import { boot } from "./js/ui.js";
+import { rateGet, ratePost } from "./js/api.js";
+
+const PHOTOS = [
+  "0eb387efdbbdadbd4b14e93a7447cc51.jpg","1c053df0f74cb25941e8d1955d39c128.jpg",
+  "56c39aec580fb53ef85cabaae90677e7.jpg","66dfd9d731ad3ae8524b338d0fbfaac9.jpg",
+  "70d8e1f7600126b775d01129021192e0.jpg","96670c4013fd6518c4fa8c09049a4c44.jpg",
+  "a21189df6c5be0d88f886453abeeff19.jpg","a746c50bbd8ddaf02dbd32a18c0ef662.jpg",
+  "b9f115589a8e88d0b1dc18ea2e9c7a32.jpg","e7d8139ce6e03e298cb837f7a5b23562.jpg",
+  "fd5b3e7859bc18b2c079fc68732d9d8a.jpg",
+  "gal-1.jpg","gal-2.jpg","gal-3.jpg","gal-4.jpg","gal-5.jpg","gal-6.jpg",
+];
+const CAPS = ["✿ 记忆碎片", "🌸 某个瞬间", "✨ 闪光时刻", "🍡 日常", "🎐 风与光", "📷 咔嚓"];
+
+boot("gallery.html", async () => {
+  const wall = document.querySelector("#wall");
+  const voted = new Set(JSON.parse(localStorage.getItem("voted") || "[]"));
+  let rates = await rateGet();
+
+  const starsHtml = (id) => {
+    const r = rates[id];
+    const avg = r && r.count ? (r.sum / r.count).toFixed(1) : null;
+    return `<div class="stars" data-id="${id}">
+      ${[1,2,3,4,5].map((n) => `<span class="star${voted.has(id) ? " done" : ""}" data-n="${n}">${avg && n <= Math.round(avg) ? "★" : "☆"}</span>`).join("")}
+      <small>${avg ? `${avg} 分 · ${r.count} 人` : "还没人打分"}</small></div>`;
+  };
+
+  PHOTOS.forEach((f, i) => {
+    const id = f.replace(".jpg", "");
+    const d = document.createElement("div");
+    d.className = "polaroid";
+    d.dataset.cap = CAPS[i % CAPS.length];
+    d.style.transform = `rotate(${(Math.random() * 8 - 4).toFixed(1)}deg)`;
+    d.innerHTML = `<img loading="lazy" src="photo/${f}" alt="锐锐的照片">${starsHtml(id)}`;
+    d.querySelector("img").onclick = () => {
+      document.querySelector("#lightbox img").src = `photo/${f}`;
+      document.querySelector("#lightbox").classList.add("on");
+    };
+    wall.appendChild(d);
+  });
+
+  wall.addEventListener("click", async (e) => {
+    const star = e.target.closest(".star");
+    if (!star || star.classList.contains("done")) return;
+    const box = star.closest(".stars");
+    const id = box.dataset.id;
+    if (voted.has(id)) return;
+    voted.add(id);
+    localStorage.setItem("voted", JSON.stringify([...voted]));
+    rates = await ratePost(id, +star.dataset.n);
+    box.outerHTML = starsHtml(id);
+  });
+
+  document.querySelector("#lightbox").onclick = () =>
+    document.querySelector("#lightbox").classList.remove("on");
+});
+</script>
+</body>
+</html>

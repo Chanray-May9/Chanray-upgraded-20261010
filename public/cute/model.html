@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D 模型 ✿ 是锐锐呀</title>
+<link rel="icon" href="photo/avatar.jpg">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@300;400;500;700&family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+<main>
+  <section class="section page-top">
+    <h2 class="sec-title reveal">3D 模型</h2>
+    <p class="sec-sub reveal">拖动旋转 · 滚轮缩放</p>
+    <div class="model-box reveal">
+      <model-viewer src="character.glb" camera-controls auto-rotate rotation-per-second="24deg"
+        shadow-intensity="1" exposure="1.1" interaction-prompt="none"></model-viewer>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<script type="module">
+import { boot } from "./js/ui.js";
+boot("model.html");
+</script>
+</body>
+</html>
