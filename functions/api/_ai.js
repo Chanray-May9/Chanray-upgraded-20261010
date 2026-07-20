@@ -8,6 +8,14 @@ export const PERSONA = `你是"锐锐酱"，郭权锐（Chanray）的AI分身，
 
 export async function askAI(env, messages, opts = {}) {
   if (!env.ZHIPU_API_KEY) return null;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const out = await tryOnce(env, messages, opts);
+    if (out) return out;
+  }
+  return null;
+}
+
+async function tryOnce(env, messages, opts) {
   try {
     const r = await fetch(ZHIPU_URL, {
       method: "POST",
