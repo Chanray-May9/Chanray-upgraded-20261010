@@ -1,3 +1,5 @@
+import { usePageContent } from "@/components/SiteContent";
+import { useSiteText } from "@/components/SiteContent";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { animate } from "animejs";
@@ -56,6 +58,8 @@ const SOCIALS = [
 ];
 
 function Contact() {
+  usePageContent();
+  const cms = useSiteText();
   useSplitReveal("#contact-title", 100);
   useMagnetic("[data-magnet]", 0.3);
   useScrollReveal();
@@ -65,7 +69,7 @@ function Contact() {
     e.preventDefault();
     e.stopPropagation();
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(cms(text));
       setCopied(label);
       const el = e.currentTarget as HTMLElement;
       animate(el, { scale: [1, 1.1, 1], duration: 400, ease: "out(3)" });

@@ -180,29 +180,15 @@ export function useSplitReveal(selector: string, delay = 0) {
   useEffect(() => {
     const el = document.querySelector(selector) as HTMLElement | null;
     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const text = el.textContent ?? "";
-    el.setAttribute("aria-label", text);
-    const letters = Array.from(text, (ch) => {
-      const span = document.createElement("span");
-      span.className = "inline-block will-change-transform";
-      span.textContent = ch === " " ? "\u00a0" : ch;
-      span.setAttribute("aria-hidden", "true");
-      return span;
-    });
-    el.replaceChildren(...letters);
-    const tl = createTimeline({ delay });
-    tl.add(letters, {
-      y: [{ from: "120%", to: "0%" }],
-      opacity: [{ from: 0, to: 1 }],
-      rotate: [{ from: 14, to: 0 }],
+    const animation = animate(el, {
+      y: [24, 0],
+      opacity: [0, 1],
       duration: 900,
       ease: "out(4)",
-      delay: utils.stagger(35),
+      delay,
     });
     return () => {
-      tl.revert();
-      el.textContent = text;
-      el.removeAttribute("aria-label");
+      animation.revert();
     };
   }, [selector, delay]);
 }

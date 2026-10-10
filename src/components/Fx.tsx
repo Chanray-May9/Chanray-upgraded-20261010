@@ -1,3 +1,4 @@
+import { useSiteText } from "./SiteContent";
 import { observeAnimation } from "@/lib/animation-loop";
 import { useEffect, useRef, useState, ReactNode } from "react";
 import { animate, onScroll, utils } from "animejs";
@@ -84,8 +85,21 @@ export function TiltCard({
 
 /* ============ ScrambleHover text ============ */
 const CHARS = "アイウエオカキクケコサシスセソタチツテト01ABCDEF#@";
-export function ScrambleHover({ text, className = "" }: { text: string; className?: string }) {
+export function ScrambleHover({
+  text: sourceText,
+  className = "",
+}: {
+  text: string;
+  className?: string;
+}) {
+  const cms = useSiteText();
+  const text = cms(sourceText);
   const [out, setOut] = useState(text);
+  useEffect(() => {
+    if (idRef.current) clearInterval(idRef.current);
+    idRef.current = null;
+    setOut(text);
+  }, [text]);
   const ref = useRef<HTMLSpanElement>(null);
   const idRef = useRef<ReturnType<typeof setInterval> | null>(null);
   useEffect(
@@ -168,28 +182,15 @@ export function useSplitReveal(selector: string, delay = 0) {
   useEffect(() => {
     const el = document.querySelector(selector) as HTMLElement | null;
     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const text = el.textContent ?? "";
-    el.setAttribute("aria-label", text);
-    const letters = Array.from(text, (ch) => {
-      const span = document.createElement("span");
-      span.className = "inline-block will-change-transform";
-      span.textContent = ch === " " ? "\u00a0" : ch;
-      span.setAttribute("aria-hidden", "true");
-      return span;
-    });
-    el.replaceChildren(...letters);
-    const animation = animate(letters, {
-      y: [{ from: "120%", to: "0%" }],
-      opacity: [{ from: 0, to: 1 }],
-      rotate: [{ from: 14, to: 0 }],
+    const animation = animate(el, {
+      y: [24, 0],
+      opacity: [0, 1],
       duration: 900,
       ease: "out(4)",
-      delay: utils.stagger(35, { start: delay }),
+      delay,
     });
     return () => {
       animation.revert();
-      el.textContent = text;
-      el.removeAttribute("aria-label");
     };
   }, [selector, delay]);
 }

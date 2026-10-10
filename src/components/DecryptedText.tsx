@@ -1,3 +1,4 @@
+import { useSiteText } from "./SiteContent";
 import { useEffect, useRef, useState } from "react";
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@%&*+!?";
@@ -10,7 +11,14 @@ interface Props {
 }
 
 /** Decryption / scramble reveal (react-bits inspired). */
-export function DecryptedText({ text, className = "", speed = 40, trigger = "view" }: Props) {
+export function DecryptedText({
+  text: sourceText,
+  className = "",
+  speed = 40,
+  trigger = "view",
+}: Props) {
+  const cms = useSiteText();
+  const text = cms(sourceText);
   const ref = useRef<HTMLSpanElement>(null);
   const [out, setOut] = useState(text);
   const startedRef = useRef(false);
@@ -21,6 +29,12 @@ export function DecryptedText({ text, className = "", speed = 40, trigger = "vie
     },
     [],
   );
+
+  useEffect(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    startedRef.current = false;
+    setOut(text);
+  }, [text]);
 
   const start = () => {
     if (startedRef.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;

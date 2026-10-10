@@ -1,3 +1,5 @@
+import { usePageContent } from "@/components/SiteContent";
+import { ContentEditor } from "@/components/ContentEditor";
 import { AISettings } from "@/components/AISettings";
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
@@ -13,6 +15,7 @@ export const Route = createFileRoute("/admin")({
   component: Admin,
 });
 function Admin() {
+  usePageContent();
   const [token, setToken] = useState("");
   const [dataset, setDataset] = useState<keyof typeof DATASETS>("board");
   const [records, setRecords] = useState<RecordItem[]>([]);
@@ -152,12 +155,16 @@ function Admin() {
       <p role="status" className="my-6 text-sm text-muted-foreground">
         {message}
       </p>
+      <ContentEditor key={"content:" + token} token={token} apiURL={API_URL} />
       <AISettings key={token} token={token} apiURL={API_URL} />
       <ul className="space-y-4">
         {loaded &&
           records.map((record) => (
             <li key={record.id} className="rounded border border-border bg-card p-4">
-              <pre className="max-h-72 overflow-auto whitespace-pre-wrap break-words text-sm">
+              <pre
+                data-user-content
+                className="max-h-72 overflow-auto whitespace-pre-wrap break-words text-sm"
+              >
                 {JSON.stringify(record.data, null, 2)}
               </pre>
               <button

@@ -29,3 +29,9 @@ git -C ../Chanray-restored switch -c restore-original d9df3033c17da6298d5008bc13
 保留升级提交 SHA。将该提交通过普通 PR 合并后，可以对升级提交执行 `git revert <升级提交SHA>`，提交回退 PR，经过构建验证再合并；若采用合并提交，则对合并提交使用 `git revert -m 1 <合并提交SHA>`。回退避免 `reset --hard` 或强制推送，并会触发 Pages 重建。
 
 本轮未部署，也未替换线上页面，因此目前无需线上回退。
+
+## 本轮全站文案升级备份
+
+开始全站文案管理前的版本为 `0b5ee82`，标签 `backup/pre-cms-20261010`。备份位于 `/workspace/backups/Chanray-before-cms-20261010.bundle`。
+
+后台文案的回退不需要回退代码：使用「历史版本与恢复」，或导入已下载的文案 JSON，再发布。每次恢复前会备份当前文案。源码 bundle 不包含线上 KV 版本；线上文案备份保存在 KV，需要单独保留/导出。

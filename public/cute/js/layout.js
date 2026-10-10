@@ -22,7 +22,7 @@ export function mountLayout(active) {
   document.body.insertAdjacentHTML(
     "beforeend",
     `<footer><p>✿ 2026 · 是锐锐呀 · 手写于凌晨两点半 ✿</p>
-      <p class="foot-tip">这个站没有后台管理系统，锐锐直接改代码。</p></footer>
+      <p class="foot-tip"></p></footer>
     <div id="chatWidget">
       <button id="chatToggle" title="和锐锐酱聊两句"><img src="photo/avatar.jpg" alt="锐锐酱"><span class="chat-dot"></span></button>
       <div id="chatPanel">
@@ -52,6 +52,7 @@ function initWidget() {
   const add = (text, cls) => {
     const d = document.createElement("div");
     d.className = "msg " + cls;
+    d.setAttribute("data-user-content", "");
     d.textContent = text;
     body.appendChild(d);
     body.scrollTop = body.scrollHeight;

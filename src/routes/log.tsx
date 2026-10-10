@@ -1,3 +1,4 @@
+import { usePageContent } from "@/components/SiteContent";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import { animate, onScroll } from "animejs";
@@ -66,6 +67,7 @@ const ENTRIES = [
 ];
 
 function Log() {
+  usePageContent();
   useSplitReveal("#log-title", 100);
   useScrollReveal();
 

@@ -1,3 +1,4 @@
+import { SiteContentProvider, usePageContent } from "@/components/SiteContent";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -12,6 +13,7 @@ import { SiteHeader, SiteFooter } from "@/components/SiteShell";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
+  usePageContent();
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -34,6 +36,7 @@ function NotFoundComponent() {
 }
 
 function ErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
+  usePageContent();
   console.error(error);
   const router = useRouter();
 
@@ -130,7 +133,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        {children}
+        <SiteContentProvider>{children}</SiteContentProvider>
         <Scripts />
       </body>
     </html>

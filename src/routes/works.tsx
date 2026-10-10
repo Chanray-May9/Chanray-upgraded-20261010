@@ -1,3 +1,4 @@
+import { usePageContent } from "@/components/SiteContent";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   TiltCard,
@@ -68,6 +69,7 @@ const EXPERIMENTS = [
 ];
 
 function Works() {
+  usePageContent();
   useSplitReveal("#works-title", 100);
   useMagnetic("[data-magnet]", 0.3);
   useScrollReveal();

@@ -1,3 +1,4 @@
+import { handleContent } from "./_content.js";
 import { handleConfig } from "./_config.js";
 import { json, readObject } from "./_http.js";
 
@@ -22,6 +23,7 @@ async function handle({ request, env }) {
   if (denied) return denied;
   if (!env.BOARD) return json({ error: "KV not bound" }, 503);
   const dataset = new URL(request.url).searchParams.get("dataset");
+  if (dataset === "content") return handleContent(request, env);
   if (dataset === "ai") return handleConfig(request, env);
   if (!Object.hasOwn(DATASETS, dataset)) return json({ error: "invalid dataset" }, 400);
   const value = JSON.parse(

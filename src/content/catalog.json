@@ -1,0 +1,4966 @@
+[
+  {
+    "original": "3D 模型",
+    "groups": [
+      "3D",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/model.tsx",
+      "public/cute/model.html",
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "3D 模型展示。",
+    "groups": [
+      "3D"
+    ],
+    "sources": [
+      "src/routes/model.tsx"
+    ]
+  },
+  {
+    "original": "是锐锐呀 · 3D MODEL",
+    "groups": [
+      "3D"
+    ],
+    "sources": [
+      "src/routes/model.tsx"
+    ]
+  },
+  {
+    "original": "CHARACTER.GLB",
+    "groups": [
+      "3D"
+    ],
+    "sources": [
+      "src/routes/model.tsx"
+    ]
+  },
+  {
+    "original": "drag to rotate · scroll to zoom",
+    "groups": [
+      "3D"
+    ],
+    "sources": [
+      "src/routes/model.tsx"
+    ]
+  },
+  {
+    "original": "SECTION · 3D MODEL",
+    "groups": [
+      "3D"
+    ],
+    "sources": [
+      "src/routes/model.tsx"
+    ]
+  },
+  {
+    "original": "调情专区",
+    "groups": [
+      "调情专区",
+      "通用组件"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx",
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "调情专区与 AI 聊天。",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
+    "original": "换一句",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
+    "original": "是锐锐呀 · 调情专区",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
+    "original": "我喜欢你。",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
+    "original": "想抱抱你。",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
+    "original": "想和你见面。",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
+    "original": "想你了。",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
+    "original": "想说的话",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
+    "original": "处理中…",
+    "groups": [
+      "管理后台",
+      "通用组件"
+    ],
+    "sources": [
+      "src/routes/admin.tsx",
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "当前分类暂无记录。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "导出当前分类备份",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "读取 / 刷新",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "管理令牌",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "管理令牌无效。",
+    "groups": [
+      "管理后台",
+      "通用组件"
+    ],
+    "sources": [
+      "src/routes/admin.tsx",
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "管理留言、帖子、聊天室与评分。首次使用需要部署 Cloudflare API 并配置 ADMIN_TOKEN。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "后端不可用，请检查 Cloudflare 部署和绑定。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "记录已变化，请重新读取后操作。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "接口返回无效数据。",
+    "groups": [
+      "管理后台",
+      "通用组件"
+    ],
+    "sources": [
+      "src/routes/admin.tsx",
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "聊天室",
+    "groups": [
+      "管理后台",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/admin.tsx",
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "留言板",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "论坛帖子",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "内容管理",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "请求失败。",
+    "groups": [
+      "管理后台",
+      "通用组件"
+    ],
+    "sources": [
+      "src/routes/admin.tsx",
+      "src/components/AIChat.tsx",
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "确认删除这条记录？删除后无法通过代码回退恢复数据。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "删除成功，列表已更新。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "删除记录",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "删除失败，请检查权限或后端配置。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "输入管理令牌后读取内容。令牌仅在当前页面内存中保存。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "数据分类",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "退出管理",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "已清除当前页面的管理令牌与内容。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "照片评分",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "Chanray · 内容管理",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "noindex, nofollow",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "robots",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "—",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "—— 欢迎来到樱花树下 ——",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/chat.html"
+    ]
+  },
+  {
+    "original": "：",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "· · 回复",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "\" >",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "\" data-n=\"\">",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "\">",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "（预览模式下我先装个睡，部署后 @ 我就真的会回话哦）",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/api.js"
+    ]
+  },
+  {
+    "original": "@锐锐酱",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/chat.html"
+    ]
+  },
+  {
+    "original": "#a5d8ff",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/fx.js"
+    ]
+  },
+  {
+    "original": "#cdb4f6",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/fx.js"
+    ]
+  },
+  {
+    "original": "#ff8fb8",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/fx.js"
+    ]
+  },
+  {
+    "original": "#ffd6a5",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/fx.js"
+    ]
+  },
+  {
+    "original": "%c✿ 你打开了控制台？果然是同行！源码在 github.com/Chanray-May9/Chanray ✿",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "`).join(\"\")}",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html",
+      "public/cute/gallery.html",
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "✕",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "✨",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "✨ 变身完成！（预览模式的简易魔法，部署后 AI 更聪明）",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "✨ 闪光时刻",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "✨ 施法中…",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "✿ 2026 · 是锐锐呀 · 手写于凌晨两点半 ✿",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "✿ 记忆碎片",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "✿ 相册",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "➤",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "🌸",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "🌸 二次元",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "🌸 某个瞬间",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "🌸 锐锐酱",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "🌸 樱花粉",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "🌿 薄荷绿",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "🍊 夕阳橘",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "🍡",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "🍡 日常",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "🎂",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "🎐 风与光",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "🎐 樱花树下 · 公共聊天室",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/chat.html"
+    ]
+  },
+  {
+    "original": "🎵",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "🎵 Synthwave",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "🐙",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "🐦",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "💌 留言板",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "💜 梦幻紫",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "💬",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "💬 来论坛坐坐",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "💬 小树洞论坛",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "💻",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "💻 写代码的",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "📧",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "📮 找到锐锐",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "📱",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "📷 咔嚓",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "📷 相册",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "🪄 AI 换装间",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "🛸",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "🛸 科幻迷",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "08 年 5 月 9 号出生，白天上学，晚上写代码看番。",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "0eb387efdbbdadbd4b14e93a7447cc51.jpg",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "1c053df0f74cb25941e8d1955d39c128.jpg",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "3D 模型 ✿ 是锐锐呀",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/model.html"
+    ]
+  },
+  {
+    "original": "56c39aec580fb53ef85cabaae90677e7.jpg",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "66dfd9d731ad3ae8524b338d0fbfaac9.jpg",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "70d8e1f7600126b775d01129021192e0.jpg",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "96670c4013fd6518c4fa8c09049a4c44.jpg",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "变身完成！",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "从\"Hello World\"到这个网站，中间隔着无数个报错。但是好玩啊。",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "代码",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "点击复制",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "抖音",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "二次元住民",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "发送 ➤",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/chat.html"
+    ]
+  },
+  {
+    "original": "发帖 🚀",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "分 · 人` : \"还没人打分\"}",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "粉",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "关于锐锐",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "还没人打分",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "还没有留言，来做第一个吧！(๑˃̵ᴗ˂̵)",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "还没有帖子，抢个一楼？",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "和锐锐酱聊两句",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "回复",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "回复一下…（@锐锐酱 可以召唤AI）",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "金牛座，据说很固执。写不出来的 bug 确实会跟它耗到凌晨。",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "橘",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "科幻",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "可以把 AI 叫出来一起聊",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/chat.html"
+    ]
+  },
+  {
+    "original": "来啦？我是锐锐酱，本体不在的时候这里我说了算 (◕‿◕✿)",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "蓝",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "例如：深蓝色的海底世界，字大一点…",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "聊番剧、聊代码、聊人生都行 · 不用注册，起个名就能发",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "聊天室 ✿ 是锐锐呀",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/chat.html"
+    ]
+  },
+  {
+    "original": "路过留个脚印，我真的会看",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "绿",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "论坛",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "论坛 ✿ 是锐锐呀",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "没链接的点一下就复制",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "你的昵称",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html",
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "昵称",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/chat.html",
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "拍立得墙 · 点照片放大 · 底下的星星可以给照片打分（每张只能投一次哦）",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "锐锐（郭权锐）的个人小站 — 二次元 · 代码 · 一点点魔法",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "锐锐的头像",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "锐锐的照片",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "锐锐酱",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js",
+      "public/cute/js/api.js"
+    ]
+  },
+  {
+    "original": "三体、星际、机甲都吃。未来要是真有脑机接口，第一个报名。",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "谁都能说话 · 消息全站共享 · 发",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/chat.html"
+    ]
+  },
+  {
+    "original": "施法 ✨",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "是锐锐呀 ✿",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "是锐锐呀 ✿ Chanray",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "说点什么…",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/chat.html",
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "说说你想看到什么样的网站，AI 会当场把这里改成那个样子（只对你生效，刷新还原）",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "帖子标题",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "投递 💌",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "拖动旋转 · 滚轮缩放",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/model.html"
+    ]
+  },
+  {
+    "original": "往下滑呀 ⌄",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "微信",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "相册 ✿ 是锐锐呀",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "想说点什么…",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "已复制！",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "找到我",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "找到我 ✿ 是锐锐呀",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "这个站是我自己一行行搭的——花瓣是 3D 的，你晃晃鼠标就知道了。",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "正文…想说啥说啥",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "追番进行时。头像就是我的精神状态，别问，问就是很元气。",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "紫",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "a21189df6c5be0d88f886453abeeff19.jpg",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "a746c50bbd8ddaf02dbd32a18c0ef662.jpg",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "AI 分身 · 在线",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "AI 服务还没连上（预览模式）。部署到 Cloudflare 之后我就能真的陪你聊天啦 (｡•́︿•̀｡)",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/api.js"
+    ]
+  },
+  {
+    "original": "b9f115589a8e88d0b1dc18ea2e9c7a32.jpg",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "chat.html",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "contact.html",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "e7d8139ce6e03e298cb837f7a5b23562.jpg",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "fd5b3e7859bc18b2c079fc68732d9d8a.jpg",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "forum.html",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "gallery.html",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "href=\"#\" title=\"点击复制\"",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "index.html",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "model.html",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "user",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "。点击卡片复制账号 / 跳转外站。",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "@may9_chanray",
+    "groups": [
+      "联系",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/contact.tsx",
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "@PowersharpGuo",
+    "groups": [
+      "联系",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/contact.tsx",
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "// 05 — CONTACT",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "// QUICK · MAIL",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "即将上线AI分身,敬请期待！",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "通讯频段：GitHub / X / TikTok / 抖音 / 微信 / Mail。",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "选择一个频段连接",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "主要联系邮箱 · 工作 / 合作优先",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "CH.",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "Chanray-May9",
+    "groups": [
+      "联系",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/contact.tsx",
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "Douyin / 抖音",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "DY-09",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "E-Mail",
+    "groups": [
+      "联系",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/contact.tsx",
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "GH-04",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "GitHub",
+    "groups": [
+      "联系",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/contact.tsx",
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "gqr20080509@gmail.com",
+    "groups": [
+      "联系",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/contact.tsx",
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "May9-QR",
+    "groups": [
+      "联系",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/contact.tsx",
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "ML-01",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "SCPQ",
+    "groups": [
+      "联系",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/contact.tsx",
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "SEND TRANSMISSION →",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "signal · 100%",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "TikTok",
+    "groups": [
+      "联系",
+      "作品",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/contact.tsx",
+      "src/routes/works.tsx",
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "TRANSMIT",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "TT-11",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "UNIT-may9",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "WeChat / 微信",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "WX-02",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "X / Twitter",
+    "groups": [
+      "联系",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/contact.tsx",
+      "public/cute/contact.html"
+    ]
+  },
+  {
+    "original": "X-07",
+    "groups": [
+      "联系"
+    ],
+    "sources": [
+      "src/routes/contact.tsx"
+    ]
+  },
+  {
+    "original": "404",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "郭权锐",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "郭权锐, 权锐, 锐锐, Chanray, chanray, 长寿二中, 重庆科技大学, 重庆建筑工程职业学院, Charlie, Kuo, 长二中, 单招",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "郭权锐的个人主页：成长时间线、AI 生成照片与联系方式。",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "是锐锐呀",
+    "groups": [
+      "全站与错误页",
+      "联系",
+      "相册",
+      "首页",
+      "时间线",
+      "作品"
+    ],
+    "sources": [
+      "src/routes/__root.tsx",
+      "src/routes/contact.tsx",
+      "src/routes/gallery.tsx",
+      "src/routes/index.tsx",
+      "src/routes/log.tsx",
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "是锐锐呀，郭权锐的个人主页，记录学习、作品、影像与成长时间线。",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "author",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "description",
+    "groups": [
+      "全站与错误页",
+      "调情专区",
+      "联系",
+      "相册",
+      "首页",
+      "时间线",
+      "3D",
+      "作品"
+    ],
+    "sources": [
+      "src/routes/__root.tsx",
+      "src/routes/afterdark.tsx",
+      "src/routes/contact.tsx",
+      "src/routes/gallery.tsx",
+      "src/routes/index.tsx",
+      "src/routes/log.tsx",
+      "src/routes/model.tsx",
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Go home",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx",
+      "src/lib/error-page.ts"
+    ]
+  },
+  {
+    "original": "keywords",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "Page not found",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "Something went wrong on our end. You can try refreshing or head back home.",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx",
+      "src/lib/error-page.ts"
+    ]
+  },
+  {
+    "original": "summary_large_image",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "The page you're looking for doesn't exist or has been moved.",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "This page didn't load",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx",
+      "src/lib/error-page.ts"
+    ]
+  },
+  {
+    "original": "Try again",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx",
+      "src/lib/error-page.ts"
+    ]
+  },
+  {
+    "original": "twitter:card",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "twitter:description",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "twitter:image",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "twitter:title",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "viewport",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "website",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "width=device-width, initial-scale=1",
+    "groups": [
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "// 04 — LOG",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "0001",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "0002",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "0003",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "0004",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "0005",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "0006",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "0007",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "0008",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "2011.09.01",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "2014.09.01",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "2020.09.01",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "2023.09.01",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "2026.03.22",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "2026.09.01",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "2029.09.01",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "从出生到求学，再到未来计划的时间坐标。由下至上，记录锐锐一路走来的关键节点。",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "单招节点达成",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "郭权锐的成长与求学时间线。",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "汇景台第一站",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "即将进入重庆建筑工程职业学院，让新的专业方向和校园生活正式启动。",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "计划进入重庆科技大学继续向前，把下一段学习和成长写进更大的地图。",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "建工新程",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "进入重庆新牌坊小学校，开始把世界一点点写进自己的坐标系。",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "进入渝北区松树桥中学校，青春的第一段长线任务从这里展开。",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "进入长寿二中，在新的课堂、节奏和同伴关系里继续积累能量。",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "锐锐上线",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "松树桥阶段开启",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "完成普通高校招生高职分类考试，为下一阶段的升学路线按下确认键。",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "新的坐标 · 重庆科技大学",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "新牌坊初启航",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "长二中信号接入",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "这一天，属于郭权锐的故事正式开始。",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "走进汇景台幼儿园，人生里的第一批朋友、游戏和好奇心开始发光。",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "LOG ·",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "TIMELINE",
+    "groups": [
+      "时间线"
+    ],
+    "sources": [
+      "src/routes/log.tsx"
+    ]
+  },
+  {
+    "original": "//",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "// HOBBY: anime · synthwave · web magic",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "// NEXT.SECTOR",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "◆",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "★",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "✦",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "❀",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "❀ 樱花协议 · 进入新界面",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "0",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "2008.05.09",
+    "groups": [
+      "首页",
+      "时间线",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/index.tsx",
+      "src/routes/log.tsx",
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "查看作品",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "的二次元 / 科幻迷与代码爱好者。 在屏幕的像素之间搭建会发光的机甲、会呼吸的粉色界面。",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "动效编排",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "二次元",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "郭 权 锐",
+    "groups": [
+      "首页",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/index.tsx",
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "郭权锐的个人主页，记录成长、影像与连接方式。",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "继续探索：作品库 / 图像档案 / 时间线日志 / 通讯频段。",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "建立连接",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "进入更深层的协议。",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "视觉设计",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "是锐锐呀，郭权锐的个人主页。",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "图形 / 着色",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "现代前端",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "一个出生于",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "anime.js · WAAPI · GSAP",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "Canvas · WebGL · SVG",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "CAPABILITY · 核心能力",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "CHANRAY",
+    "groups": [
+      "首页",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/routes/index.tsx",
+      "public/cute/index.html"
+    ]
+  },
+  {
+    "original": "Chanray avatar",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "COFFEE.ML",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "DESIGN",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "FRONTEND",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "GALLERY",
+    "groups": [
+      "首页",
+      "通用组件"
+    ],
+    "sources": [
+      "src/routes/index.tsx",
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "GITHUB",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "GRAPHICS",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "ID · MAY9-08",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "LOG",
+    "groups": [
+      "首页",
+      "通用组件"
+    ],
+    "sources": [
+      "src/routes/index.tsx",
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "MAY9 / 2008",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "MECHA / NEON",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "Mecha UI · Glassmorphism",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "MODEL · CHANRAY",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "MOTION",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "PINK PROTOCOL",
+    "groups": [
+      "首页",
+      "作品"
+    ],
+    "sources": [
+      "src/routes/index.tsx",
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Powered by anime.js",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "PROJECTS",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "React · TS · Tailwind · TanStack",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "scroll ↓",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "STATUS · ACTIVE",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "SYSTEM ONLINE · UNIT-may9",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "top-2 left-2",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "UNIT-3D · 模型",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "WORKS",
+    "groups": [
+      "首页",
+      "通用组件"
+    ],
+    "sources": [
+      "src/routes/index.tsx",
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "YEAR.BORN",
+    "groups": [
+      "首页"
+    ],
+    "sources": [
+      "src/routes/index.tsx"
+    ]
+  },
+  {
+    "original": "；匹配：",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "；已替换：",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx",
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "·",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "// Pink Protocol · Mecha Frontend · 2008.05.09",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "© 2008.05.09 — ∞ · CHANRAY UNIT",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "●",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "01",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "02",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "03",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "04",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "05",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "06",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "07",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "3D",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx",
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "保存 AI 配置",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "保存失败，请检查权限、输入或服务端加密配置。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "保存失败。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "保存中…",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "备份格式无效。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "备份文件不能超过 256KB。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "备份已导入为草稿，尚未发布。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "编辑标题、正文、导航、按钮、提示、图片说明与页面描述。相同原文默认全站一起替换。留空可以隐藏文字，不会删除对应功能。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "打开草稿预览",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "当前草稿与线上一致。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "导出草稿 / 备份",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "导航菜单",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "导入备份",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "导入失败。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "调情",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "调情角色提示词",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "读取 AI 配置",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "读取更多历史",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "读取全站文案",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "读取失败。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "读取中…",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "发布修改",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "发送",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "分类",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "复制页面上的原文，填入替换文字。适用于新内容和动态提示。只替换文本，不执行 HTML 或脚本。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "和锐锐聊天",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "后台",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "后台 Key 管理需要服务端设置 ADMIN_ENCRYPTION_KEY；也可直接使用 ZHIPU_API_KEY 服务端秘密。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "恢复此项默认",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "恢复该版本",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "加入草稿",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "加载失败，点击重试",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ModelViewer.tsx"
+    ]
+  },
+  {
+    "original": "将全部文案恢复为源码默认值？此操作只生成草稿，发布后生效。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "接口数据无效。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "旧版联系",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "旧版聊天室",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "旧版论坛",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "旧版模型",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "旧版首页",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "旧版相册",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "可编辑条目：",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "历史版本已恢复。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "历史版本与恢复",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "联系",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "浏览器拦截了预览窗口，请允许弹出窗口后重试。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "没有收到回复，请重试。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "每次发布前自动备份完整文案。恢复历史版本前也会备份当前版本。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "你好。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "启用 AI 调情互动",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "清空对话",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "请求已超时，请重试。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "全部恢复默认",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "全站",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "全站文案已读取。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "全站文字管理",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "确认发布当前文案？当前线上版本会先自动备份。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "确认恢复这个历史版本？当前版本会先自动备份。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "锐锐",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "锐锐的 3D 角色模型，可拖动旋转和缩放",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ModelViewer.tsx"
+    ]
+  },
+  {
+    "original": "删除后台保存的 Key（回退到服务端环境 Key）",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "时间线",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "使用服务端环境配置。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "使用后台加密保存的 Key。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "手动添加",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "首页",
+    "groups": [
+      "通用组件",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx",
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "输入消息",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "搜索原文或新文案",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "替换 API Key（留空保留现有值）",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "替换文字",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "添加未收录的文字",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "未配置",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "文案操作失败，请检查后端配置。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "文案已发布。KV 传播可能需要稍等片刻。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "文字已加入草稿。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "无法读取配置，请检查令牌与后端部署。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "显示更多条目",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "线上文案已变化，请导出草稿，再重新读取。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "相册",
+    "groups": [
+      "通用组件",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx",
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "项替换",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "消息",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "消息会发送给 AI 服务处理。对话只在当前页面保留。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "已打开预览。预览不会发布文案，也不会传递管理令牌。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "已配置",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "有未发布修改。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "预览页面",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "原文",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "暂无历史版本。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "正在回复…",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "正在加载 3D 模型…",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ModelViewer.tsx"
+    ]
+  },
+  {
+    "original": "智谱模型名称",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "重新读取会丢弃未发布的修改，确认继续？",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "主人",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "作品",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "admin",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "afterdark",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "AI 配置已保存。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "AI 配置已读取。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "AI 提示词与 Key 管理",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "AI 暂时不可用，请稍后再试。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "assistant",
+    "groups": [
+      "通用组件",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx",
+      "public/cute/js/layout.js"
+    ]
+  },
+  {
+    "original": "built with anime.js · react · pink protocol",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "CHANRAY // 郭权锐",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "contact",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "CONTACT",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "cute/chat.html",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "cute/contact.html",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "cute/forum.html",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "cute/gallery.html",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "cute/index.html",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "cute/model.html",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "gallery",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "github · Chanray-May9",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "HOME",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "Key 状态：",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "log",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "mail · gqr20080509@gmail.com",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "MAY9 // CHANRAY",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "model",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "NAVIGATE",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "works",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "x · @PowersharpGuo",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "/",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "// 03 — GALLERY",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "←",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "→",
+    "groups": [
+      "相册",
+      "作品",
+      "通用组件"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx",
+      "src/routes/works.tsx",
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "锐锐的 AI 生成照片档案，收录随机生成的视觉照片。",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "这里收录锐锐生成的一组随机 AI 照片。每一张都是独立的视觉切片，点击放大，← / → 切换。",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "AI PHOTO · R-01",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "AI PHOTO · R-02",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "AI PHOTO · R-03",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "AI PHOTO · R-04",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "AI PHOTO · R-05",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "AI PHOTO · R-06",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "AI PHOTO · R-07",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "AI PHOTO · R-08",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "AI PHOTO · R-09",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "AI PHOTO · R-10",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "AI PHOTO · R-11",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "ARCHIVE",
+    "groups": [
+      "相册",
+      "作品"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx",
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "ARCHIVE.IMG",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "close",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "DREAM",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "ESC",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "FRAME",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "GENERATED",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "LIGHT",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "MEMORY",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "MOMENT",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "next",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "PORTRAIT",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "prev",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "SCENE",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "SIGNAL",
+    "groups": [
+      "相册",
+      "通用组件"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx",
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "VISUAL",
+    "groups": [
+      "相册"
+    ],
+    "sources": [
+      "src/routes/gallery.tsx"
+    ]
+  },
+  {
+    "original": "'",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "// 02 — WORKS",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "// 02.B",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "◉",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "2024 — now",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "2025",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "2026",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "23",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "24",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "25",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "26",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "你正在看的这个网站。一个粉色机甲风的个人协议，包含粒子场、磁吸交互与字符解密。",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "想要合作？建立连接 →",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "一个用于二次元 UI 的微型动效引擎实验，专注于丝滑缓动与机甲风转场。",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "一些近期建造的会发光的东西。每一个都是粉色协议的实战部署。",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "在 TikTok 与抖音上分享 SCP / 二次元短视频。把故事做成会发光的卡片。",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Animation Lab",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Anime Page Transition",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Anime.js",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Author",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Canvas",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Chanray 的项目与实验作品集。",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Content / Video",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Creator",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "CSS / WebGL",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Design / Frontend",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Douyin",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Edit",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "EXP.",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "EXPERIMENTS",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Glitch Text Shader",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "GLSL",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Holographic Card",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "MAY9.ENGINE",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Mecha Cursor Trail",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Neon SVG Morphing",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Personal Site",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "PRJ-001",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "PRJ-002",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "PRJ-003",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "React",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "role",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "Sakura Particle Sim",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "SCPQ · FEED",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "stack",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "SVG",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "TypeScript",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "VIEW SOURCE",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "WebGL",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  },
+  {
+    "original": "year",
+    "groups": [
+      "作品"
+    ],
+    "sources": [
+      "src/routes/works.tsx"
+    ]
+  }
+]

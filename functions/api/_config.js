@@ -1,7 +1,8 @@
+import { readContent } from "./_content.js";
 import { json, ok, readObject } from "./_http.js";
 export const CONFIG_KEY = "private:ai-config:v1";
 export const DEFAULT_PROMPT =
-  "你是虚构的 AI 调情伙伴。用中文直接表达喜欢、想念和心动，温柔、有趣，回复不超过120字。不要扮演真实人物。";
+  "你是虚构的聊天角色{{character}}，称呼对方为{{address}}。用自然、简短的中文回答，不超过120字。不要用广告口吻、网络套话或“接招”“不绕弯子”等表述。不要扮演真实人物。";
 export const FLIRT_BOUNDARY =
   "只进行非露骨的浪漫与调情对话。不生成性行为、性器官、色情细节或涉及未成年人的性化内容；不符合范围的请求简短拒绝并转向浪漫话题。尊重明确拒绝与边界。";
 const bytesToHex = (bytes) =>
@@ -33,10 +34,14 @@ export async function resolveAIConfig(env) {
     );
     apiKey = new TextDecoder().decode(plaintext);
   }
+  const site = await readContent(env);
+  const prompt = (config.prompt || DEFAULT_PROMPT)
+    .replaceAll("{{character}}", site.overrides["锐锐"] ?? "锐锐")
+    .replaceAll("{{address}}", site.overrides["主人"] ?? "主人");
   return {
     apiKey,
     model: config.model || "glm-4.7-flash",
-    prompt: config.prompt || DEFAULT_PROMPT,
+    prompt,
     enabled: config.enabled !== false,
   };
 }

@@ -1,3 +1,4 @@
+import { usePageContent } from "@/components/SiteContent";
 import { createFileRoute } from "@tanstack/react-router";
 import { useScrollReveal, useSplitReveal } from "@/components/Fx";
 import { DecryptedText } from "@/components/DecryptedText";
@@ -5,15 +6,13 @@ import { ModelViewer } from "@/components/ModelViewer";
 
 export const Route = createFileRoute("/model")({
   head: () => ({
-    meta: [
-      { title: "是锐锐呀 · 3D MODEL" },
-      { name: "description", content: "3D 模型展示。" },
-    ],
+    meta: [{ title: "是锐锐呀 · 3D MODEL" }, { name: "description", content: "3D 模型展示。" }],
   }),
   component: ModelPage,
 });
 
 function ModelPage() {
+  usePageContent();
   useSplitReveal("#model-title", 100);
   useScrollReveal();
 
@@ -25,7 +24,10 @@ function ModelPage() {
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
           <DecryptedText text="SECTION · 3D MODEL" trigger="mount" speed={35} />
         </div>
-        <h1 id="model-title" className="font-display text-5xl font-black tracking-tight text-gradient">
+        <h1
+          id="model-title"
+          className="font-display text-5xl font-black tracking-tight text-gradient"
+        >
           3D 模型
         </h1>
         <p className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">

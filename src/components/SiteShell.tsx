@@ -14,6 +14,7 @@ const NAV = [
 
 export function SiteHeader() {
   const { location } = useRouterState();
+  const light = /\/afterdark\/?$/.test(location.pathname);
   const [now, setNow] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -30,19 +31,32 @@ export function SiteHeader() {
   return (
     <>
       <ScrollProgress />
-      <header className="fixed left-0 right-0 top-0 z-50 border-b border-border/50 bg-background/40 backdrop-blur-xl">
+      <header
+        style={
+          light
+            ? ({
+                "--foreground": "#4b2038",
+                "--muted-foreground": "#75475e",
+                "--primary": "#be185d",
+                "--background": "#fff5fa",
+                "--border": "#fbcfe8",
+              } as React.CSSProperties)
+            : undefined
+        }
+        className="fixed left-0 right-0 top-0 z-50 border-b border-border/50 bg-background/40 backdrop-blur-xl"
+      >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link
             to="/"
-            className="flex items-center gap-3 font-display text-sm font-bold tracking-[0.3em] text-foreground"
+            className="flex min-w-0 max-w-[60vw] items-center gap-3 font-display text-sm font-bold tracking-[0.3em] text-foreground"
           >
             <span className="relative inline-block h-2 w-2 rotate-45 bg-primary shadow-[0_0_10px_var(--neon)]">
               <span className="absolute inset-0 animate-ping bg-primary" />
             </span>
-            MAY9 // CHANRAY
+            <span className="truncate">MAY9 // CHANRAY</span>
           </Link>
 
-          <nav className="hidden gap-4 font-mono text-[11px] uppercase tracking-[0.25em] sm:flex">
+          <nav className="hidden gap-4 font-mono text-[11px] uppercase tracking-[0.25em] xl:flex">
             {NAV.map((n) => {
               const active = location.pathname === n.to;
               return (
@@ -54,7 +68,7 @@ export function SiteHeader() {
                   }`}
                 >
                   <span className="text-primary/70">{n.code}</span>
-                  <span>{n.label}</span>
+                  <span className="max-w-[7rem] truncate">{n.label}</span>
                   <span
                     className={`absolute -bottom-1 left-0 h-px bg-primary transition-all duration-300 ${
                       active ? "w-full" : "w-0 group-hover:w-full"
@@ -65,12 +79,12 @@ export function SiteHeader() {
             })}
           </nav>
 
-          <div className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground md:block">
+          <div className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground 2xl:block">
             <span className="text-primary">●</span> {now || "boot..."}
           </div>
 
           <button
-            className="btn-mecha mecha-clip !px-3 !py-2 sm:hidden"
+            className="rounded-full border border-primary/40 bg-background/60 px-3 py-2 text-primary xl:!hidden"
             onClick={() => setOpen((v) => !v)}
             aria-label="导航菜单"
             aria-expanded={open}
@@ -81,7 +95,7 @@ export function SiteHeader() {
         </div>
 
         {open && (
-          <div className="sm:hidden">
+          <div className="xl:hidden">
             <nav
               id="mobile-navigation"
               className="flex flex-col gap-1 border-t border-border/50 bg-background/95 px-6 py-4 font-mono text-xs uppercase tracking-[0.2em]"
@@ -168,7 +182,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-border/40">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground sm:flex-row">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground xl:flex-row">
           <div>© 2008.05.09 — ∞ · CHANRAY UNIT</div>
           <div className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />

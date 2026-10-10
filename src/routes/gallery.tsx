@@ -1,3 +1,4 @@
+import { usePageContent } from "@/components/SiteContent";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { animate } from "animejs";
@@ -41,6 +42,7 @@ const ITEMS = [
 ];
 
 function Gallery() {
+  usePageContent();
   useSplitReveal("#gal-title", 100);
   useScrollReveal();
   const [open, setOpen] = useState<number | null>(null);

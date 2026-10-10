@@ -47,22 +47,24 @@ export function AIChat() {
       aria-labelledby="ai-chat-title"
     >
       <h2 id="ai-chat-title" className="text-2xl font-bold text-pink-700">
-        AI 调情互动
+        和锐锐聊天
       </h2>
       <p className="mt-2 text-sm text-[#75475e]">
-        和虚构的 AI 聊心动、约会与喜欢。你发出的文字会交给 AI 服务处理，对话只在当前页面保留。
+        消息会发送给 AI 服务处理。对话只在当前页面保留。
       </p>
       <div className="mt-6 max-h-96 space-y-4 overflow-auto" role="log" aria-live="polite">
-        {messages.length === 0 && (
-          <p className="rounded-2xl bg-pink-50 p-4">我在。今天想让我怎么哄你开心？</p>
-        )}
+        {messages.length === 0 && <p className="rounded-2xl bg-pink-50 p-4">你好。</p>}
         {messages.map((message, index) => (
           <div
             key={index}
             className={`rounded-2xl p-4 ${message.role === "user" ? "ml-8 bg-pink-100" : "mr-8 bg-pink-50"}`}
           >
-            <p className="mb-1 text-xs text-pink-700">{message.role === "user" ? "你" : "AI"}</p>
-            <p className="whitespace-pre-wrap break-words">{message.content}</p>
+            <p className="mb-1 text-xs text-pink-700">
+              {message.role === "user" ? "主人" : "锐锐"}
+            </p>
+            <p data-user-content className="whitespace-pre-wrap break-words">
+              {message.content}
+            </p>
           </div>
         ))}
       </div>
@@ -74,7 +76,7 @@ export function AIChat() {
         }}
       >
         <label htmlFor="flirt-message" className="text-sm">
-          直接说你想聊什么
+          消息
         </label>
         <textarea
           id="flirt-message"
@@ -85,7 +87,7 @@ export function AIChat() {
           value={input}
           disabled={busy}
           onChange={(event) => setInput(event.target.value)}
-          placeholder="比如：我想听你直接说喜欢我。"
+          placeholder="输入消息"
         />
         <div className="flex gap-3">
           <button

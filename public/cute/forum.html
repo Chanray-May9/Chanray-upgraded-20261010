@@ -7,6 +7,7 @@
 <link rel="icon" href="photo/avatar.jpg">
 <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@300;400;500;700&family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/base.css">
+<script type="module" src="js/content.js"></script>
 </head>
 <body>
 <main>
@@ -43,12 +44,12 @@ boot("forum.html", async () => {
     listEl.innerHTML = threads.length ? threads.map((t) => `
       <div class="thread card ${open.has(t.id) ? "open" : ""}" data-id="${t.id}">
         <div class="t-head">
-          <span class="t-title">${esc(t.title)}</span>
+          <span data-user-content class="t-title">${esc(t.title)}</span>
           <span class="t-meta">${esc(t.name)} · ${fmtTime(t.t)} · ${t.replies.length} 回复</span>
         </div>
-        <div class="t-body">${esc(t.body)}</div>
+        <div data-user-content class="t-body">${esc(t.body)}</div>
         <div class="t-replies">
-          ${t.replies.map((r) => `<div class="t-reply${r.ai ? " is-ai" : ""}"><b>${esc(r.name)}</b>：${esc(r.text)} <small>${fmtTime(r.t)}</small></div>`).join("")}
+          ${t.replies.map((r) => `<div data-user-content class="t-reply${r.ai ? " is-ai" : ""}"><b>${esc(r.name)}</b>：${esc(r.text)} <small>${fmtTime(r.t)}</small></div>`).join("")}
           <form class="reply-form" data-id="${t.id}">
             <input class="r-name" maxlength="16" placeholder="昵称" value="${esc(myName.get())}" required>
             <input class="r-text" maxlength="200" placeholder="回复一下…（@锐锐酱 可以召唤AI）" required>
