@@ -1,3 +1,4 @@
+import { observeAnimation } from "@/lib/animation-loop";
 import { useEffect, useRef, useState, ReactNode } from "react";
 import { animate, onScroll, utils } from "animejs";
 
@@ -23,11 +24,20 @@ export function ScrollProgress() {
 }
 
 /* ============ TiltCard (3D hover tilt) ============ */
-export function TiltCard({ children, className = "", glare = true }: { children: ReactNode; className?: string; glare?: boolean }) {
+export function TiltCard({
+  children,
+  className = "",
+  glare = true,
+}: {
+  children: ReactNode;
+  className?: string;
+  glare?: boolean;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce), (pointer: coarse)").matches)
+      return;
     const inner = el.querySelector<HTMLElement>("[data-tilt-inner]");
     const glareEl = el.querySelector<HTMLElement>("[data-tilt-glare]");
     const onMove = (e: MouseEvent) => {
@@ -36,7 +46,8 @@ export function TiltCard({ children, className = "", glare = true }: { children:
       const y = (e.clientY - r.top) / r.height;
       const rx = (0.5 - y) * 14;
       const ry = (x - 0.5) * 14;
-      if (inner) inner.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
+      if (inner)
+        inner.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
       if (glareEl) {
         glareEl.style.opacity = "1";
         glareEl.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, oklch(0.95 0.1 345 / 0.45), transparent 50%)`;
@@ -55,9 +66,17 @@ export function TiltCard({ children, className = "", glare = true }: { children:
   }, []);
   return (
     <div ref={ref} className={className}>
-      <div data-tilt-inner className="relative h-full w-full transition-transform duration-200 [transform-style:preserve-3d]">
+      <div
+        data-tilt-inner
+        className="relative h-full w-full transition-transform duration-200 [transform-style:preserve-3d]"
+      >
         {children}
-        {glare && <div data-tilt-glare className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300" />}
+        {glare && (
+          <div
+            data-tilt-glare
+            className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300"
+          />
+        )}
       </div>
     </div>
   );
@@ -69,8 +88,14 @@ export function ScrambleHover({ text, className = "" }: { text: string; classNam
   const [out, setOut] = useState(text);
   const ref = useRef<HTMLSpanElement>(null);
   const idRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  useEffect(
+    () => () => {
+      if (idRef.current) clearInterval(idRef.current);
+    },
+    [],
+  );
   const start = () => {
-    if (idRef.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || idRef.current) return;
     let frame = 0;
     const total = 18;
     idRef.current = setInterval(() => {
@@ -84,7 +109,7 @@ export function ScrambleHover({ text, className = "" }: { text: string; classNam
             if (i / text.length < progress) return c;
             return CHARS[Math.floor(Math.random() * CHARS.length)];
           })
-          .join("")
+          .join(""),
       );
       if (frame >= total) {
         clearInterval(idRef.current!);
@@ -103,17 +128,22 @@ export function ScrambleHover({ text, className = "" }: { text: string; classNam
 /* ============ Reveal (scroll-triggered) ============ */
 export function useScrollReveal(selector = "[data-reveal]") {
   useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>(selector);
-    els.forEach((el) => {
-      el.style.opacity = "0";
-      animate(el, {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const animations = Array.from(document.querySelectorAll<HTMLElement>(selector), (el) => {
+      const scroll = onScroll({ target: el, enter: "bottom-=60 top" });
+      const animation = animate(el, {
         opacity: [0, 1],
         y: [50, 0],
         duration: 900,
         ease: "out(4)",
-        autoplay: onScroll({ target: el, enter: "bottom-=60 top" }),
+        autoplay: scroll,
       });
+      return () => {
+        scroll.revert();
+        animation.revert();
+      };
     });
+    return () => animations.forEach((cleanup) => cleanup());
   }, [selector]);
 }
 
@@ -137,18 +167,18 @@ export function useScrollCounters(selector = "[data-count]") {
 export function useSplitReveal(selector: string, delay = 0) {
   useEffect(() => {
     const el = document.querySelector(selector) as HTMLElement | null;
-    if (!el) return;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const text = el.textContent ?? "";
     el.setAttribute("aria-label", text);
-    el.innerHTML = text
-      .split("")
-      .map((ch) =>
-        ch === " "
-          ? `<span class="inline-block w-[0.3em]">&nbsp;</span>`
-          : `<span class="inline-block will-change-transform">${ch}</span>`
-      )
-      .join("");
-    animate(`${selector} span`, {
+    const letters = Array.from(text, (ch) => {
+      const span = document.createElement("span");
+      span.className = "inline-block will-change-transform";
+      span.textContent = ch === " " ? "\u00a0" : ch;
+      span.setAttribute("aria-hidden", "true");
+      return span;
+    });
+    el.replaceChildren(...letters);
+    const animation = animate(letters, {
       y: [{ from: "120%", to: "0%" }],
       opacity: [{ from: 0, to: 1 }],
       rotate: [{ from: 14, to: 0 }],
@@ -156,12 +186,18 @@ export function useSplitReveal(selector: string, delay = 0) {
       ease: "out(4)",
       delay: utils.stagger(35, { start: delay }),
     });
+    return () => {
+      animation.revert();
+      el.textContent = text;
+      el.removeAttribute("aria-label");
+    };
   }, [selector, delay]);
 }
 
 /* ============ Magnetic ============ */
 export function useMagnetic(selector: string, strength = 0.3) {
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce), (pointer: coarse)").matches) return;
     const els = Array.from(document.querySelectorAll<HTMLElement>(selector));
     const cleanups: Array<() => void> = [];
     els.forEach((el) => {
@@ -189,10 +225,10 @@ export function GlowOrb({ className = "" }: { className?: string }) {
   useEffect(() => {
     const c = ref.current!;
     const ctx = c.getContext("2d")!;
-    let raf = 0;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const resize = () => {
-      c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr;
+      c.width = c.clientWidth * dpr;
+      c.height = c.clientHeight * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
     resize();
@@ -200,7 +236,8 @@ export function GlowOrb({ className = "" }: { className?: string }) {
     let t = 0;
     const loop = () => {
       t += 0.008;
-      const w = c.clientWidth, h = c.clientHeight;
+      const w = c.clientWidth,
+        h = c.clientHeight;
       ctx.clearRect(0, 0, w, h);
       for (let i = 0; i < 3; i++) {
         const x = w / 2 + Math.cos(t + i * 2) * w * 0.18;
@@ -211,10 +248,14 @@ export function GlowOrb({ className = "" }: { className?: string }) {
         ctx.fillStyle = g;
         ctx.fillRect(0, 0, w, h);
       }
-      raf = requestAnimationFrame(loop);
     };
-    loop();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    const stop = observeAnimation(c, loop);
+    return () => {
+      stop();
+      window.removeEventListener("resize", resize);
+    };
   }, []);
-  return <canvas ref={ref} className={`pointer-events-none absolute inset-0 ${className}`} aria-hidden />;
+  return (
+    <canvas ref={ref} className={`pointer-events-none absolute inset-0 ${className}`} aria-hidden />
+  );
 }

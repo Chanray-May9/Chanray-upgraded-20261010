@@ -1,3 +1,4 @@
+import { observeAnimation } from "@/lib/animation-loop";
 import { useEffect, useRef } from "react";
 import { animate, createTimeline, utils } from "animejs";
 
@@ -8,15 +9,18 @@ export function ParticleField() {
   useEffect(() => {
     const canvas = ref.current!;
     const ctx = canvas.getContext("2d")!;
-    let raf = 0;
-    let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let w = 0,
+      h = 0,
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     type P = { x: number; y: number; vx: number; vy: number; r: number; a: number };
     let pts: P[] = [];
 
     const resize = () => {
-      w = canvas.clientWidth; h = canvas.clientHeight;
-      canvas.width = w * dpr; canvas.height = h * dpr;
+      w = canvas.clientWidth;
+      h = canvas.clientHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const count = Math.min(120, Math.floor((w * h) / 14000));
       pts = Array.from({ length: count }, () => ({
@@ -31,22 +35,26 @@ export function ParticleField() {
     resize();
     window.addEventListener("resize", resize);
 
-    let mx = w / 2, my = h / 2;
+    let mx = w / 2,
+      my = h / 2;
     const onMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      mx = e.clientX - rect.left; my = e.clientY - rect.top;
+      mx = e.clientX - rect.left;
+      my = e.clientY - rect.top;
     };
     window.addEventListener("mousemove", onMove);
 
     const loop = () => {
       ctx.clearRect(0, 0, w, h);
       for (const p of pts) {
-        p.x += p.vx; p.y += p.vy;
+        p.x += p.vx;
+        p.y += p.vy;
         if (p.x < 0 || p.x > w) p.vx *= -1;
         if (p.y < 0 || p.y > h) p.vy *= -1;
-        const dx = p.x - mx, dy = p.y - my;
+        const dx = p.x - mx,
+          dy = p.y - my;
         const d = Math.hypot(dx, dy);
-        if (d < 140) {
+        if (d > 0 && d < 140) {
           p.x += (dx / d) * 0.6;
           p.y += (dy / d) * 0.6;
         }
@@ -58,23 +66,24 @@ export function ParticleField() {
       // connecting lines
       for (let i = 0; i < pts.length; i++) {
         for (let j = i + 1; j < pts.length; j++) {
-          const a = pts[i], b = pts[j];
+          const a = pts[i],
+            b = pts[j];
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < 110) {
             ctx.strokeStyle = `rgba(255, 140, 200, ${(1 - d / 110) * 0.18})`;
             ctx.lineWidth = 0.6;
             ctx.beginPath();
-            ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
             ctx.stroke();
           }
         }
       }
-      raf = requestAnimationFrame(loop);
     };
-    loop();
+    const stop = observeAnimation(canvas, loop);
 
     return () => {
-      cancelAnimationFrame(raf);
+      stop();
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMove);
     };
@@ -88,18 +97,19 @@ export function SakuraRain({ count = 18 }: { count?: number }) {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
       {Array.from({ length: count }).map((_, i) => {
-        const left = Math.random() * 100;
-        const dur = 10 + Math.random() * 12;
-        const delay = -Math.random() * dur;
-        const size = 8 + Math.random() * 14;
-        const dx = (Math.random() - 0.5) * 240;
+        const left = (i * 47 + 13) % 100;
+        const dur = 10 + ((i * 7) % 12);
+        const delay = -((i * 3) % dur);
+        const size = 8 + ((i * 11) % 14);
+        const dx = (((i * 31) % 100) / 100 - 0.5) * 240;
         return (
           <span
             key={i}
             className="petal absolute block"
             style={{
               left: `${left}%`,
-              width: size, height: size,
+              width: size,
+              height: size,
               ["--dur" as never]: `${dur}s`,
               ["--delay" as never]: `${delay}s`,
               ["--dx" as never]: `${dx}px`,
@@ -130,11 +140,35 @@ export function MechaRings({ className = "" }: { className?: string }) {
             <stop offset="1" stopColor="oklch(0.6 0.2 340)" stopOpacity="0.2" />
           </linearGradient>
         </defs>
-        <circle cx="200" cy="200" r="180" fill="none" stroke="url(#g1)" strokeWidth="1" strokeDasharray="2 8" />
-        <circle cx="200" cy="200" r="160" fill="none" stroke="oklch(0.78 0.18 350 / 0.4)" strokeWidth="0.6" strokeDasharray="40 4 2 4" />
+        <circle
+          cx="200"
+          cy="200"
+          r="180"
+          fill="none"
+          stroke="url(#g1)"
+          strokeWidth="1"
+          strokeDasharray="2 8"
+        />
+        <circle
+          cx="200"
+          cy="200"
+          r="160"
+          fill="none"
+          stroke="oklch(0.78 0.18 350 / 0.4)"
+          strokeWidth="0.6"
+          strokeDasharray="40 4 2 4"
+        />
         {Array.from({ length: 12 }).map((_, i) => (
-          <rect key={i} x="198" y="14" width="4" height="14" fill="oklch(0.85 0.2 345)"
-            transform={`rotate(${i * 30} 200 200)`} opacity="0.6" />
+          <rect
+            key={i}
+            x="198"
+            y="14"
+            width="4"
+            height="14"
+            fill="oklch(0.85 0.2 345)"
+            transform={`rotate(${i * 30} 200 200)`}
+            opacity="0.6"
+          />
         ))}
       </svg>
     </div>
@@ -145,19 +179,19 @@ export function MechaRings({ className = "" }: { className?: string }) {
 export function useSplitReveal(selector: string, delay = 0) {
   useEffect(() => {
     const el = document.querySelector(selector) as HTMLElement | null;
-    if (!el) return;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const text = el.textContent ?? "";
     el.setAttribute("aria-label", text);
-    el.innerHTML = text
-      .split("")
-      .map((ch) =>
-        ch === " "
-          ? `<span class="inline-block w-[0.3em]">&nbsp;</span>`
-          : `<span class="inline-block will-change-transform">${ch}</span>`
-      )
-      .join("");
+    const letters = Array.from(text, (ch) => {
+      const span = document.createElement("span");
+      span.className = "inline-block will-change-transform";
+      span.textContent = ch === " " ? "\u00a0" : ch;
+      span.setAttribute("aria-hidden", "true");
+      return span;
+    });
+    el.replaceChildren(...letters);
     const tl = createTimeline({ delay });
-    tl.add(`${selector} span`, {
+    tl.add(letters, {
       y: [{ from: "120%", to: "0%" }],
       opacity: [{ from: 0, to: 1 }],
       rotate: [{ from: 14, to: 0 }],
@@ -165,12 +199,18 @@ export function useSplitReveal(selector: string, delay = 0) {
       ease: "out(4)",
       delay: utils.stagger(35),
     });
+    return () => {
+      tl.revert();
+      el.textContent = text;
+      el.removeAttribute("aria-label");
+    };
   }, [selector, delay]);
 }
 
 /** Magnetic attract for buttons/icons. */
 export function useMagnetic(selector: string, strength = 0.35) {
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce), (pointer: coarse)").matches) return;
     const els = Array.from(document.querySelectorAll<HTMLElement>(selector));
     const cleanups: Array<() => void> = [];
     els.forEach((el) => {

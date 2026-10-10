@@ -1,3 +1,4 @@
+import { json, ok, readObject } from "./_http.js";
 // AI endpoint: chat with 锐锐酱, or generate a site theme from a description.
 import { askAI, PERSONA } from "./_ai.js";
 
@@ -6,20 +7,48 @@ const THEME_SYSTEM = `你是网站换装魔法师。用户描述想要的网站�
 所有颜色用hex。保持整体柔和可爱、可读性好。只输出JSON。`;
 
 export async function onRequestPost({ request, env }) {
-  if (!env.ZHIPU_API_KEY) return json({ error: "ZHIPU_API_KEY not configured" }, 500);
-  const body = await request.json().catch(() => ({}));
+  const body = await readObject(request).catch(() => ({}));
 
   if (body.mode === "theme") {
-    const content = await askAI(env, [{ role: "user", content: String(body.desc || "").slice(0, 200) }],
-      { system: THEME_SYSTEM, max_tokens: 400 });
+    if (!ok(body.desc, 200)) return json({ error: "invalid description" }, 400);
+    const content = await askAI(
+      env,
+      [{ role: "user", content: String(body.desc || "").slice(0, 200) }],
+      { system: THEME_SYSTEM, max_tokens: 400 },
+    );
     try {
-      return json(JSON.parse(content.replace(/^```json?|```$/g, "").trim()));
-    } catch { return json({ error: "bad theme json" }, 502); }
+      const parsed = JSON.parse(content.replace(/^```(?:json)?\s*|\s*```$/g, "").trim());
+      const keys = ["--bg", "--bg2", "--pri", "--pri-deep", "--acc", "--ink", "--ink-soft"];
+      if (
+        !parsed.theme ||
+        !keys.every((key) => /^#[0-9a-f]{6}$/i.test(parsed.theme[key])) ||
+        !/^(1[4-9]|20)px$/.test(parsed.theme["--fs"]) ||
+        !/^[0-3](?:\.\d{1,2})?rem$/.test(parsed.theme["--radius"]) ||
+        !ok(parsed.comment, 100)
+      )
+        throw new Error("invalid theme");
+      const theme = Object.fromEntries(
+        [...keys, "--fs", "--radius"].map((key) => [key, parsed.theme[key]]),
+      );
+      return json({ theme, comment: parsed.comment });
+    } catch {
+      return json({ error: "bad theme json" }, 502);
+    }
   }
 
-  const reply = await askAI(env, Array.isArray(body.messages) ? body.messages.slice(-10) : [], { system: PERSONA });
+  if (
+    !Array.isArray(body.messages) ||
+    body.messages.length === 0 ||
+    body.messages.length > 10 ||
+    !body.messages.every(
+      (message) =>
+        message && ["user", "assistant"].includes(message.role) && ok(message.content, 2000),
+    )
+  )
+    return json({ error: "invalid messages" }, 400);
+  const messages = body.messages.map(({ role, content }) => ({ role, content }));
+  if (body.mode && !["chat", "flirt"].includes(body.mode))
+    return json({ error: "invalid mode" }, 400);
+  const reply = await askAI(env, messages, { system: PERSONA, flirt: body.mode === "flirt" });
   return reply ? json({ reply }) : json({ error: "upstream" }, 502);
 }
-
-const json = (o, status = 200) =>
-  new Response(JSON.stringify(o), { status, headers: { "Content-Type": "application/json" } });

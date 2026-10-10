@@ -3,6 +3,8 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -25,12 +27,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Install dependencies
-        run: npm install --package-lock=false
+        run: npm ci
+
+      - name: Validate
+        run: npm run check
 
       - name: Build
         run: npm run build
+
+      - name: Verify static output
+        run: npm run test:build
 
       - name: Prepare Pages artifact
         run: |
@@ -46,6 +55,7 @@ jobs:
           path: dist/client
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:

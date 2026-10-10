@@ -9,6 +9,7 @@ const NAV = [
   { to: "/log", label: "LOG", code: "04" },
   { to: "/contact", label: "CONTACT", code: "05" },
   { to: "/model", label: "3D", code: "06" },
+  { to: "/afterdark", label: "调情", code: "07" },
 ] as const;
 
 export function SiteHeader() {
@@ -20,9 +21,7 @@ export function SiteHeader() {
     const id = setInterval(() => {
       const d = new Date();
       setNow(
-        d.toLocaleTimeString("en-GB", { hour12: false }) +
-          " · " +
-          d.toISOString().slice(0, 10)
+        d.toLocaleTimeString("en-GB", { hour12: false }) + " · " + d.toISOString().slice(0, 10),
       );
     }, 1000);
     return () => clearInterval(id);
@@ -33,14 +32,17 @@ export function SiteHeader() {
       <ScrollProgress />
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-border/50 bg-background/40 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link to="/" className="flex items-center gap-3 font-display text-sm font-bold tracking-[0.3em] text-foreground">
+          <Link
+            to="/"
+            className="flex items-center gap-3 font-display text-sm font-bold tracking-[0.3em] text-foreground"
+          >
             <span className="relative inline-block h-2 w-2 rotate-45 bg-primary shadow-[0_0_10px_var(--neon)]">
               <span className="absolute inset-0 animate-ping bg-primary" />
             </span>
             MAY9 // CHANRAY
           </Link>
 
-          <nav className="hidden gap-7 font-mono text-[11px] uppercase tracking-[0.25em] sm:flex">
+          <nav className="hidden gap-4 font-mono text-[11px] uppercase tracking-[0.25em] sm:flex">
             {NAV.map((n) => {
               const active = location.pathname === n.to;
               return (
@@ -70,7 +72,9 @@ export function SiteHeader() {
           <button
             className="btn-mecha mecha-clip !px-3 !py-2 sm:hidden"
             onClick={() => setOpen((v) => !v)}
-            aria-label="menu"
+            aria-label="导航菜单"
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
           >
             <span className="font-display text-[10px]">{open ? "X" : "≡"}</span>
           </button>
@@ -78,7 +82,10 @@ export function SiteHeader() {
 
         {open && (
           <div className="sm:hidden">
-            <nav className="flex flex-col gap-1 border-t border-border/50 bg-background/95 px-6 py-4 font-mono text-xs uppercase tracking-[0.2em]">
+            <nav
+              id="mobile-navigation"
+              className="flex flex-col gap-1 border-t border-border/50 bg-background/95 px-6 py-4 font-mono text-xs uppercase tracking-[0.2em]"
+            >
               {NAV.map((n) => {
                 const active = location.pathname === n.to;
                 return (
@@ -111,7 +118,9 @@ export function SiteFooter() {
           </p>
         </div>
         <div>
-          <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">NAVIGATE</div>
+          <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">
+            NAVIGATE
+          </div>
           <ul className="mt-3 space-y-1 font-mono text-xs">
             {NAV.map((n) => (
               <li key={n.to}>
@@ -123,11 +132,38 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">SIGNAL</div>
+          <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">
+            SIGNAL
+          </div>
           <ul className="mt-3 space-y-1 font-mono text-xs">
-            <li><a className="text-muted-foreground hover:text-primary" href="https://github.com/Chanray-May9" target="_blank" rel="noreferrer">github · Chanray-May9</a></li>
-            <li><a className="text-muted-foreground hover:text-primary" href="https://x.com/PowersharpGuo" target="_blank" rel="noreferrer">x · @PowersharpGuo</a></li>
-            <li><a className="text-muted-foreground hover:text-primary" href="mailto:gqr20080509@gmail.com">mail · gqr20080509@gmail.com</a></li>
+            <li>
+              <a
+                className="text-muted-foreground hover:text-primary"
+                href="https://github.com/Chanray-May9"
+                target="_blank"
+                rel="noreferrer"
+              >
+                github · Chanray-May9
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-muted-foreground hover:text-primary"
+                href="https://x.com/PowersharpGuo"
+                target="_blank"
+                rel="noreferrer"
+              >
+                x · @PowersharpGuo
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-muted-foreground hover:text-primary"
+                href="mailto:gqr20080509@gmail.com"
+              >
+                mail · gqr20080509@gmail.com
+              </a>
+            </li>
           </ul>
         </div>
       </div>

@@ -64,24 +64,42 @@
   --neon-soft: oklch(0.9 0.1 345);
   --ink: oklch(0.05 0.005 320);
 
-  --grad-primary: linear-gradient(135deg, oklch(0.85 0.2 350), oklch(0.7 0.2 340), oklch(0.95 0.05 340));
-  --grad-mecha: linear-gradient(135deg, oklch(0.08 0.01 320), oklch(0.18 0.05 340), oklch(0.08 0.01 320));
+  --grad-primary: linear-gradient(
+    135deg,
+    oklch(0.85 0.2 350),
+    oklch(0.7 0.2 340),
+    oklch(0.95 0.05 340)
+  );
+  --grad-mecha: linear-gradient(
+    135deg,
+    oklch(0.08 0.01 320),
+    oklch(0.18 0.05 340),
+    oklch(0.08 0.01 320)
+  );
   --shadow-neon: 0 0 24px oklch(0.78 0.18 350 / 0.6), 0 0 80px oklch(0.78 0.18 350 / 0.25);
   --shadow-deep: 0 30px 60px -20px oklch(0 0 0 / 0.8), 0 0 0 1px oklch(0.78 0.18 350 / 0.15);
 }
 
-.dark { color-scheme: dark; }
+.dark {
+  color-scheme: dark;
+}
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html, body {
+  * {
+    border-color: var(--color-border);
+  }
+  html,
+  body {
     background: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-  ::selection { background: var(--neon); color: var(--ink); }
+  ::selection {
+    background: var(--neon);
+    color: var(--ink);
+  }
 }
 
 /* ==== Sci-fi grid background ==== */
@@ -95,9 +113,12 @@
 
 .bg-noise::after {
   content: "";
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-  opacity: 0.06; pointer-events: none; mix-blend-mode: overlay;
+  opacity: 0.06;
+  pointer-events: none;
+  mix-blend-mode: overlay;
 }
 
 /* ==== Gradient & glow text ==== */
@@ -107,14 +128,23 @@
   background-clip: text;
   color: transparent;
 }
-.text-glow { text-shadow: 0 0 18px oklch(0.78 0.18 350 / 0.7), 0 0 4px oklch(0.95 0.1 340 / 0.5); }
+.text-glow {
+  text-shadow:
+    0 0 18px oklch(0.78 0.18 350 / 0.7),
+    0 0 4px oklch(0.95 0.1 340 / 0.5);
+}
 
 /* ==== Mecha frame (clipped octagonal panel) ==== */
 .mecha-clip {
   clip-path: polygon(
-    16px 0, calc(100% - 16px) 0, 100% 16px,
-    100% calc(100% - 16px), calc(100% - 16px) 100%,
-    16px 100%, 0 calc(100% - 16px), 0 16px
+    16px 0,
+    calc(100% - 16px) 0,
+    100% 16px,
+    100% calc(100% - 16px),
+    calc(100% - 16px) 100%,
+    16px 100%,
+    0 calc(100% - 16px),
+    0 16px
   );
 }
 .mecha-panel {
@@ -124,15 +154,27 @@
   backdrop-filter: blur(12px);
 }
 .mecha-panel::before {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(135deg, transparent 40%, oklch(0.85 0.2 345 / 0.08) 50%, transparent 60%);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    oklch(0.85 0.2 345 / 0.08) 50%,
+    transparent 60%
+  );
   pointer-events: none;
 }
 
 /* ==== Holographic shimmer ==== */
 @keyframes holo {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 .holo {
   background: linear-gradient(
@@ -150,10 +192,14 @@
 /* ==== Sci-fi button ==== */
 .btn-mecha {
   position: relative;
-  display: inline-flex; align-items: center; gap: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   padding: 0.85rem 1.6rem;
   font-family: var(--font-display);
-  font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   font-size: 0.78rem;
   color: var(--foreground);
   background: linear-gradient(135deg, oklch(0.16 0.04 330), oklch(0.1 0.02 320));
@@ -163,58 +209,154 @@
   cursor: pointer;
 }
 .btn-mecha::before {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(120deg, transparent 30%, oklch(0.95 0.1 345 / 0.4) 50%, transparent 70%);
-  transform: translateX(-110%); transition: transform 0.6s;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    oklch(0.95 0.1 345 / 0.4) 50%,
+    transparent 70%
+  );
+  transform: translateX(-110%);
+  transition: transform 0.6s;
 }
-.btn-mecha:hover { color: var(--primary-foreground); border-color: var(--primary); box-shadow: var(--shadow-neon); transform: translateY(-2px); }
-.btn-mecha:hover::before { transform: translateX(110%); }
-.btn-mecha.primary { background: var(--grad-primary); color: var(--ink); border: none; }
+.btn-mecha:hover {
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-neon);
+  transform: translateY(-2px);
+}
+.btn-mecha:hover::before {
+  transform: translateX(110%);
+}
+.btn-mecha.primary {
+  background: var(--grad-primary);
+  color: var(--ink);
+  border: none;
+}
 
 /* ==== Marquee ==== */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
-.marquee-track { animation: marquee 30s linear infinite; }
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
 
 /* ==== Floating ==== */
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0); }
-  50% { transform: translateY(-14px) rotate(1.5deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-14px) rotate(1.5deg);
+  }
 }
-.float-slow { animation: float 7s ease-in-out infinite; }
+.float-slow {
+  animation: float 7s ease-in-out infinite;
+}
 
 /* ==== Glitch ==== */
 @keyframes glitch-x {
-  0%, 100% { transform: translate(0); }
-  20% { transform: translate(-2px, 1px); }
-  40% { transform: translate(2px, -1px); }
-  60% { transform: translate(-1px, 2px); }
-  80% { transform: translate(1px, -2px); }
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 1px);
+  }
+  40% {
+    transform: translate(2px, -1px);
+  }
+  60% {
+    transform: translate(-1px, 2px);
+  }
+  80% {
+    transform: translate(1px, -2px);
+  }
 }
-.glitch:hover { animation: glitch-x 0.4s steps(2) infinite; }
+.glitch:hover {
+  animation: glitch-x 0.4s steps(2) infinite;
+}
 
 /* ==== Scanline ring around avatar (subtle) ==== */
-@keyframes spin-slow { to { transform: rotate(360deg); } }
-.ring-spin { animation: spin-slow 18s linear infinite; }
-@keyframes spin-rev { to { transform: rotate(-360deg); } }
-.ring-spin-rev { animation: spin-rev 22s linear infinite; }
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.ring-spin {
+  animation: spin-slow 18s linear infinite;
+}
+@keyframes spin-rev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+.ring-spin-rev {
+  animation: spin-rev 22s linear infinite;
+}
 
 /* ==== Sakura petal float ==== */
 @keyframes petal-fall {
-  0% { transform: translate3d(0, -10vh, 0) rotate(0); opacity: 0; }
-  10% { opacity: 1; }
-  100% { transform: translate3d(var(--dx, 40px), 110vh, 0) rotate(360deg); opacity: 0; }
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--dx, 40px), 110vh, 0) rotate(360deg);
+    opacity: 0;
+  }
 }
-.petal { animation: petal-fall var(--dur, 14s) linear infinite; animation-delay: var(--delay, 0s); }
+.petal {
+  animation: petal-fall var(--dur, 14s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
 
 /* ==== Glow pulse ==== */
 @keyframes glow-pulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
 }
-.glow-pulse { animation: glow-pulse 2.4s ease-in-out infinite; }
+.glow-pulse {
+  animation: glow-pulse 2.4s ease-in-out infinite;
+}
 
 /* utilities */
-.gridline { background-image: repeating-linear-gradient(90deg, transparent 0 23px, oklch(0.78 0.18 350 / 0.25) 23px 24px); }
+.gridline {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 23px,
+    oklch(0.78 0.18 350 / 0.25) 23px 24px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}

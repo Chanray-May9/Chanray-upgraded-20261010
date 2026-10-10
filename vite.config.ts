@@ -8,7 +8,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // Build this site as static files for GitHub Pages.
 export default defineConfig({
-  cloudflare: false,
+  nitro: false,
   tanstackStart: {
     pages: [
       { path: "/" },
@@ -16,6 +16,9 @@ export default defineConfig({
       { path: "/gallery" },
       { path: "/log" },
       { path: "/contact" },
+      { path: "/model" },
+      { path: "/admin" },
+      { path: "/afterdark" },
     ],
     prerender: {
       enabled: true,
@@ -23,6 +26,6 @@ export default defineConfig({
     server: { entry: "server" },
   },
   vite: {
-    base: "/Chanray/",
+    base: process.env.SITE_BASE_PATH || "/Chanray/",
   },
 });
