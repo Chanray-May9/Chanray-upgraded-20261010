@@ -12,7 +12,7 @@ test("DeepSeek defaults reach the correct endpoint and model without live AI cal
     globalThis.fetch = async (url, options) => {
       assert.equal(url, "https://api.deepseek.com/chat/completions");
       assert.equal(JSON.parse(options.body).model, "deepseek-flash");
-      assert.equal(options.redirect, "error");
+      assert.equal(options.redirect, "manual");
       assert.equal(options.headers.Authorization, "Bearer test-key");
       return Response.json({ choices: [{ message: { content: "mock reply" } }] });
     };

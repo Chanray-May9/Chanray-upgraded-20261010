@@ -20,7 +20,7 @@ export async function askAI(env, messages, opts = {}) {
     try {
       const response = await fetch(config.apiURL, {
         method: "POST",
-        redirect: "error",
+        redirect: "manual",
         signal,
         headers: {
           "Content-Type": "application/json",
