@@ -1,5 +1,7 @@
 # Chanray · 是锐锐呀
 
+完整网站（含后端）：https://chanray-upgraded-20261010.pages.dev/ 。调情专区为 `/afterdark/`，管理后台为 `/admin/`。新仓库部署与更新方法见 [部署说明](docs/DEPLOY.md)。
+
 React 19、TanStack Start、TypeScript 与 Tailwind CSS 4 构建的个人网站，保留粉色机甲视觉、作品、相册、成长记录与 3D 角色展示。
 
 ## 开发与验证

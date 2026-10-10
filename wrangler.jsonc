@@ -1,7 +1,9 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "tanstack-start-app",
-  "compatibility_date": "2025-09-24",
-  "compatibility_flags": ["nodejs_compat"],
-  "main": "src/server.ts",
+  "name": "chanray-upgraded-20261010",
+  "compatibility_date": "2026-10-10",
+  "pages_build_output_dir": "dist/client",
+  "kv_namespaces": [
+    { "binding": "BOARD", "id": "90ae575f899b40c1a18c142629f335d8" }
+  ]
 }

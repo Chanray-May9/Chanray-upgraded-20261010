@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "build:cloudflare": "node scripts/build-cloudflare.mjs",
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler pages deploy dist/client --project-name chanray-upgraded-20261010 --branch main",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
