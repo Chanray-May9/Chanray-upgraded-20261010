@@ -14,6 +14,7 @@ import {
   onRequestPost as commentsPost,
 } from "../../functions/api/comments.js";
 import { onRequestGet as contentGet } from "../../functions/api/content.js";
+import { onRequestGet as themeGet } from "../../functions/api/theme.js";
 import {
   onRequestGet as sessionGet,
   onRequestPost as sessionPost,
@@ -59,6 +60,7 @@ const server = createServer(async (req, res) => {
         response = await (
           req.method === "POST" ? sessionPost : req.method === "DELETE" ? sessionDelete : sessionGet
         )({ request, env });
+      else if (url.pathname === "/api/theme") response = await themeGet({ request, env });
       else if (url.pathname === "/api/content") response = await contentGet({ request, env });
       else if (url.pathname === "/api/comments")
         response = await (req.method === "POST" ? commentsPost : commentsGet)({ request, env });
@@ -148,6 +150,30 @@ try {
   await page.reload({ waitUntil: "networkidle" });
   await page.getByRole("button", { name: "刷新概览", exact: true }).waitFor();
   assert.equal(await page.getByLabel("管理密码", { exact: true }).count(), 0);
+  assert.equal(
+    await page.evaluate(() => getComputedStyle(document.body).backgroundColor),
+    "rgb(255, 245, 250)",
+  );
+  await page.getByRole("button", { name: "切换为深色", exact: true }).click();
+  await page.reload({ waitUntil: "networkidle" });
+  assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "dark");
+  await page.getByRole("button", { name: "切换为粉色", exact: true }).click();
+  await page.getByRole("button", { name: "读取主题设置", exact: true }).click();
+  await page.getByLabel("默认风格", { exact: true }).selectOption("pink");
+  await page.getByLabel("粉色背景", { exact: true }).fill("#fff0f8");
+  await page.getByRole("button", { name: "保存主题", exact: true }).click();
+  await page.getByText("主题已保存。", { exact: true }).waitFor();
+  await page.waitForFunction(
+    () => getComputedStyle(document.body).backgroundColor === "rgb(255, 240, 248)",
+  );
+  await page.getByLabel("粉色背景", { exact: true }).fill("#fff5fa");
+  await page.getByRole("button", { name: "保存主题", exact: true }).click();
+  await page.waitForFunction(
+    () => getComputedStyle(document.body).backgroundColor === "rgb(255, 245, 250)",
+  );
+  await page.getByRole("button", { name: "读取 AI 配置", exact: true }).click();
+  await page.getByLabel("API 地址", { exact: true }).waitFor();
+  assert.equal(await page.getByLabel("模型名称", { exact: true }).inputValue(), "deepseek-flash");
   await page.getByRole("button", { name: "读取全站文案", exact: true }).click();
   await page.getByLabel("搜索原文或新文案", { exact: true }).waitFor();
   await page.getByLabel("搜索原文或新文案", { exact: true }).fill("调情专区");
@@ -188,7 +214,7 @@ try {
     await page.evaluate(() =>
       getComputedStyle(document.querySelector("main")).getPropertyValue("--background").trim(),
     ),
-    "#fff8fb",
+    "#fff5fa",
   );
   await page.getByRole("button", { name: "读取评论", exact: true }).click();
   const commentRow = page
@@ -228,40 +254,53 @@ try {
 
   // Test normal public pages using real local API handlers and the published fixture.
   console.log("QA: responsive route checks");
-  for (const width of [390, 768, 1440]) {
-    await page.setViewportSize({ width, height: 1000 });
-    for (const route of [
-      "",
-      "works/",
-      "gallery/",
-      "log/",
-      "contact/",
-      "model/",
-      "afterdark/",
-      "admin/",
-      "cute/index.html",
-      "cute/gallery.html",
-      "cute/contact.html",
-      "cute/forum.html",
-      "cute/chat.html",
-      "cute/model.html",
-    ]) {
-      await page.goto(base + "/Chanray-upgraded-20261010/" + route, { waitUntil: "networkidle" });
-      const dimensions = await page.evaluate(() => ({
-        scroll: document.documentElement.scrollWidth,
-        viewport: innerWidth,
-      }));
-      if (dimensions.scroll > dimensions.viewport + 1)
-        overflow.push({ width, route, ...dimensions });
-      if (!route.startsWith("cute/"))
-        assert.equal(
-          await page.getByRole("button", { name: "导航菜单", exact: true }).isVisible(),
-          width < 1280,
-        );
-      if (route === "afterdark/")
-        await page.getByRole("heading", { level: 1, name: "测试专区", exact: true }).waitFor();
+  for (const mode of ["pink", "dark"]) {
+    await page.evaluate((mode) => localStorage.setItem("chanray:theme", mode), mode);
+    for (const width of [390, 768, 1440]) {
+      await page.setViewportSize({ width, height: 1000 });
+      for (const route of [
+        "",
+        "works/",
+        "gallery/",
+        "log/",
+        "contact/",
+        "model/",
+        "afterdark/",
+        "admin/",
+        "cute/index.html",
+        "cute/gallery.html",
+        "cute/contact.html",
+        "cute/forum.html",
+        "cute/chat.html",
+        "cute/model.html",
+      ]) {
+        await page.goto(base + "/Chanray-upgraded-20261010/" + route, { waitUntil: "networkidle" });
+        await page.waitForFunction((mode) => document.documentElement.dataset.theme === mode, mode);
+        const dimensions = await page.evaluate(() => ({
+          scroll: document.documentElement.scrollWidth,
+          viewport: innerWidth,
+        }));
+        if (dimensions.scroll > dimensions.viewport + 1)
+          overflow.push({ width, route, ...dimensions });
+        if (!route.startsWith("cute/"))
+          assert.equal(
+            await page.getByRole("button", { name: "导航菜单", exact: true }).isVisible(),
+            width < 1280,
+          );
+        if (!route.startsWith("cute/")) {
+          const mainButton = page.locator(".flirt-primary");
+          assert.ok(await mainButton.isVisible());
+          const box = await mainButton.boundingBox();
+          assert.ok(box.height >= 48 && box.width >= 100);
+        }
+        if (route === "" && width !== 768)
+          await page.screenshot({ path: path.join(screenshotDir, `home-${mode}-${width}.png`) });
+        if (route === "afterdark/")
+          await page.getByRole("heading", { level: 1, name: "测试专区", exact: true }).waitFor();
+      }
     }
   }
+  await page.evaluate(() => localStorage.setItem("chanray:theme", "pink"));
   assert.deepEqual(overflow, []);
   // Apply broad text, metadata, accessibility attributes, and animated labels; verify source defaults aren't destroyed.
   console.log("QA: metadata and legacy");
@@ -420,7 +459,7 @@ try {
     JSON.stringify({
       result: "passed",
       viewports: [390, 768, 1440],
-      routesChecked: 42,
+      routesChecked: 84,
       flows: [
         "editor",
         "draft preview",
@@ -433,12 +472,15 @@ try {
         "WebGL palette and pause",
         "light admin overview",
         "cookie login, reload and logout",
+        "pink and dark theme, custom background, AI defaults",
       ],
       browserErrors: errors,
     }),
   );
 } catch (error) {
   console.error("Pending browser requests:", [...pendingRequests]);
+  console.error("Visible status:", await page.getByRole("status").allTextContents());
+  await page.screenshot({ path: path.join(screenshotDir, "failure.png") });
   throw error;
 } finally {
   await browser.close();

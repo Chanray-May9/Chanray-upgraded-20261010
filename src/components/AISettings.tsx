@@ -97,6 +97,7 @@ export function AISettings({ token, apiURL }: { token: string; apiURL: string })
             <input
               className="rounded border border-border bg-background p-3"
               type="url"
+              aria-label="API 地址"
               maxLength={500}
               required
               disabled={busy}
@@ -110,6 +111,7 @@ export function AISettings({ token, apiURL }: { token: string; apiURL: string })
             <input
               className="rounded border border-border bg-background p-3"
               maxLength={120}
+              aria-label="模型名称"
               required
               disabled={busy}
               value={config.model}

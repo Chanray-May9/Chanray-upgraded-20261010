@@ -43,23 +43,23 @@ export function AIChat() {
   }
   return (
     <section
-      className="mt-8 rounded-3xl border border-pink-200 bg-white p-6 sm:p-8"
+      className="mt-8 rounded-3xl border border-border bg-card p-6 sm:p-8"
       aria-labelledby="ai-chat-title"
     >
-      <h2 id="ai-chat-title" className="text-2xl font-bold text-pink-700">
+      <h2 id="ai-chat-title" className="text-2xl font-bold text-primary">
         和锐锐聊天
       </h2>
-      <p className="mt-2 text-sm text-[#75475e]">
+      <p className="mt-2 text-sm text-muted-foreground">
         消息会发送给 AI 服务处理。对话只在当前页面保留。
       </p>
       <div className="mt-6 max-h-96 space-y-4 overflow-auto" role="log" aria-live="polite">
-        {messages.length === 0 && <p className="rounded-2xl bg-pink-50 p-4">主人，锐锐在这里。</p>}
+        {messages.length === 0 && <p className="rounded-2xl bg-muted p-4">主人，锐锐在这里。</p>}
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`rounded-2xl p-4 ${message.role === "user" ? "ml-8 bg-pink-100" : "mr-8 bg-pink-50"}`}
+            className={`rounded-2xl p-4 ${message.role === "user" ? "ml-8 bg-secondary" : "mr-8 bg-muted"}`}
           >
-            <p className="mb-1 text-xs text-pink-700">
+            <p className="mb-1 text-xs text-primary">
               {message.role === "user" ? "主人" : "锐锐"}
             </p>
             <p data-user-content className="whitespace-pre-wrap break-words">
@@ -80,7 +80,7 @@ export function AIChat() {
         </label>
         <textarea
           id="flirt-message"
-          className="rounded-xl border border-pink-200 bg-pink-50 p-3"
+          className="rounded-xl border border-border bg-muted p-3"
           rows={3}
           maxLength={1000}
           required
@@ -92,14 +92,14 @@ export function AIChat() {
         <div className="flex gap-3">
           <button
             disabled={busy || !input.trim()}
-            className="rounded-full bg-pink-700 px-6 py-3 text-white disabled:opacity-50"
+            className="rounded-full bg-primary px-6 py-3 text-white disabled:opacity-50"
           >
             {busy ? "正在回复…" : "发送"}
           </button>
           <button
             type="button"
             disabled={busy}
-            className="rounded-full border border-pink-300 px-6 py-3"
+            className="rounded-full border border-border px-6 py-3"
             onClick={() => {
               setMessages([]);
               setInput("");

@@ -60,12 +60,15 @@
     "original": "调情专区",
     "groups": [
       "调情专区",
-      "通用组件"
+      "通用组件",
+      "旧版页面"
     ],
     "sources": [
       "src/routes/afterdark.tsx",
+      "src/components/SiteShell.tsx",
       "src/components/ContentEditor.tsx",
-      "src/components/Comments.tsx"
+      "src/components/Comments.tsx",
+      "public/cute/js/layout.js"
     ]
   },
   {
@@ -491,6 +494,15 @@
   },
   {
     "original": "照片评分",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "主题",
     "groups": [
       "管理后台"
     ],
@@ -1399,6 +1411,15 @@
     ],
     "sources": [
       "public/cute/gallery.html"
+    ]
+  },
+  {
+    "original": "切换风格",
+    "groups": [
+      "旧版页面"
+    ],
+    "sources": [
+      "public/cute/js/layout.js"
     ]
   },
   {
@@ -3504,6 +3525,15 @@
     ]
   },
   {
+    "original": "粉色",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
     "original": "复制页面上的原文，填入替换文字。适用于新内容和动态提示。只替换文本，不执行 HTML 或脚本。",
     "groups": [
       "通用组件"
@@ -3958,6 +3988,24 @@
     ]
   },
   {
+    "original": "切换为粉色",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "切换为深色",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
+    ]
+  },
+  {
     "original": "清空对话",
     "groups": [
       "通用组件"
@@ -4072,6 +4120,15 @@
     ],
     "sources": [
       "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "深色",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/SiteShell.tsx"
     ]
   },
   {

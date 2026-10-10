@@ -22,15 +22,15 @@ function AfterDark() {
   usePageContent();
   const [line, setLine] = useState(0);
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#fff5fa] px-6 pb-24 pt-36 text-[#4b2038]">
+    <main className="relative min-h-screen overflow-hidden bg-background px-6 pb-24 pt-36 text-foreground">
       <div
         aria-hidden
         className="pointer-events-none absolute -right-24 top-24 h-96 w-96 rounded-full bg-pink-300/30 blur-3xl"
       />
       <div className="relative mx-auto max-w-4xl">
-        <h1 className="font-display text-4xl font-bold text-pink-700">调情专区</h1>
+        <h1 className="font-display text-4xl font-bold text-primary">调情专区</h1>
         <section
-          className="ambient-card mt-12 rounded-3xl border border-pink-200 bg-white/80 p-8 backdrop-blur sm:p-12"
+          className="ambient-card mt-12 rounded-3xl border border-border bg-card/80 p-8 backdrop-blur sm:p-12"
           onPointerMove={(event) => {
             const box = event.currentTarget.getBoundingClientRect();
             event.currentTarget.style.setProperty("--touch-x", `${event.clientX - box.left}px`);
@@ -38,7 +38,7 @@ function AfterDark() {
           }}
           aria-labelledby="whisper-title"
         >
-          <h2 id="whisper-title" className="text-xs tracking-[0.3em] text-pink-700">
+          <h2 id="whisper-title" className="text-xs tracking-[0.3em] text-primary">
             想说的话
           </h2>
           <p
@@ -49,7 +49,7 @@ function AfterDark() {
             {LINES[line]}
           </p>
           <button
-            className="mt-8 rounded-full border border-pink-400 px-6 py-3 text-sm transition-colors hover:bg-pink-100"
+            className="mt-8 rounded-full border border-primary px-6 py-3 text-sm transition-colors hover:bg-secondary"
             onClick={() => setLine((value) => (value + 1) % LINES.length)}
           >
             换一句

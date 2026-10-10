@@ -488,3 +488,50 @@
 .light-surface .btn-mecha.primary:hover {
   color: #ffffff;
 }
+
+/* Shared palette: pink is the source default, dark retains the original look. */
+:root:not([data-theme="dark"]) {
+  color-scheme: light;
+  --background: var(--theme-background, #fff5fa);
+  --foreground: #4b2038;
+  --card: #ffffff;
+  --card-foreground: #4b2038;
+  --popover: #ffffff;
+  --popover-foreground: #4b2038;
+  --primary: #be185d;
+  --primary-foreground: #ffffff;
+  --secondary: #fce7f3;
+  --secondary-foreground: #4b2038;
+  --muted: #fdf2f8;
+  --muted-foreground: #75475e;
+  --accent: #a21caf;
+  --accent-foreground: #ffffff;
+  --border: #f0d6e3;
+  --input: #f0d6e3;
+  --ring: #be185d;
+  --neon: #ec4899;
+  --neon-soft: #f9a8d4;
+  --grad-primary: linear-gradient(120deg, #be185d, #86198f);
+  --grad-mecha: linear-gradient(135deg, #fff5fa, #fce7f3, #fff5fa);
+  --shadow-deep: 0 20px 50px -25px #be185d30;
+}
+:root[data-theme="dark"] { --background: var(--theme-background, oklch(0.08 0.01 320)); }
+.mecha-panel { background: linear-gradient(135deg, var(--card), var(--background)); border-color: var(--border); }
+.btn-mecha { background: var(--card); color: var(--foreground); border-color: var(--border); }
+.btn-mecha.primary { background: var(--grad-primary); color: var(--primary-foreground); }
+.flirt-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #be185d, #a21caf);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px #be185d25;
+}
+.flirt-primary:hover { filter: brightness(1.08); }
+@media (min-width: 768px) { .flirt-primary { min-height: 52px; padding: 14px 30px; font-size: 17px; } }

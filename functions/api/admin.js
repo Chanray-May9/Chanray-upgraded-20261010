@@ -3,6 +3,7 @@ import { handleContent } from "./_content.js";
 import { handleConfig } from "./_config.js";
 import { json, readObject } from "./_http.js";
 import { authorize } from "./_auth.js";
+import { handleTheme } from "./_theme.js";
 
 const DATASETS = { board: "guestbook", forum: "forum", room: "room", rate: "rates" };
 const digest = async (value) =>
@@ -16,6 +17,7 @@ async function handle({ request, env }) {
   if (denied) return denied;
   if (!env.BOARD) return json({ error: "KV not bound" }, 503);
   const dataset = new URL(request.url).searchParams.get("dataset");
+  if (dataset === "theme") return handleTheme(request, env);
   if (dataset === "comments") return handleCommentsAdmin(request, env);
   if (dataset === "overview") {
     if (request.method !== "GET") return json({ error: "method not allowed" }, 405);

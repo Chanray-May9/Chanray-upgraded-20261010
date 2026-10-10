@@ -1,4 +1,5 @@
 /* Shared chrome: nav, footer, background canvases, chat widget. */
+import { applyTheme, DEFAULT_THEME, THEME_STORAGE_KEY } from "../../site-theme-runtime.js";
 const PAGES = [
   ["index.html", "首页"],
   ["gallery.html", "相册"],
@@ -37,6 +38,22 @@ export function mountLayout(active) {
       </div>
     </div>`
   );
+  const themeControls = document.createElement("div");
+  themeControls.className = "legacy-theme-controls";
+  const switchTheme = document.createElement("button");
+  switchTheme.textContent = "切换风格";
+  switchTheme.onclick = () => {
+    const mode = document.documentElement.dataset.theme === "dark" ? "pink" : "dark";
+    try { localStorage.setItem(THEME_STORAGE_KEY, mode); } catch {}
+    // The next public-settings read refreshes any custom background.
+    applyTheme(document, mode, DEFAULT_THEME);
+    window.dispatchEvent(new Event("chanray:theme-settings"));
+  };
+  const flirt = document.createElement("a");
+  flirt.href = "../afterdark/";
+  flirt.textContent = "调情专区";
+  themeControls.append(switchTheme, flirt);
+  document.body.append(themeControls);
   initWidget();
   console.log("%c✿ 你打开了控制台？果然是同行！源码在 github.com/Chanray-May9/Chanray ✿", "color:#f4679d;font-size:14px");
 }

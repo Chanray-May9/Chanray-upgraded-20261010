@@ -1,4 +1,19 @@
 import { createContentTranslator, readPreview, PREVIEW_KEY } from "./site-content-runtime.js";
+import { applyTheme, DEFAULT_THEME, THEME_STORAGE_KEY } from "./site-theme-runtime.js";
+async function loadTheme() {
+  let settings = DEFAULT_THEME;
+  try {
+    const response = await fetch(window.CHANRAY_THEME_API_URL || (location.hostname === "chanray-may9.github.io" ? "https://chanray-upgraded-20261010.pages.dev/api/theme" : "/api/theme"), { cache: "no-store", signal: AbortSignal.timeout(8000) });
+    const data = await response.json();
+    if (response.ok && ["pink", "dark"].includes(data.mode)) settings = data;
+  } catch {}
+  let selected = settings.mode;
+  try { selected = localStorage.getItem(THEME_STORAGE_KEY) || selected; } catch {}
+  applyTheme(document, selected, settings);
+}
+void loadTheme();
+window.addEventListener("chanray:theme-settings", () => void loadTheme());
+setInterval(() => { if (!document.hidden) void loadTheme(); }, 60000);
 const translator = createContentTranslator(document);
 const draft = readPreview(sessionStorage);
 async function load() {

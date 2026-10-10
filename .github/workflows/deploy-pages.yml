@@ -36,6 +36,8 @@ jobs:
         run: npm run check
 
       - name: Build
+        env:
+          VITE_THEME_API_URL: https://chanray-upgraded-20261010.pages.dev/api/theme
         run: npm run build
 
       - name: Verify static output

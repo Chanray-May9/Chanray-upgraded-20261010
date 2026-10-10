@@ -1,4 +1,5 @@
 import { PageComments } from "@/components/Comments";
+import { SiteThemeProvider } from "@/components/SiteTheme";
 import { SiteContentProvider, usePageContent } from "@/components/SiteContent";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
@@ -130,12 +131,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{var t=localStorage.getItem("chanray:theme");if(t==="dark"){document.documentElement.dataset.theme="dark";document.documentElement.classList.add("dark")}}catch(e){}',
+          }}
+        />
         <HeadContent />
       </head>
       <body>
-        <SiteContentProvider>{children}</SiteContentProvider>
+        <SiteThemeProvider>
+          <SiteContentProvider>{children}</SiteContentProvider>
+        </SiteThemeProvider>
         <Scripts />
       </body>
     </html>
@@ -144,14 +153,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const light = /\/(admin|afterdark)\/?$/.test(pathname);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div
-        className={light ? "light-surface min-h-screen bg-background text-foreground" : undefined}
-      >
+      <div className="min-h-screen bg-background text-foreground">
         <SiteHeader />
         <Outlet />
         <PageComments />

@@ -26,6 +26,10 @@ npm run deploy:cloudflare
 
 `https://chanray-may9.github.io/Chanray-upgraded-20261010/` 由 `main` 推送触发 Actions 更新。`npm run build` 默认使用这个地址的路径前缀。GitHub Pages 不运行 Functions，完整交互请使用上面的 Cloudflare 地址。
 
+## 网站主题
+
+默认全站粉色（背景 `#fff5fa`）。顶部按钮可切换粉色/深色并记住本机选择；后台「网站主题」可发布全站默认风格、粉色背景与深色背景。主题保存前备份旧配置并检查版本。已自行切换风格的访客保留自己的选择；旧版 cute 页面也读取同一主题与背景配置。
+
 ## 回退
 
 每轮修改前在仓库外执行 `git bundle create ../Chanray-before-change-YYYYMMDD-HHMM.bundle --all`，并先保存未提交修改。代码回退可以部署保留的提交；KV 数据和后台 AI Key 不包含在 bundle 中，数据更改前需单独导出。不要替换或删除 `ADMIN_ENCRYPTION_KEY`，否则已保存的 Key 无法解密。

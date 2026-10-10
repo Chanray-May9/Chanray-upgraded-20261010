@@ -3,6 +3,7 @@ import { CommentManager } from "@/components/CommentManager";
 import { usePageContent } from "@/components/SiteContent";
 import { ContentEditor } from "@/components/ContentEditor";
 import { AISettings } from "@/components/AISettings";
+import { ThemeSettings } from "@/components/ThemeSettings";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
@@ -156,6 +157,7 @@ function Admin() {
           ["comment-management", "评论"],
           ["content-editor-title", "全站文案"],
           ["ai-settings-title", "AI 配置"],
+          ["theme-settings", "主题"],
           ["legacy-data", "互动数据"],
         ].map(([id, label]) => (
           <a
@@ -259,6 +261,7 @@ function Admin() {
           <CommentManager key={"comments:" + token} token={token} apiURL={API_URL} />
           <ContentEditor key={"content:" + token} token={token} apiURL={API_URL} />
           <AISettings key={token} token={token} apiURL={API_URL} />
+          <ThemeSettings apiURL={API_URL} />
           <h2 id="legacy-data" className="mb-4 mt-10 text-xl font-bold">
             互动数据
           </h2>
