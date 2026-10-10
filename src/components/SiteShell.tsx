@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ScrollProgress } from "./Fx";
-import { useSiteTheme } from "./SiteTheme";
+
 
 const NAV = [
   { to: "/", label: "HOME", code: "01" },
@@ -15,7 +15,7 @@ const NAV = [
 
 export function SiteHeader() {
   const { location } = useRouterState();
-  const { mode, toggle } = useSiteTheme();
+
   const [now, setNow] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -36,7 +36,7 @@ export function SiteHeader() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3 sm:px-6">
           <Link
             to="/"
-            className="flex min-w-0 max-w-[24vw] items-center gap-2 font-display text-xs font-bold tracking-[0.15em] text-foreground sm:max-w-[40vw] sm:text-sm"
+            className="flex min-w-0 max-w-[60vw] items-center gap-3 font-display text-sm font-bold tracking-[0.2em] text-foreground"
           >
             <span className="relative inline-block h-2 w-2 rotate-45 bg-primary shadow-[0_0_10px_var(--neon)]">
               <span className="absolute inset-0 animate-ping bg-primary" />
@@ -66,19 +66,6 @@ export function SiteHeader() {
               );
             })}
           </nav>
-          <div className="flex shrink-0 items-center gap-2">
-            <button
-              className="rounded-full border border-border bg-card px-3 py-2 text-xs text-foreground"
-              onClick={toggle}
-              aria-label={mode === "pink" ? "切换为深色" : "切换为粉色"}
-            >
-              {mode === "pink" ? "深色" : "粉色"}
-            </button>
-            <Link to="/afterdark" className="flirt-primary" onClick={() => setOpen(false)}>
-              调情专区
-            </Link>
-          </div>
-
           <div className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground 2xl:block">
             <span className="text-primary">●</span> {now || "boot..."}
           </div>

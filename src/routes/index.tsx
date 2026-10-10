@@ -111,6 +111,10 @@ function Home() {
             </p>
 
             <div className="hero-chip mt-10 flex flex-wrap gap-4">
+              <Link to="/afterdark" data-magnet className="btn-mecha primary mecha-clip flirt-primary">
+                <span>调情专区</span>
+                <Arrow />
+              </Link>
               <Link to="/works" data-magnet className="btn-mecha primary mecha-clip">
                 <span>查看作品</span>
                 <Arrow />

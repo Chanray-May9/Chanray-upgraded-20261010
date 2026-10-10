@@ -154,10 +154,11 @@ try {
     await page.evaluate(() => getComputedStyle(document.body).backgroundColor),
     "rgb(255, 245, 250)",
   );
-  await page.getByRole("button", { name: "切换为深色", exact: true }).click();
+  await page.evaluate(() => localStorage.setItem("chanray:theme", "dark"));
   await page.reload({ waitUntil: "networkidle" });
   assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "dark");
-  await page.getByRole("button", { name: "切换为粉色", exact: true }).click();
+  await page.evaluate(() => localStorage.setItem("chanray:theme", "pink"));
+  await page.reload({ waitUntil: "networkidle" });
   await page.getByRole("button", { name: "读取主题设置", exact: true }).click();
   await page.getByLabel("默认风格", { exact: true }).selectOption("pink");
   await page.getByLabel("粉色背景", { exact: true }).fill("#fff0f8");
@@ -288,7 +289,11 @@ try {
             width < 1280,
           );
         if (!route.startsWith("cute/")) {
-          const mainButton = page.locator(".flirt-primary");
+          assert.equal(await page.locator("header .flirt-primary").count(), 0);
+          assert.equal(await page.locator("header button[aria-label^=" + JSON.stringify("切换为") + "]").count(), 0);
+        }
+        if (route === "") {
+          const mainButton = page.locator(".hero-chip .flirt-primary");
           assert.ok(await mainButton.isVisible());
           const box = await mainButton.boundingBox();
           assert.ok(box.height >= 48 && box.width >= 100);
