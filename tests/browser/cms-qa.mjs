@@ -61,9 +61,9 @@ const server = createServer(async (req, res) => {
       res.end(Buffer.from(await response.arrayBuffer()));
       return;
     }
-    const relative = decodeURIComponent(url.pathname.replace(/^\/Chanray\/?/, ""));
+    const relative = decodeURIComponent(url.pathname.replace(/^\/Chanray-upgraded-20261010\/?/, ""));
     let file = path.resolve(root, relative || "index.html");
-    if (!file.startsWith(root + "/")) {
+    if (!file.startsWith(root + path.sep)) {
       res.writeHead(403);
       res.end();
       return;
@@ -107,7 +107,7 @@ const base = "http://127.0.0.1:" + server.address().port;
 const overflow = [];
 try {
   console.log("QA: admin");
-  await page.goto(base + "/Chanray/admin/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/admin/", { waitUntil: "networkidle" });
   await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
   await page.getByRole("button", { name: "读取全站文案", exact: true }).click();
   await page.getByLabel("搜索原文或新文案", { exact: true }).waitFor();
@@ -135,13 +135,13 @@ try {
   assert.equal(JSON.parse(store.get("public:site-content:v1")).overrides["调情专区"], "测试专区");
   await page.getByRole("button", { name: "导出草稿 / 备份", exact: true }).isEnabled();
   console.log("QA: comments and moderation");
-  await page.goto(base + "/Chanray/works/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/works/", { waitUntil: "networkidle" });
   await page.getByLabel("昵称", { exact: true }).fill("体验访客");
   await page.getByLabel("评论内容", { exact: true }).fill("<b>作品体验</b>");
   await page.getByRole("button", { name: "提交评论", exact: true }).click();
   await page.getByText("评论已提交，审核后显示。", { exact: true }).waitFor();
   assert.equal(await page.locator("#page-comments li").count(), 0);
-  await page.goto(base + "/Chanray/admin/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/admin/", { waitUntil: "networkidle" });
   await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
   await page.getByRole("button", { name: "刷新概览", exact: true }).click();
   await page.getByText("概览已更新。", { exact: true }).waitFor();
@@ -159,22 +159,22 @@ try {
   await commentRow.getByLabel("置顶评论", { exact: true }).check();
   await commentRow.getByRole("button", { name: "公开并保存回复", exact: true }).click();
   await page.getByText("评论已更新，旧版本已备份。", { exact: true }).waitFor();
-  await page.goto(base + "/Chanray/works/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/works/", { waitUntil: "networkidle" });
   await page.locator("#page-comments").getByText("<b>作品体验</b>", { exact: true }).waitFor();
   assert.equal(await page.locator("#page-comments li b").count(), 0);
   assert.ok(
     await page.locator("#page-comments").getByText("谢谢留言。", { exact: true }).isVisible(),
   );
-  await page.goto(base + "/Chanray/gallery/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/gallery/", { waitUntil: "networkidle" });
   assert.equal(await page.locator("#page-comments li").count(), 0);
-  await page.goto(base + "/Chanray/admin/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/admin/", { waitUntil: "networkidle" });
   await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
   await page.getByRole("button", { name: "读取评论", exact: true }).click();
   await commentRow.getByRole("button", { name: "移入回收站", exact: true }).click();
   await commentRow.getByRole("button", { name: "恢复为待审核", exact: true }).waitFor();
   await commentRow.getByRole("button", { name: "恢复为待审核", exact: true }).click();
   await commentRow.getByRole("button", { name: "移入回收站", exact: true }).waitFor();
-  await page.goto(base + "/Chanray/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/", { waitUntil: "networkidle" });
   const visual = page.locator(".visual-stage canvas");
   assert.equal(await visual.evaluate((el) => getComputedStyle(el).opacity), "1");
   const before = await visual.screenshot();
@@ -207,7 +207,7 @@ try {
       "cute/chat.html",
       "cute/model.html",
     ]) {
-      await page.goto(base + "/Chanray/" + route, { waitUntil: "networkidle" });
+      await page.goto(base + "/Chanray-upgraded-20261010/" + route, { waitUntil: "networkidle" });
       const dimensions = await page.evaluate(() => ({
         scroll: document.documentElement.scrollWidth,
         viewport: innerWidth,
@@ -250,24 +250,24 @@ try {
     }),
     env,
   });
-  await page.goto(base + "/Chanray/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/", { waitUntil: "networkidle" });
   await page.getByRole("heading", { level: 1, name: "测试姓名", exact: true }).waitFor();
   assert.equal(await page.title(), "测试站点");
-  await page.goto(base + "/Chanray/afterdark/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/afterdark/", { waitUntil: "networkidle" });
   assert.equal(await page.locator("#flirt-message").getAttribute("placeholder"), "写点文字");
   await page
     .locator("button")
     .filter({ hasText: /^换一句$/ })
     .click();
   assert.ok(await page.getByRole("heading", { name: "测试专区", exact: true }).isVisible());
-  await page.goto(base + "/Chanray/contact/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/contact/", { waitUntil: "networkidle" });
   await page.getByRole("heading", { level: 1, name: "联系测试", exact: true }).waitFor();
-  await page.goto(base + "/Chanray/cute/index.html", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/cute/index.html", { waitUntil: "networkidle" });
   await page.getByRole("heading", { name: "旧版介绍测试", exact: true }).waitFor();
   assert.equal(await page.title(), "旧版测试标题");
   // Shared runtime safely handles dynamic DOM text, attributes, removal, and restoration.
   await page.evaluate(async () => {
-    const { createContentTranslator } = await import("/Chanray/site-content-runtime.js");
+    const { createContentTranslator } = await import("/Chanray-upgraded-20261010/site-content-runtime.js");
     const container = document.createElement("div");
     container.setAttribute("data-cms-exempt", "");
     document.body.append(container);
@@ -328,14 +328,14 @@ try {
     env,
   });
   assert.equal(restored.status, 200);
-  await page.goto(base + "/Chanray/afterdark/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/afterdark/", { waitUntil: "networkidle" });
   await page.getByRole("heading", { name: "调情专区", exact: true }).waitFor();
   assert.equal(await page.getByText("BDSM：概念与边界", { exact: true }).count(), 0);
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.screenshot({ path: path.join(screenshotDir, "05-flirt-desktop.png") });
   await page.setViewportSize({ width: 390, height: 950 });
   await page.screenshot({ path: path.join(screenshotDir, "06-flirt-mobile-current.png") });
-  await page.goto(base + "/Chanray/admin/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/admin/", { waitUntil: "networkidle" });
   await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
   await page.getByRole("button", { name: "读取全站文案", exact: true }).click();
   await page.getByLabel("搜索原文或新文案", { exact: true }).waitFor();
@@ -346,7 +346,7 @@ try {
   await page.screenshot({ path: path.join(screenshotDir, "07-cms-mobile.png") });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.screenshot({ path: path.join(screenshotDir, "08-cms-desktop.png") });
-  await page.goto(base + "/Chanray/admin/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/admin/", { waitUntil: "networkidle" });
   await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
   await page.getByRole("button", { name: "刷新概览", exact: true }).click();
   await page.getByText("概览已更新。", { exact: true }).waitFor();
@@ -359,11 +359,11 @@ try {
   await page.screenshot({ path: path.join(screenshotDir, "10-admin-light-mobile.png") });
   await page.locator("#comment-management").scrollIntoViewIfNeeded();
   await page.screenshot({ path: path.join(screenshotDir, "11-comments-admin-mobile.png") });
-  await page.goto(base + "/Chanray/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/", { waitUntil: "networkidle" });
   await page.locator(".visual-stage").scrollIntoViewIfNeeded();
   await page.screenshot({ path: path.join(screenshotDir, "12-visual-mobile.png") });
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.goto(base + "/Chanray/", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/", { waitUntil: "networkidle" });
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: path.join(screenshotDir, "13-visual-desktop.png") });
   assert.deepEqual(errors, []);

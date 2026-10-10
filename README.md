@@ -14,7 +14,7 @@ npm run build
 npm run test:build
 ```
 
-GitHub Pages 的部署目录为 `dist/client`，默认 URL 前缀 `/Chanray/`。更换仓库名或部署根路径时，应同步修改 `vite.config.ts` 中 `base`。所有八个 React 页面都预渲染；CI 会检查每个页面与模型资源。
+GitHub Pages 的部署目录为 `dist/client`，默认 URL 前缀 `/Chanray-upgraded-20261010/`。更换仓库名或部署根路径时，应同步修改 `vite.config.ts` 中 `base`。所有八个 React 页面都预渲染；CI 会检查每个页面与模型资源。
 
 ## 后端边界
 
@@ -26,7 +26,7 @@ GitHub Pages **不运行** `functions/api`。这些接口需要另行部署到 C
 
 ## 后端管理
 
-管理入口：GitHub Pages 为 `/Chanray/admin`，Cloudflare 根站为 `/admin`。采用浅色界面，提供数据概览、评论管理、全站文案、AI 配置及四类互动数据读取/删除/导出。管理令牌只在页面内存保存，不写入 localStorage，也不出现在 URL。
+管理入口：GitHub Pages 为 `/Chanray-upgraded-20261010/admin`，Cloudflare 根站为 `/admin`。采用浅色界面，提供数据概览、评论管理、全站文案、AI 配置及四类互动数据读取/删除/导出。管理令牌只在页面内存保存，不写入 localStorage，也不出现在 URL。
 
 部署到 Cloudflare Pages 时：
 

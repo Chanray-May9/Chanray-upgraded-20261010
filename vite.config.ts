@@ -26,6 +26,6 @@ export default defineConfig({
     server: { entry: "server" },
   },
   vite: {
-    base: process.env.SITE_BASE_PATH || "/Chanray/",
+    base: process.env.SITE_BASE_PATH || "/Chanray-upgraded-20261010/",
   },
 });
