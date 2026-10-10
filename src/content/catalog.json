@@ -64,7 +64,8 @@
     ],
     "sources": [
       "src/routes/afterdark.tsx",
-      "src/components/ContentEditor.tsx"
+      "src/components/ContentEditor.tsx",
+      "src/components/Comments.tsx"
     ]
   },
   {
@@ -86,6 +87,24 @@
     ]
   },
   {
+    "original": "今晚想被你抱紧。",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
+    "original": "陪锐锐待一会儿。",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
     "original": "是锐锐呀 · 调情专区",
     "groups": [
       "调情专区"
@@ -95,43 +114,25 @@
     ]
   },
   {
-    "original": "我喜欢你。",
-    "groups": [
-      "调情专区"
-    ],
-    "sources": [
-      "src/routes/afterdark.tsx"
-    ]
-  },
-  {
-    "original": "想抱抱你。",
-    "groups": [
-      "调情专区"
-    ],
-    "sources": [
-      "src/routes/afterdark.tsx"
-    ]
-  },
-  {
-    "original": "想和你见面。",
-    "groups": [
-      "调情专区"
-    ],
-    "sources": [
-      "src/routes/afterdark.tsx"
-    ]
-  },
-  {
-    "original": "想你了。",
-    "groups": [
-      "调情专区"
-    ],
-    "sources": [
-      "src/routes/afterdark.tsx"
-    ]
-  },
-  {
     "original": "想说的话",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
+    "original": "想听你叫我的名字。",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
+    "original": "主人，锐锐想靠近你。",
     "groups": [
       "调情专区"
     ],
@@ -178,6 +179,15 @@
     ]
   },
   {
+    "original": "概览",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
     "original": "管理令牌",
     "groups": [
       "管理后台"
@@ -198,7 +208,7 @@
     ]
   },
   {
-    "original": "管理留言、帖子、聊天室与评分。首次使用需要部署 Cloudflare API 并配置 ADMIN_TOKEN。",
+    "original": "后端不可用，请检查 Cloudflare 部署和绑定。",
     "groups": [
       "管理后台"
     ],
@@ -207,7 +217,16 @@
     ]
   },
   {
-    "original": "后端不可用，请检查 Cloudflare 部署和绑定。",
+    "original": "后台功能",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "互动数据",
     "groups": [
       "管理后台"
     ],
@@ -265,12 +284,14 @@
     ]
   },
   {
-    "original": "内容管理",
+    "original": "评论",
     "groups": [
-      "管理后台"
+      "管理后台",
+      "通用组件"
     ],
     "sources": [
-      "src/routes/admin.tsx"
+      "src/routes/admin.tsx",
+      "src/components/Comments.tsx"
     ]
   },
   {
@@ -283,6 +304,15 @@
       "src/routes/admin.tsx",
       "src/components/AIChat.tsx",
       "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "全站文案",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
     ]
   },
   {
@@ -349,6 +379,24 @@
     ]
   },
   {
+    "original": "网站管理",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "文案、评论、AI 配置与互动数据。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
     "original": "已清除当前页面的管理令牌与内容。",
     "groups": [
       "管理后台"
@@ -359,6 +407,15 @@
   },
   {
     "original": "照片评分",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "AI 配置",
     "groups": [
       "管理后台"
     ],
@@ -1249,16 +1306,6 @@
     "sources": [
       "public/cute/forum.html",
       "public/cute/index.html"
-    ]
-  },
-  {
-    "original": "昵称",
-    "groups": [
-      "旧版页面"
-    ],
-    "sources": [
-      "public/cute/chat.html",
-      "public/cute/forum.html"
     ]
   },
   {
@@ -2556,15 +2603,6 @@
     ]
   },
   {
-    "original": "0",
-    "groups": [
-      "首页"
-    ],
-    "sources": [
-      "src/routes/index.tsx"
-    ]
-  },
-  {
     "original": "2008.05.09",
     "groups": [
       "首页",
@@ -2706,7 +2744,7 @@
     ]
   },
   {
-    "original": "anime.js · WAAPI · GSAP",
+    "original": "anime.js · Web Animations",
     "groups": [
       "首页"
     ],
@@ -2741,24 +2779,6 @@
     "sources": [
       "src/routes/index.tsx",
       "public/cute/index.html"
-    ]
-  },
-  {
-    "original": "Chanray avatar",
-    "groups": [
-      "首页"
-    ],
-    "sources": [
-      "src/routes/index.tsx"
-    ]
-  },
-  {
-    "original": "COFFEE.ML",
-    "groups": [
-      "首页"
-    ],
-    "sources": [
-      "src/routes/index.tsx"
     ]
   },
   {
@@ -2809,15 +2829,6 @@
     ]
   },
   {
-    "original": "ID · MAY9-08",
-    "groups": [
-      "首页"
-    ],
-    "sources": [
-      "src/routes/index.tsx"
-    ]
-  },
-  {
     "original": "LOG",
     "groups": [
       "首页",
@@ -2856,15 +2867,6 @@
     ]
   },
   {
-    "original": "MODEL · CHANRAY",
-    "groups": [
-      "首页"
-    ],
-    "sources": [
-      "src/routes/index.tsx"
-    ]
-  },
-  {
     "original": "MOTION",
     "groups": [
       "首页"
@@ -2894,15 +2896,6 @@
     ]
   },
   {
-    "original": "PROJECTS",
-    "groups": [
-      "首页"
-    ],
-    "sources": [
-      "src/routes/index.tsx"
-    ]
-  },
-  {
     "original": "React · TS · Tailwind · TanStack",
     "groups": [
       "首页"
@@ -2921,25 +2914,7 @@
     ]
   },
   {
-    "original": "STATUS · ACTIVE",
-    "groups": [
-      "首页"
-    ],
-    "sources": [
-      "src/routes/index.tsx"
-    ]
-  },
-  {
     "original": "SYSTEM ONLINE · UNIT-may9",
-    "groups": [
-      "首页"
-    ],
-    "sources": [
-      "src/routes/index.tsx"
-    ]
-  },
-  {
-    "original": "top-2 left-2",
     "groups": [
       "首页"
     ],
@@ -2965,15 +2940,6 @@
     "sources": [
       "src/routes/index.tsx",
       "src/components/SiteShell.tsx"
-    ]
-  },
-  {
-    "original": "YEAR.BORN",
-    "groups": [
-      "首页"
-    ],
-    "sources": [
-      "src/routes/index.tsx"
     ]
   },
   {
@@ -3010,7 +2976,8 @@
       "通用组件"
     ],
     "sources": [
-      "src/components/ContentEditor.tsx"
+      "src/components/ContentEditor.tsx",
+      "src/components/CommentManager.tsx"
     ]
   },
   {
@@ -3123,6 +3090,15 @@
     ]
   },
   {
+    "original": "保存评论设置",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
     "original": "保存失败，请检查权限、输入或服务端加密配置。",
     "groups": [
       "通用组件"
@@ -3137,7 +3113,8 @@
       "通用组件"
     ],
     "sources": [
-      "src/components/ContentEditor.tsx"
+      "src/components/ContentEditor.tsx",
+      "src/components/CommentManager.tsx"
     ]
   },
   {
@@ -3186,12 +3163,75 @@
     ]
   },
   {
+    "original": "播放",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/VisualStage.tsx"
+    ]
+  },
+  {
+    "original": "操作失败，请检查令牌与后端配置。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "操作失败。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "查看更多评论",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "触摸光球",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/VisualStage.tsx"
+    ]
+  },
+  {
+    "original": "存储：",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
+    ]
+  },
+  {
     "original": "打开草稿预览",
     "groups": [
       "通用组件"
     ],
     "sources": [
       "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "待审核",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
     ]
   },
   {
@@ -3204,12 +3244,39 @@
     ]
   },
   {
+    "original": "当前筛选暂无评论。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "当前页面的留言",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
     "original": "导出草稿 / 备份",
     "groups": [
       "通用组件"
     ],
     "sources": [
       "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "导出已读取评论",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
     ]
   },
   {
@@ -3276,6 +3343,15 @@
     ]
   },
   {
+    "original": "读取评论",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
     "original": "读取全站文案",
     "groups": [
       "通用组件"
@@ -3285,12 +3361,49 @@
     ]
   },
   {
+    "original": "读取失败，请检查令牌与后端。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
+    ]
+  },
+  {
+    "original": "读取失败，请重试。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
     "original": "读取失败。",
     "groups": [
       "通用组件"
     ],
     "sources": [
-      "src/components/ContentEditor.tsx"
+      "src/components/ContentEditor.tsx",
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "读取时间：",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
+    ]
+  },
+  {
+    "original": "读取下一批评论",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
     ]
   },
   {
@@ -3339,6 +3452,24 @@
     ]
   },
   {
+    "original": "概览已更新。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
+    ]
+  },
+  {
+    "original": "公开并保存回复",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
     "original": "和锐锐聊天",
     "groups": [
       "通用组件"
@@ -3366,6 +3497,15 @@
     ]
   },
   {
+    "original": "环境 AI Key：",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
+    ]
+  },
+  {
     "original": "恢复此项默认",
     "groups": [
       "通用组件"
@@ -3381,6 +3521,33 @@
     ],
     "sources": [
       "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "恢复为待审核",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "回收站",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "记录已变化，请重新读取。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
     ]
   },
   {
@@ -3474,6 +3641,15 @@
     ]
   },
   {
+    "original": "开放评论",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
     "original": "可编辑条目：",
     "groups": [
       "通用组件"
@@ -3506,7 +3682,17 @@
       "通用组件"
     ],
     "sources": [
-      "src/components/ContentEditor.tsx"
+      "src/components/ContentEditor.tsx",
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "聊天记录",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
     ]
   },
   {
@@ -3516,6 +3702,15 @@
     ],
     "sources": [
       "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "留言",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
     ]
   },
   {
@@ -3546,12 +3741,150 @@
     ]
   },
   {
+    "original": "昵称",
+    "groups": [
+      "通用组件",
+      "旧版页面"
+    ],
+    "sources": [
+      "src/components/Comments.tsx",
+      "public/cute/chat.html",
+      "public/cute/forum.html"
+    ]
+  },
+  {
+    "original": "昵称与评论会公开展示，请勿填写私人联系方式。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "评分项目",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
+    ]
+  },
+  {
+    "original": "评论管理",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "评论内容",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "评论设置已保存。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "评论页面",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "评论已读取。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "评论已发布，稍后刷新可见。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "评论已更新，旧版本已备份。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "评论已关闭。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "评论已提交，审核后显示。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "评论暂时关闭。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "评论暂时无法读取，请稍后刷新。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
     "original": "启用 AI 调情互动",
     "groups": [
       "通用组件"
     ],
     "sources": [
       "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "切换光球颜色",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/VisualStage.tsx"
     ]
   },
   {
@@ -3579,6 +3912,24 @@
     ],
     "sources": [
       "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "全部页面",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "全部状态",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
     ]
   },
   {
@@ -3654,12 +4005,40 @@
     ]
   },
   {
+    "original": "审核、回复、置顶、隐藏与回收站。评论按页面独立保存。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "审核后展示",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "审核状态",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
     "original": "时间线",
     "groups": [
       "通用组件"
     ],
     "sources": [
-      "src/components/ContentEditor.tsx"
+      "src/components/ContentEditor.tsx",
+      "src/components/Comments.tsx"
     ]
   },
   {
@@ -3697,6 +4076,7 @@
     ],
     "sources": [
       "src/components/ContentEditor.tsx",
+      "src/components/Comments.tsx",
       "public/cute/js/layout.js"
     ]
   },
@@ -3710,12 +4090,84 @@
     ]
   },
   {
+    "original": "数据概览",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
+    ]
+  },
+  {
+    "original": "刷新概览",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
+    ]
+  },
+  {
+    "original": "搜索昵称或评论",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
     "original": "搜索原文或新文案",
     "groups": [
       "通用组件"
     ],
     "sources": [
       "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "随触摸与指针变化的光球",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/VisualStage.tsx"
+    ]
+  },
+  {
+    "original": "提交过于频繁，请稍后再试。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "提交评论",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "提交失败，请稍后重试。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "提交失败。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
     ]
   },
   {
@@ -3746,12 +4198,40 @@
     ]
   },
   {
+    "original": "条，当前筛选",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "条；有更多记录时请继续读取。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "帖子",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
+    ]
+  },
+  {
     "original": "未配置",
     "groups": [
       "通用组件"
     ],
     "sources": [
-      "src/components/AISettings.tsx"
+      "src/components/AISettings.tsx",
+      "src/components/AdminOverview.tsx"
     ]
   },
   {
@@ -3816,6 +4296,7 @@
     ],
     "sources": [
       "src/components/ContentEditor.tsx",
+      "src/components/Comments.tsx",
       "public/cute/js/layout.js"
     ]
   },
@@ -3847,6 +4328,24 @@
     ]
   },
   {
+    "original": "写下你的想法",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "移入回收站",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
     "original": "已打开预览。预览不会发布文案，也不会传递管理令牌。",
     "groups": [
       "通用组件"
@@ -3856,12 +4355,49 @@
     ]
   },
   {
+    "original": "已读取",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "已公开",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
     "original": "已配置",
     "groups": [
       "通用组件"
     ],
     "sources": [
-      "src/components/AISettings.tsx"
+      "src/components/AISettings.tsx",
+      "src/components/AdminOverview.tsx"
+    ]
+  },
+  {
+    "original": "已隐藏",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "隐藏",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
     ]
   },
   {
@@ -3892,12 +4428,40 @@
     ]
   },
   {
+    "original": "暂停",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/VisualStage.tsx"
+    ]
+  },
+  {
+    "original": "暂无公开评论。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
     "original": "暂无历史版本。",
     "groups": [
       "通用组件"
     ],
     "sources": [
       "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "站长回复",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx",
+      "src/components/CommentManager.tsx"
     ]
   },
   {
@@ -3919,12 +4483,39 @@
     ]
   },
   {
+    "original": "正在提交…",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
     "original": "智谱模型名称",
     "groups": [
       "通用组件"
     ],
     "sources": [
       "src/components/AISettings.tsx"
+    ]
+  },
+  {
+    "original": "置顶",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
+    ]
+  },
+  {
+    "original": "置顶评论",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/CommentManager.tsx"
     ]
   },
   {
@@ -3951,7 +4542,8 @@
       "通用组件"
     ],
     "sources": [
-      "src/components/ContentEditor.tsx"
+      "src/components/ContentEditor.tsx",
+      "src/components/Comments.tsx"
     ]
   },
   {
@@ -4026,6 +4618,15 @@
     ],
     "sources": [
       "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "CHANRAY / 01",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/VisualStage.tsx"
     ]
   },
   {
@@ -4137,6 +4738,15 @@
     ]
   },
   {
+    "original": "Key 加密：",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
+    ]
+  },
+  {
     "original": "Key 状态：",
     "groups": [
       "通用组件"
@@ -4188,6 +4798,69 @@
     ],
     "sources": [
       "src/components/SiteShell.tsx"
+    ]
+  },
+  {
+    "original": "palette",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/VisualStage.tsx"
+    ]
+  },
+  {
+    "original": "pointer",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/VisualStage.tsx"
+    ]
+  },
+  {
+    "original": "pulse",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/VisualStage.tsx"
+    ]
+  },
+  {
+    "original": "resolution",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/VisualStage.tsx"
+    ]
+  },
+  {
+    "original": "time",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/VisualStage.tsx"
+    ]
+  },
+  {
+    "original": "UTC",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AdminOverview.tsx"
+    ]
+  },
+  {
+    "original": "Website",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/Comments.tsx"
     ]
   },
   {

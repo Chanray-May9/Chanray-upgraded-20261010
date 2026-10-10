@@ -1,14 +1,14 @@
+import { VisualStage } from "@/components/VisualStage";
 import { usePageContent } from "@/components/SiteContent";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
-import { animate, createTimeline, utils } from "animejs";
-import { ParticleField, SakuraRain, MechaRings } from "@/components/AnimeBackground";
+import { animate, utils } from "animejs";
+import { ParticleField, SakuraRain } from "@/components/AnimeBackground";
 import { DecryptedText } from "@/components/DecryptedText";
 import {
   useSplitReveal,
   useMagnetic,
   useScrollReveal,
-  useScrollCounters,
   ScrambleHover,
   GlowOrb,
 } from "@/components/Fx";
@@ -25,16 +25,12 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const AVATAR =
-  "https://raw.githubusercontent.com/Chanray-May9/Chanray/refs/heads/main/%E5%A4%B4%E5%83%8F.jpg";
-
 function Home() {
   usePageContent();
   useSplitReveal("#hero-name", 200);
   useSplitReveal("#hero-cn", 50);
   useMagnetic("[data-magnet]", 0.3);
   useScrollReveal();
-  useScrollCounters();
 
   const heroRef = useRef<HTMLDivElement>(null);
 
@@ -56,20 +52,16 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    const tl = createTimeline({ delay: 300 });
-    tl.add("#avatar-wrap", {
-      scale: [0.4, 1],
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const animation = animate(".hero-chip", {
+      y: [20, 0],
       opacity: [0, 1],
-      rotate: [-12, 0],
-      duration: 1100,
-      ease: "out(5)",
-    })
-      .add("#avatar-ring-1", { opacity: [0, 1], duration: 800 }, "-=600")
-      .add(
-        ".hero-chip",
-        { y: [20, 0], opacity: [0, 1], duration: 700, delay: utils.stagger(80) },
-        "-=500",
-      );
+      duration: 700,
+      delay: utils.stagger(80),
+    });
+    return () => {
+      animation.revert();
+    };
   }, []);
 
   return (
@@ -147,51 +139,10 @@ function Home() {
                 <span>UNIT-3D · 模型</span>
               </Link>
             </div>
-
-            <div className="hero-chip mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-border/60 pt-6 font-mono">
-              <Stat label="YEAR.BORN" value={2008} />
-              <Stat label="PROJECTS" value={12} />
-              <Stat label="COFFEE.ML" value={9999} />
-            </div>
           </div>
 
           <div className="relative mx-auto aspect-square w-full max-w-[520px]" data-depth="20">
-            <MechaRings className="absolute inset-0" />
-            <div className="absolute inset-6 ring-spin-rev">
-              <MechaRings className="h-full w-full" />
-            </div>
-            <div
-              id="avatar-ring-1"
-              className="absolute inset-12 rounded-full border border-primary/40 shadow-[0_0_60px_oklch(0.78_0.18_350/0.5)_inset]"
-            />
-            <div
-              id="avatar-wrap"
-              className="absolute inset-16 overflow-hidden rounded-full border-2 border-primary/60 shadow-[var(--shadow-neon)]"
-            >
-              <img src={AVATAR} alt="Chanray avatar" className="h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent mix-blend-overlay" />
-            </div>
-
-            {[
-              "top-2 left-2",
-              "top-2 right-2 rotate-90",
-              "bottom-2 left-2 -rotate-90",
-              "bottom-2 right-2 rotate-180",
-            ].map((c) => (
-              <svg
-                key={c}
-                className={`absolute ${c} h-10 w-10 text-primary`}
-                viewBox="0 0 40 40"
-                fill="none"
-              >
-                <path d="M2 14V2h12" stroke="currentColor" strokeWidth="1.5" />
-                <circle cx="6" cy="6" r="1.5" fill="currentColor" />
-              </svg>
-            ))}
-
-            <FloatingTag className="left-0 top-10" text="ID · MAY9-08" />
-            <FloatingTag className="right-0 top-1/3" text="MODEL · CHANRAY" />
-            <FloatingTag className="left-2 bottom-12" text="STATUS · ACTIVE" />
+            <VisualStage />
           </div>
         </div>
 
@@ -233,7 +184,7 @@ function Home() {
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { k: "FRONTEND", t: "现代前端", d: "React · TS · Tailwind · TanStack", icon: "◈" },
-            { k: "MOTION", t: "动效编排", d: "anime.js · WAAPI · GSAP", icon: "✦" },
+            { k: "MOTION", t: "动效编排", d: "anime.js · Web Animations", icon: "✦" },
             { k: "GRAPHICS", t: "图形 / 着色", d: "Canvas · WebGL · SVG", icon: "▣" },
             { k: "DESIGN", t: "视觉设计", d: "Mecha UI · Glassmorphism", icon: "❖" },
           ].map((c) => (
@@ -299,27 +250,6 @@ function SectionLabel({ code, title }: { code: string; title: string }) {
       <h3 className="font-display text-3xl font-bold tracking-wide text-foreground sm:text-5xl">
         {title}
       </h3>
-    </div>
-  );
-}
-function Stat({ label, value }: { label: string; value: number }) {
-  return (
-    <div>
-      <div data-count={value} className="font-display text-3xl font-bold text-gradient">
-        0
-      </div>
-      <div className="mt-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-        {label}
-      </div>
-    </div>
-  );
-}
-function FloatingTag({ className = "", text }: { className?: string; text: string }) {
-  return (
-    <div
-      className={`absolute ${className} float-slow mecha-clip border border-primary/50 bg-background/70 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary backdrop-blur`}
-    >
-      {text}
     </div>
   );
 }

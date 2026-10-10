@@ -14,7 +14,7 @@ const NAV = [
 
 export function SiteHeader() {
   const { location } = useRouterState();
-  const light = /\/afterdark\/?$/.test(location.pathname);
+  const light = /\/(afterdark|admin)\/?$/.test(location.pathname);
   const [now, setNow] = useState("");
   const [open, setOpen] = useState(false);
 

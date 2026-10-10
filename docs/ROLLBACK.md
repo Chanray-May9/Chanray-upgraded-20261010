@@ -35,3 +35,8 @@ git -C ../Chanray-restored switch -c restore-original d9df3033c17da6298d5008bc13
 开始全站文案管理前的版本为 `0b5ee82`，标签 `backup/pre-cms-20261010`。备份位于 `/workspace/backups/Chanray-before-cms-20261010.bundle`。
 
 后台文案的回退不需要回退代码：使用「历史版本与恢复」，或导入已下载的文案 JSON，再发布。每次恢复前会备份当前文案。源码 bundle 不包含线上 KV 版本；线上文案备份保存在 KV，需要单独保留/导出。
+
+
+## 评论与浅色后台升级前
+
+标签 `backup/pre-comments-20261010` 指向 `a1da197`，完整 Git 备份为 `/workspace/backups/Chanray-before-comments-20261010.bundle`。回退该轮代码不会自动删除或还原 KV 评论；后台回收站可恢复评论至待审核。评论历史备份存于 `private:comments:history:`，评论设置备份存于 `private:comments:settings-backup:`；代码备份不包含这些线上数据，操作前单独导出。

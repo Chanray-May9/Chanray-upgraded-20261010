@@ -3,7 +3,12 @@ import { AIChat } from "@/components/AIChat";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
-const LINES = ["想你了。", "想抱抱你。", "想和你见面。", "我喜欢你。"];
+const LINES = [
+  "主人，锐锐想靠近你。",
+  "今晚想被你抱紧。",
+  "陪锐锐待一会儿。",
+  "想听你叫我的名字。",
+];
 export const Route = createFileRoute("/afterdark")({
   head: () => ({
     meta: [
@@ -25,13 +30,22 @@ function AfterDark() {
       <div className="relative mx-auto max-w-4xl">
         <h1 className="font-display text-4xl font-bold text-pink-700">调情专区</h1>
         <section
-          className="mt-12 rounded-3xl border border-pink-200 bg-white/80 p-8 backdrop-blur sm:p-12"
+          className="ambient-card mt-12 rounded-3xl border border-pink-200 bg-white/80 p-8 backdrop-blur sm:p-12"
+          onPointerMove={(event) => {
+            const box = event.currentTarget.getBoundingClientRect();
+            event.currentTarget.style.setProperty("--touch-x", `${event.clientX - box.left}px`);
+            event.currentTarget.style.setProperty("--touch-y", `${event.clientY - box.top}px`);
+          }}
           aria-labelledby="whisper-title"
         >
           <h2 id="whisper-title" className="text-xs tracking-[0.3em] text-pink-700">
             想说的话
           </h2>
-          <p className="mt-8 min-h-24 text-2xl leading-relaxed sm:text-3xl" aria-live="polite">
+          <p
+            key={line}
+            className="whisper-reveal mt-8 min-h-24 text-2xl leading-relaxed sm:text-3xl"
+            aria-live="polite"
+          >
             {LINES[line]}
           </p>
           <button

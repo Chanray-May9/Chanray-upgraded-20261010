@@ -1,3 +1,4 @@
+import { PageComments } from "@/components/Comments";
 import { SiteContentProvider, usePageContent } from "@/components/SiteContent";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
@@ -5,6 +6,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -142,12 +144,19 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const light = /\/(admin|afterdark)\/?$/.test(pathname);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SiteHeader />
-      <Outlet />
-      <SiteFooter />
+      <div
+        className={light ? "light-surface min-h-screen bg-background text-foreground" : undefined}
+      >
+        <SiteHeader />
+        <Outlet />
+        <PageComments />
+        <SiteFooter />
+      </div>
     </QueryClientProvider>
   );
 }

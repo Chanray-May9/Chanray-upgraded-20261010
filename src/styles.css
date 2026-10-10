@@ -367,3 +367,124 @@
   transform: none;
   box-shadow: none;
 }
+
+.light-surface {
+  --background: #fff8fb;
+  --foreground: #432333;
+  --card: #ffffff;
+  --card-foreground: #432333;
+  --popover: #ffffff;
+  --popover-foreground: #432333;
+  --primary: #be185d;
+  --primary-foreground: #ffffff;
+  --secondary: #fce7f3;
+  --secondary-foreground: #432333;
+  --muted: #fdf2f8;
+  --muted-foreground: #795667;
+  --accent: #a21caf;
+  --accent-foreground: #ffffff;
+  --border: #f0d6e3;
+  --input: #f0d6e3;
+  --ring: #be185d;
+  --neon: #ec4899;
+}
+.light-surface .text-gradient {
+  background-image: linear-gradient(120deg, #be185d, #86198f);
+}
+.light-surface .btn-mecha {
+  border-radius: 0.75rem;
+  letter-spacing: 0.02em;
+}
+.light-surface input:not([type="checkbox"]),
+.light-surface textarea,
+.light-surface select {
+  min-width: 0;
+  width: 100%;
+}
+.visual-fallback {
+  background: radial-gradient(ellipse at center, #520c44, #11051e 65%);
+}
+.visual-fallback-orb {
+  position: absolute;
+  inset: 20%;
+  border-radius: 50%;
+  background: conic-gradient(from 20deg, #ff57be, #410a67, #b7f4ff, #fa8dd1, #440a67, #ff57be);
+  box-shadow:
+    inset -20px -25px 50px #200024,
+    0 0 70px #f04aae60;
+}
+#admin-overview,
+#comment-management,
+#content-editor-title,
+#ai-settings-title,
+#legacy-data {
+  scroll-margin-top: 7rem;
+}
+.ambient-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  --touch-x: 50%;
+  --touch-y: 50%;
+}
+.ambient-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(260px circle at var(--touch-x) var(--touch-y), #f9a8d455, transparent 70%),
+    linear-gradient(125deg, #ffffff80, #fff1f8);
+}
+.ambient-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 240px;
+  height: 240px;
+  right: -120px;
+  top: -120px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 30px #fbcfe825,
+    0 0 0 60px #fbcfe820,
+    0 0 0 100px #fbcfe812;
+  pointer-events: none;
+}
+@keyframes whisper-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+.whisper-reveal {
+  animation: whisper-in 0.35s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .whisper-reveal {
+    animation: none;
+  }
+}
+.light-surface .btn-mecha {
+  background: #ffffff;
+  color: var(--foreground);
+  border-color: var(--border);
+}
+.light-surface .btn-mecha:hover {
+  background: #fce7f3;
+  color: var(--foreground);
+}
+.light-surface .btn-mecha.primary {
+  background: linear-gradient(120deg, #be185d, #a21caf);
+  color: #ffffff;
+}
+.light-surface .btn-mecha.primary:hover {
+  color: #ffffff;
+}

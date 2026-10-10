@@ -118,6 +118,10 @@ for (const file of [
   "AISettings.tsx",
   "ModelViewer.tsx",
   "ContentEditor.tsx",
+  "Comments.tsx",
+  "CommentManager.tsx",
+  "AdminOverview.tsx",
+  "VisualStage.tsx",
 ])
   collectTs(
     "src/components/" + file,

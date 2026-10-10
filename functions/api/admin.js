@@ -1,3 +1,4 @@
+import { handleCommentsAdmin } from "./_comments.js";
 import { handleContent } from "./_content.js";
 import { handleConfig } from "./_config.js";
 import { json, readObject } from "./_http.js";
@@ -23,6 +24,22 @@ async function handle({ request, env }) {
   if (denied) return denied;
   if (!env.BOARD) return json({ error: "KV not bound" }, 503);
   const dataset = new URL(request.url).searchParams.get("dataset");
+  if (dataset === "comments") return handleCommentsAdmin(request, env);
+  if (dataset === "overview") {
+    if (request.method !== "GET") return json({ error: "method not allowed" }, 405);
+    const counts = {};
+    for (const [name, key] of Object.entries(DATASETS)) {
+      const data = JSON.parse((await env.BOARD.get(key)) || (name === "rate" ? "{}" : "[]"));
+      counts[name] = Array.isArray(data) ? data.length : Object.keys(data).length;
+    }
+    return json({
+      counts,
+      checkedAt: new Date().toISOString(),
+      storage: "Cloudflare KV",
+      aiKeyConfigured: Boolean(env.ZHIPU_API_KEY),
+      encryptionConfigured: Boolean(env.ADMIN_ENCRYPTION_KEY),
+    });
+  }
   if (dataset === "content") return handleContent(request, env);
   if (dataset === "ai") return handleConfig(request, env);
   if (!Object.hasOwn(DATASETS, dataset)) return json({ error: "invalid dataset" }, 400);
@@ -39,6 +56,7 @@ async function handle({ request, env }) {
       ? Object.entries(value).map(([id, data]) => ({ id, data }))
       : await Promise.all(value.map(async (data) => ({ id: await recordId(data), data })));
   if (request.method === "GET") return json({ dataset, records });
+  if (request.method !== "DELETE") return json({ error: "method not allowed" }, 405);
   const body = await readObject(request).catch(() => ({}));
   if (typeof body.id !== "string" || !records.some((record) => record.id === body.id))
     return json({ error: "record not found or changed" }, 409);

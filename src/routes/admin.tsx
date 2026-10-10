@@ -1,3 +1,5 @@
+import { AdminOverview } from "@/components/AdminOverview";
+import { CommentManager } from "@/components/CommentManager";
 import { usePageContent } from "@/components/SiteContent";
 import { ContentEditor } from "@/components/ContentEditor";
 import { AISettings } from "@/components/AISettings";
@@ -77,11 +79,26 @@ function Admin() {
     setMessage("已清除当前页面的管理令牌与内容。");
   }
   return (
-    <main className="mx-auto min-h-screen max-w-5xl px-6 pb-24 pt-32">
-      <h1 className="font-display text-3xl font-bold text-gradient">内容管理</h1>
-      <p className="mt-3 text-muted-foreground">
-        管理留言、帖子、聊天室与评分。首次使用需要部署 Cloudflare API 并配置 ADMIN_TOKEN。
-      </p>
+    <main className="mx-auto min-h-screen max-w-6xl px-6 pb-24 pt-32">
+      <h1 className="font-display text-3xl font-bold text-gradient">网站管理</h1>
+      <p className="mt-3 text-muted-foreground">文案、评论、AI 配置与互动数据。</p>
+      <nav aria-label="后台功能" className="mt-6 flex flex-wrap gap-2 text-sm">
+        {[
+          ["admin-overview", "概览"],
+          ["comment-management", "评论"],
+          ["content-editor-title", "全站文案"],
+          ["ai-settings-title", "AI 配置"],
+          ["legacy-data", "互动数据"],
+        ].map(([id, label]) => (
+          <a
+            key={id}
+            href={"#" + id}
+            className="rounded-full border border-border bg-card px-4 py-2 hover:border-primary"
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
       <form
         className="mt-8 grid gap-4 sm:grid-cols-2"
         onSubmit={(event) => {
@@ -155,8 +172,13 @@ function Admin() {
       <p role="status" className="my-6 text-sm text-muted-foreground">
         {message}
       </p>
+      <AdminOverview key={"overview:" + token} token={token} apiURL={API_URL} />
+      <CommentManager key={"comments:" + token} token={token} apiURL={API_URL} />
       <ContentEditor key={"content:" + token} token={token} apiURL={API_URL} />
       <AISettings key={token} token={token} apiURL={API_URL} />
+      <h2 id="legacy-data" className="mb-4 mt-10 text-xl font-bold">
+        互动数据
+      </h2>
       <ul className="space-y-4">
         {loaded &&
           records.map((record) => (

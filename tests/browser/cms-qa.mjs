@@ -9,6 +9,10 @@ import {
   onRequestPost as adminPost,
   onRequestDelete as adminDelete,
 } from "../../functions/api/admin.js";
+import {
+  onRequestGet as commentsGet,
+  onRequestPost as commentsPost,
+} from "../../functions/api/comments.js";
 import { onRequestGet as contentGet } from "../../functions/api/content.js";
 const store = new Map();
 const meta = new Map();
@@ -46,6 +50,8 @@ const server = createServer(async (req, res) => {
       });
       let response;
       if (url.pathname === "/api/content") response = await contentGet({ request, env });
+      else if (url.pathname === "/api/comments")
+        response = await (req.method === "POST" ? commentsPost : commentsGet)({ request, env });
       else if (url.pathname === "/api/admin")
         response = await (
           req.method === "POST" ? adminPost : req.method === "DELETE" ? adminDelete : adminGet
@@ -84,7 +90,7 @@ await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
 const browser = await chromium.launch({
   executablePath: process.env.CHROMIUM_PATH || "/usr/bin/chromium",
   headless: true,
-  args: ["--no-sandbox", "--disable-dev-shm-usage"],
+  args: ["--no-sandbox", "--disable-dev-shm-usage", "--enable-unsafe-swiftshader"],
 });
 const context = await browser.newContext({
   viewport: { width: 1440, height: 1000 },
@@ -128,6 +134,59 @@ try {
   await page.getByText("文案已发布。KV 传播可能需要稍等片刻。", { exact: true }).waitFor();
   assert.equal(JSON.parse(store.get("public:site-content:v1")).overrides["调情专区"], "测试专区");
   await page.getByRole("button", { name: "导出草稿 / 备份", exact: true }).isEnabled();
+  console.log("QA: comments and moderation");
+  await page.goto(base + "/Chanray/works/", { waitUntil: "networkidle" });
+  await page.getByLabel("昵称", { exact: true }).fill("体验访客");
+  await page.getByLabel("评论内容", { exact: true }).fill("<b>作品体验</b>");
+  await page.getByRole("button", { name: "提交评论", exact: true }).click();
+  await page.getByText("评论已提交，审核后显示。", { exact: true }).waitFor();
+  assert.equal(await page.locator("#page-comments li").count(), 0);
+  await page.goto(base + "/Chanray/admin/", { waitUntil: "networkidle" });
+  await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
+  await page.getByRole("button", { name: "刷新概览", exact: true }).click();
+  await page.getByText("概览已更新。", { exact: true }).waitFor();
+  assert.equal(
+    await page.evaluate(() =>
+      getComputedStyle(document.querySelector("main")).getPropertyValue("--background").trim(),
+    ),
+    "#fff8fb",
+  );
+  await page.getByRole("button", { name: "读取评论", exact: true }).click();
+  const commentRow = page
+    .locator("#comment-management article")
+    .filter({ hasText: "<b>作品体验</b>" });
+  await commentRow.getByLabel("站长回复", { exact: true }).fill("谢谢留言。");
+  await commentRow.getByLabel("置顶评论", { exact: true }).check();
+  await commentRow.getByRole("button", { name: "公开并保存回复", exact: true }).click();
+  await page.getByText("评论已更新，旧版本已备份。", { exact: true }).waitFor();
+  await page.goto(base + "/Chanray/works/", { waitUntil: "networkidle" });
+  await page.locator("#page-comments").getByText("<b>作品体验</b>", { exact: true }).waitFor();
+  assert.equal(await page.locator("#page-comments li b").count(), 0);
+  assert.ok(
+    await page.locator("#page-comments").getByText("谢谢留言。", { exact: true }).isVisible(),
+  );
+  await page.goto(base + "/Chanray/gallery/", { waitUntil: "networkidle" });
+  assert.equal(await page.locator("#page-comments li").count(), 0);
+  await page.goto(base + "/Chanray/admin/", { waitUntil: "networkidle" });
+  await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
+  await page.getByRole("button", { name: "读取评论", exact: true }).click();
+  await commentRow.getByRole("button", { name: "移入回收站", exact: true }).click();
+  await commentRow.getByRole("button", { name: "恢复为待审核", exact: true }).waitFor();
+  await commentRow.getByRole("button", { name: "恢复为待审核", exact: true }).click();
+  await commentRow.getByRole("button", { name: "移入回收站", exact: true }).waitFor();
+  await page.goto(base + "/Chanray/", { waitUntil: "networkidle" });
+  const visual = page.locator(".visual-stage canvas");
+  assert.equal(await visual.evaluate((el) => getComputedStyle(el).opacity), "1");
+  const before = await visual.screenshot();
+  await page.getByRole("button", { name: "切换光球颜色", exact: true }).click();
+  const after = await visual.screenshot();
+  assert.equal(before.equals(after), false);
+  await page.getByRole("button", { name: "暂停", exact: true }).click();
+  assert.equal(
+    await page.getByRole("button", { name: "播放", exact: true }).getAttribute("aria-pressed"),
+    "true",
+  );
+
   // Test normal public pages using real local API handlers and the published fixture.
   console.log("QA: responsive route checks");
   for (const width of [390, 768, 1440]) {
@@ -287,6 +346,26 @@ try {
   await page.screenshot({ path: path.join(screenshotDir, "07-cms-mobile.png") });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.screenshot({ path: path.join(screenshotDir, "08-cms-desktop.png") });
+  await page.goto(base + "/Chanray/admin/", { waitUntil: "networkidle" });
+  await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
+  await page.getByRole("button", { name: "刷新概览", exact: true }).click();
+  await page.getByText("概览已更新。", { exact: true }).waitFor();
+  await page.getByRole("button", { name: "读取评论", exact: true }).click();
+  await page.getByText("评论已读取。", { exact: true }).waitFor();
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: path.join(screenshotDir, "09-admin-light-desktop.png") });
+  await page.setViewportSize({ width: 390, height: 950 });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: path.join(screenshotDir, "10-admin-light-mobile.png") });
+  await page.locator("#comment-management").scrollIntoViewIfNeeded();
+  await page.screenshot({ path: path.join(screenshotDir, "11-comments-admin-mobile.png") });
+  await page.goto(base + "/Chanray/", { waitUntil: "networkidle" });
+  await page.locator(".visual-stage").scrollIntoViewIfNeeded();
+  await page.screenshot({ path: path.join(screenshotDir, "12-visual-mobile.png") });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto(base + "/Chanray/", { waitUntil: "networkidle" });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: path.join(screenshotDir, "13-visual-desktop.png") });
   assert.deepEqual(errors, []);
   console.log(
     JSON.stringify({
@@ -301,6 +380,9 @@ try {
         "metadata",
         "legacy pages",
         "restore",
+        "comments moderation and recycle",
+        "WebGL palette and pause",
+        "light admin overview",
       ],
       browserErrors: errors,
     }),
