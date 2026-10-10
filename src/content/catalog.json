@@ -3558,7 +3558,7 @@
     ]
   },
   {
-    "original": "后台 Key 管理需要服务端设置 ADMIN_ENCRYPTION_KEY；也可直接使用 ZHIPU_API_KEY 服务端秘密。",
+    "original": "后台 Key 管理需要服务端设置 ADMIN_ENCRYPTION_KEY。",
     "groups": [
       "通用组件"
     ],
@@ -3799,6 +3799,15 @@
     ],
     "sources": [
       "src/components/ContentEditor.tsx"
+    ]
+  },
+  {
+    "original": "模型名称",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
     ]
   },
   {
@@ -4323,7 +4332,7 @@
     ]
   },
   {
-    "original": "无法读取配置，请检查令牌与后端部署。",
+    "original": "无法读取配置，请检查登录状态。",
     "groups": [
       "通用组件"
     ],
@@ -4553,15 +4562,6 @@
     ]
   },
   {
-    "original": "智谱模型名称",
-    "groups": [
-      "通用组件"
-    ],
-    "sources": [
-      "src/components/AISettings.tsx"
-    ]
-  },
-  {
     "original": "置顶",
     "groups": [
       "通用组件"
@@ -4668,6 +4668,15 @@
     ],
     "sources": [
       "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "API 地址",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AISettings.tsx"
     ]
   },
   {

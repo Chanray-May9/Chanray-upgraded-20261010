@@ -28,7 +28,7 @@ async function handle({ request, env }) {
       counts,
       checkedAt: new Date().toISOString(),
       storage: "Cloudflare KV",
-      aiKeyConfigured: Boolean(env.ZHIPU_API_KEY),
+      aiKeyConfigured: Boolean(env.DEEPSEEK_API_KEY || env.AI_API_KEY || env.ZHIPU_API_KEY),
       encryptionConfigured: Boolean(env.ADMIN_ENCRYPTION_KEY),
     });
   }

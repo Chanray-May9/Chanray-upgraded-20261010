@@ -6,7 +6,7 @@
 
 访问 `https://chanray-upgraded-20261010.pages.dev/`，调情专区 `/afterdark/`，后台 `/admin/`。Cloudflare Pages 运行静态页面和根目录 `functions/api`，使用新建的独立 `BOARD` KV。原站点的数据没有复制到新 KV。
 
-`ADMIN_PASSWORD`、`ADMIN_TOKEN` 和 `ADMIN_ENCRYPTION_KEY` 通过 Pages secrets 保存，源码和前端没有密钥。后台使用密码登录，HttpOnly Cookie 保持七天会话；退出后浏览器 Cookie 清除，并在 KV 中记录会话注销。管理令牌作为服务端签名秘密，加密密钥用于后台保存 AI Key。AI 仍需要管理员在后台配置智谱 Key 和模型，或设置服务端秘密 `ZHIPU_API_KEY`。在没有 Key 时，AI 对话不会接通；本轮没有调用付费 AI。登录尝试由 KV 提供基础抑制，受最终一致性影响，不能代替平台限流。
+`ADMIN_PASSWORD`、`ADMIN_TOKEN` 和 `ADMIN_ENCRYPTION_KEY` 通过 Pages secrets 保存，源码和前端没有密钥。后台使用密码登录，HttpOnly Cookie 保持七天会话；退出后浏览器 Cookie 清除，并在 KV 中记录会话注销。管理令牌作为服务端签名秘密，加密密钥用于后台保存 AI Key。AI 仍需要管理员在后台配置API 地址、模型和 Key，或设置服务端秘密 `DEEPSEEK_API_KEY`。在没有 Key 时，AI 对话不会接通；本轮没有调用付费 AI。登录尝试由 KV 提供基础抑制，受最终一致性影响，不能代替平台限流。
 
 ## 更新完整网站
 

@@ -46,7 +46,7 @@ test("chat rejects system-role injection and malformed JSON structures", async (
     { messages: [] },
   ])
     assert.equal(
-      (await chat({ request: request(body), env: { ZHIPU_API_KEY: "test" } })).status,
+      (await chat({ request: request(body), env: { DEEPSEEK_API_KEY: "test" } })).status,
       400,
     );
 });
@@ -63,14 +63,14 @@ test("upstream retries transient failures but stops on authentication failures",
         ? new Response("", { status: 503 })
         : Response.json({ choices: [{ message: { content: " hi " } }] });
     };
-    assert.equal(await askAI({ ZHIPU_API_KEY: "test" }, []), "hi");
+    assert.equal(await askAI({ DEEPSEEK_API_KEY: "test" }, []), "hi");
     assert.equal(calls, 2);
     calls = 0;
     globalThis.fetch = async () => {
       calls++;
       return new Response("", { status: 401 });
     };
-    assert.equal(await askAI({ ZHIPU_API_KEY: "test" }, []), null);
+    assert.equal(await askAI({ DEEPSEEK_API_KEY: "test" }, []), null);
     assert.equal(calls, 1);
   } finally {
     globalThis.fetch = original;
@@ -173,7 +173,7 @@ test("secret writes require encryption setup, and public chat respects disabled 
       throw new Error("should not call upstream");
     };
     assert.equal(
-      await askAI({ ...env, ZHIPU_API_KEY: "test" }, [{ role: "user", content: "hello" }], {
+      await askAI({ ...env, DEEPSEEK_API_KEY: "test" }, [{ role: "user", content: "hello" }], {
         flirt: true,
       }),
       null,
@@ -189,7 +189,7 @@ test("removing stored key uses environment fallback and preserves prompt configu
   const env = {
     ADMIN_TOKEN: "a".repeat(32),
     ADMIN_ENCRYPTION_KEY: "ab".repeat(32),
-    ZHIPU_API_KEY: "fallback",
+    DEEPSEEK_API_KEY: "fallback",
     BOARD: kv(),
   };
   const post = (body) =>

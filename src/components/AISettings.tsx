@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 type Config = {
+  apiURL: string;
   prompt: string;
   model: string;
   enabled: boolean;
@@ -28,6 +29,7 @@ export function AISettings({ token, apiURL }: { token: string; apiURL: string })
           headers,
           body: JSON.stringify({
             prompt: config.prompt,
+            apiURL: config.apiURL,
             model: config.model,
             enabled: config.enabled,
             apiKey: key,
@@ -38,7 +40,7 @@ export function AISettings({ token, apiURL }: { token: string; apiURL: string })
         if (!response.ok) throw new Error("保存失败，请检查权限、输入或服务端加密配置。");
       }
       const response = await fetch(url, { headers, signal: AbortSignal.timeout(15_000) });
-      if (!response.ok) throw new Error("无法读取配置，请检查令牌与后端部署。");
+      if (!response.ok) throw new Error("无法读取配置，请检查登录状态。");
       const body = await response.json();
       if (typeof body.prompt !== "string" || typeof body.model !== "string")
         throw new Error("接口返回无效数据。");
@@ -91,10 +93,23 @@ export function AISettings({ token, apiURL }: { token: string; apiURL: string })
             />
           </label>
           <label className="grid gap-2">
-            智谱模型名称
+            API 地址
             <input
               className="rounded border border-border bg-background p-3"
-              maxLength={80}
+              type="url"
+              maxLength={500}
+              required
+              disabled={busy}
+              value={config.apiURL}
+              placeholder="https://api.deepseek.com/chat/completions"
+              onChange={(event) => setConfig({ ...config, apiURL: event.target.value })}
+            />
+          </label>
+          <label className="grid gap-2">
+            模型名称
+            <input
+              className="rounded border border-border bg-background p-3"
+              maxLength={120}
               required
               disabled={busy}
               value={config.model}
@@ -128,8 +143,7 @@ export function AISettings({ token, apiURL }: { token: string; apiURL: string })
           </label>
           {!config.canStoreKey && (
             <p className="text-sm text-muted-foreground">
-              后台 Key 管理需要服务端设置 ADMIN_ENCRYPTION_KEY；也可直接使用 ZHIPU_API_KEY
-              服务端秘密。
+              后台 Key 管理需要服务端设置 ADMIN_ENCRYPTION_KEY。
             </p>
           )}
           <label className="flex gap-2">

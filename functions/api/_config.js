@@ -1,6 +1,25 @@
 import { readContent } from "./_content.js";
 import { json, ok, readObject } from "./_http.js";
 export const CONFIG_KEY = "private:ai-config:v1";
+export const DEFAULT_API_URL = "https://api.deepseek.com/chat/completions";
+export const DEFAULT_MODEL = "deepseek-flash";
+export function validateAPIURL(value) {
+  if (typeof value !== "string" || value.length > 500) throw new Error("invalid API URL");
+  const url = new URL(value);
+  const host = url.hostname.toLowerCase();
+  if (url.protocol !== "https:" || url.username || url.password || url.search || url.hash ||
+    (url.port && url.port !== "443") || !host.includes(".") ||
+    /(^[\d.]+$|:|\.localhost\.?$|\.local\.?$|\.internal\.?$|\.$)/.test(host)) throw new Error("invalid API URL");
+  return url.href;
+}
+function apiURL(config, env) {
+  return validateAPIURL(config.apiURL || env.AI_API_URL || DEFAULT_API_URL);
+}
+function environmentKey(url, env) {
+  if (env.AI_API_KEY) return env.AI_API_KEY;
+  const host = new URL(url).hostname;
+  return host === "api.deepseek.com" ? env.DEEPSEEK_API_KEY : host === "open.bigmodel.cn" ? env.ZHIPU_API_KEY : undefined;
+}
 export const DEFAULT_PROMPT =
   "你是虚构的聊天角色{{character}}，称呼对方为{{address}}。用自然、简短的中文回答，不超过120字。不要用广告口吻、网络套话或“接招”“不绕弯子”等表述。不要扮演真实人物。";
 export const FLIRT_BOUNDARY =
@@ -25,7 +44,8 @@ export async function readConfig(env) {
 }
 export async function resolveAIConfig(env) {
   const config = await readConfig(env);
-  let apiKey = env.ZHIPU_API_KEY;
+  const endpoint = apiURL(config, env);
+  let apiKey = environmentKey(endpoint, env);
   if (config.secret) {
     const plaintext = await crypto.subtle.decrypt(
       { name: "AES-GCM", iv: fromHex(config.secret.iv) },
@@ -40,7 +60,8 @@ export async function resolveAIConfig(env) {
     .replaceAll("{{address}}", site.overrides["主人"] ?? "主人");
   return {
     apiKey,
-    model: config.model || "glm-4.7-flash",
+    apiURL: endpoint,
+    model: config.model || env.AI_MODEL || DEFAULT_MODEL,
     prompt,
     enabled: config.enabled !== false,
   };
@@ -50,24 +71,29 @@ export async function handleConfig(request, env) {
   if (request.method === "GET")
     return json({
       prompt: previous.prompt || DEFAULT_PROMPT,
-      model: previous.model || "glm-4.7-flash",
+      apiURL: apiURL(previous, env),
+      model: previous.model || env.AI_MODEL || DEFAULT_MODEL,
       enabled: previous.enabled !== false,
-      hasKey: Boolean(previous.secret || env.ZHIPU_API_KEY),
+      hasKey: Boolean(previous.secret || environmentKey(apiURL(previous, env), env)),
       storedKey: Boolean(previous.secret),
       canStoreKey: /^[0-9a-f]{64}$/i.test(env.ADMIN_ENCRYPTION_KEY || ""),
     });
   if (request.method !== "POST") return json({ error: "method not allowed" }, 405);
   const body = await readObject(request).catch(() => ({}));
+  let endpoint;
+  try { endpoint = validateAPIURL(body.apiURL ?? apiURL(previous, env)); }
+  catch { return json({ error: "invalid API URL" }, 400); }
   if (
     !ok(body.prompt, 2000) ||
-    !ok(body.model, 80) ||
-    !/^[a-zA-Z0-9._-]+$/.test(body.model) ||
+    !ok(body.model, 120) ||
+    !/^[a-zA-Z0-9][a-zA-Z0-9._:/-]*$/.test(body.model) ||
     typeof body.enabled !== "boolean" ||
     (body.apiKey !== undefined && (typeof body.apiKey !== "string" || body.apiKey.length > 512)) ||
     (body.removeKey !== undefined && typeof body.removeKey !== "boolean")
   )
     return json({ error: "invalid configuration" }, 400);
   const next = {
+    apiURL: endpoint,
     prompt: body.prompt.trim(),
     model: body.model,
     enabled: body.enabled,
@@ -89,5 +115,5 @@ export async function handleConfig(request, env) {
     next.secret = { iv: bytesToHex(iv), ciphertext: bytesToHex(ciphertext) };
   }
   await env.BOARD.put(CONFIG_KEY, JSON.stringify(next));
-  return json({ saved: true, hasKey: Boolean(next.secret || env.ZHIPU_API_KEY) });
+  return json({ saved: true, hasKey: Boolean(next.secret || environmentKey(endpoint, env)) });
 }
