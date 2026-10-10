@@ -23,7 +23,7 @@ export function CommentManager({ token, apiURL }: { token: string; apiURL: strin
     if (next) url.searchParams.set("cursor", next);
     const r = await fetch(url, {
       method: body ? "POST" : "GET",
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       ...(body ? { body: JSON.stringify(body) } : {}),
       signal: AbortSignal.timeout(15000),
     });

@@ -17,14 +17,14 @@ export function AdminOverview({ token, apiURL }: { token: string; apiURL: string
       const url = new URL(apiURL, location.origin);
       url.searchParams.set("dataset", "overview");
       const r = await fetch(url, {
-        headers: { Authorization: `Bearer ${token}` },
+        credentials: "same-origin",
         signal: AbortSignal.timeout(15000),
       });
       if (!r.ok) throw Error();
       setData(await r.json());
       setNotice("概览已更新。");
     } catch {
-      setNotice("读取失败，请检查令牌与后端。");
+      setNotice("读取失败，请检查登录状态。");
     } finally {
       setBusy(false);
     }

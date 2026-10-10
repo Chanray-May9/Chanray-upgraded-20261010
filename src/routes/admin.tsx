@@ -4,7 +4,7 @@ import { usePageContent } from "@/components/SiteContent";
 import { ContentEditor } from "@/components/ContentEditor";
 import { AISettings } from "@/components/AISettings";
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type RecordItem = { id: string; data: unknown };
 const DATASETS = { board: "留言板", forum: "论坛帖子", room: "聊天室", rate: "照片评分" };
@@ -18,13 +18,64 @@ export const Route = createFileRoute("/admin")({
 });
 function Admin() {
   usePageContent();
-  const [token, setToken] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [password, setPassword] = useState("");
+  // Child controls receive only a session-ready flag, never a credential.
+  const token = loggedIn ? "session" : "";
   const [dataset, setDataset] = useState<keyof typeof DATASETS>("board");
   const [records, setRecords] = useState<RecordItem[]>([]);
-  const [message, setMessage] = useState("输入管理令牌后读取内容。令牌仅在当前页面内存中保存。");
+  const [message, setMessage] = useState("输入管理密码登录。");
   const [busy, setBusy] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const sequence = useRef(0);
+  const sessionURL = API_URL.replace(/\/admin$/, "/admin-session");
+  useEffect(() => {
+    const controller = new AbortController();
+    const initialSequence = sequence.current;
+    fetch(sessionURL, {
+      credentials: "same-origin",
+      signal: AbortSignal.any([controller.signal, AbortSignal.timeout(15_000)]),
+    })
+      .then(async (response) => {
+        const session = await response.json();
+        if (response.ok && session.authenticated && initialSequence === sequence.current) {
+          setLoggedIn(true);
+          setMessage("已登录，可以管理网站。");
+        }
+      })
+      .catch(() => {});
+    return () => controller.abort();
+  }, [sessionURL]);
+  async function login() {
+    if (busy || !password) return;
+    sequence.current++;
+    setBusy(true);
+    try {
+      const response = await fetch(sessionURL, {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+        signal: AbortSignal.timeout(15_000),
+      });
+      await response.json();
+      if (!response.ok)
+        throw new Error(
+          response.status === 401
+            ? "密码不正确。"
+            : response.status === 429
+              ? "尝试次数较多，请稍后再试。"
+              : "登录失败，请稍后再试。",
+        );
+      setPassword("");
+      setLoggedIn(true);
+      setMessage("已登录，可以管理网站。");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "登录失败。");
+    } finally {
+      setBusy(false);
+    }
+  }
   async function run(id?: string) {
     if (busy || !token.trim()) return;
     if (id && !window.confirm("确认删除这条记录？删除后无法通过代码回退恢复数据。")) return;
@@ -34,7 +85,7 @@ function Admin() {
     try {
       const url = new URL(API_URL, window.location.origin);
       url.searchParams.set("dataset", dataset);
-      const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
+      const headers = { "Content-Type": "application/json" };
       if (id) {
         const result = await fetch(url, {
           method: "DELETE",
@@ -50,9 +101,10 @@ function Admin() {
           );
       }
       const response = await fetch(url, { headers, signal: AbortSignal.timeout(15_000) });
+      if (response.status === 401) setLoggedIn(false);
       if (!response.ok)
         throw new Error(
-          response.status === 401 ? "管理令牌无效。" : "后端不可用，请检查 Cloudflare 部署和绑定。",
+          response.status === 401 ? "登录已过期，请重新登录。" : "后端不可用，请稍后再试。",
         );
       const body = await response.json();
       if (!Array.isArray(body.records)) throw new Error("接口返回无效数据。");
@@ -70,13 +122,29 @@ function Admin() {
       if (current === sequence.current) setBusy(false);
     }
   }
-  function clear() {
+  async function clear() {
+    sequence.current++;
+    setBusy(true);
+    try {
+      const response = await fetch(sessionURL, {
+        method: "DELETE",
+        credentials: "same-origin",
+        signal: AbortSignal.timeout(15_000),
+      });
+      await response.json();
+      if (!response.ok) throw new Error();
+    } catch {
+      setBusy(false);
+      setMessage("退出失败，请重试。");
+      return;
+    }
     sequence.current++;
     setBusy(false);
-    setToken("");
+    setLoggedIn(false);
+    setPassword("");
     setRecords([]);
     setLoaded(false);
-    setMessage("已清除当前页面的管理令牌与内容。");
+    setMessage("已退出管理。");
   }
   return (
     <main className="mx-auto min-h-screen max-w-6xl px-6 pb-24 pt-32">
@@ -103,103 +171,120 @@ function Admin() {
         className="mt-8 grid gap-4 sm:grid-cols-2"
         onSubmit={(event) => {
           event.preventDefault();
-          void run();
+          void (loggedIn ? run() : login());
         }}
       >
-        <label className="grid gap-2">
-          管理令牌
-          <input
-            className="rounded border border-border bg-card p-3"
-            type="password"
-            autoComplete="off"
-            required
-            value={token}
-            disabled={busy}
-            onChange={(event) => {
-              setToken(event.target.value);
-              setRecords([]);
-              setLoaded(false);
-            }}
-          />
-        </label>
-        <label className="grid gap-2">
-          数据分类
-          <select
-            className="rounded border border-border bg-card p-3"
-            value={dataset}
-            disabled={busy}
-            onChange={(event) => {
-              setDataset(event.target.value as keyof typeof DATASETS);
-              setRecords([]);
-              setLoaded(false);
-            }}
-          >
-            {Object.entries(DATASETS).map(([key, name]) => (
-              <option key={key} value={key}>
-                {name}
-              </option>
-            ))}
-          </select>
-        </label>
+        {!loggedIn && (
+          <label className="grid gap-2">
+            管理密码
+            <input
+              className="rounded border border-border bg-card p-3"
+              type="password"
+              autoComplete="current-password"
+              required
+              value={password}
+              disabled={busy}
+              onChange={(event) => {
+                setPassword(event.target.value);
+                setRecords([]);
+                setLoaded(false);
+              }}
+            />
+          </label>
+        )}
+        {loggedIn && (
+          <label className="grid gap-2">
+            数据分类
+            <select
+              className="rounded border border-border bg-card p-3"
+              value={dataset}
+              disabled={busy}
+              onChange={(event) => {
+                setDataset(event.target.value as keyof typeof DATASETS);
+                setRecords([]);
+                setLoaded(false);
+              }}
+            >
+              {Object.entries(DATASETS).map(([key, name]) => (
+                <option key={key} value={key}>
+                  {name}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
         <div className="flex flex-wrap gap-3 sm:col-span-2">
-          <button className="btn-mecha" disabled={busy || !token.trim()} type="submit">
-            {busy ? "处理中…" : "读取 / 刷新"}
+          <button className="btn-mecha" disabled={busy || (!loggedIn && !password)} type="submit">
+            {busy ? "处理中…" : loggedIn ? "读取 / 刷新" : "登录"}
           </button>
-          <button
-            className="btn-mecha"
-            type="button"
-            disabled={!loaded || busy}
-            onClick={() => {
-              const link = document.createElement("a");
-              const url = URL.createObjectURL(
-                new Blob([JSON.stringify({ dataset, records }, null, 2)], {
-                  type: "application/json",
-                }),
-              );
-              link.href = url;
-              link.download = `chanray-${dataset}-${new Date().toISOString().slice(0, 10)}.json`;
-              link.click();
-              window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-            }}
-          >
-            导出当前分类备份
-          </button>
-          <button className="btn-mecha" type="button" disabled={busy} onClick={clear}>
-            退出管理
-          </button>
+          {loggedIn && (
+            <button
+              className="btn-mecha"
+              type="button"
+              disabled={!loaded || busy}
+              onClick={() => {
+                const link = document.createElement("a");
+                const url = URL.createObjectURL(
+                  new Blob([JSON.stringify({ dataset, records }, null, 2)], {
+                    type: "application/json",
+                  }),
+                );
+                link.href = url;
+                link.download = `chanray-${dataset}-${new Date().toISOString().slice(0, 10)}.json`;
+                link.click();
+                window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+              }}
+            >
+              导出当前分类备份
+            </button>
+          )}
+          {loggedIn && (
+            <button
+              className="btn-mecha"
+              type="button"
+              disabled={busy}
+              onClick={() => void clear()}
+            >
+              退出管理
+            </button>
+          )}
         </div>
       </form>
       <p role="status" className="my-6 text-sm text-muted-foreground">
         {message}
       </p>
-      <AdminOverview key={"overview:" + token} token={token} apiURL={API_URL} />
-      <CommentManager key={"comments:" + token} token={token} apiURL={API_URL} />
-      <ContentEditor key={"content:" + token} token={token} apiURL={API_URL} />
-      <AISettings key={token} token={token} apiURL={API_URL} />
-      <h2 id="legacy-data" className="mb-4 mt-10 text-xl font-bold">
-        互动数据
-      </h2>
-      <ul className="space-y-4">
-        {loaded &&
-          records.map((record) => (
-            <li key={record.id} className="rounded border border-border bg-card p-4">
-              <pre
-                data-user-content
-                className="max-h-72 overflow-auto whitespace-pre-wrap break-words text-sm"
-              >
-                {JSON.stringify(record.data, null, 2)}
-              </pre>
-              <button
-                className="btn-mecha mt-3"
-                disabled={busy}
-                onClick={() => void run(record.id)}
-              >
-                删除记录
-              </button>
-            </li>
-          ))}
-      </ul>
-      {loaded && records.length === 0 && <p>当前分类暂无记录。</p>}
+      {loggedIn && (
+        <>
+          <AdminOverview key={"overview:" + token} token={token} apiURL={API_URL} />
+          <CommentManager key={"comments:" + token} token={token} apiURL={API_URL} />
+          <ContentEditor key={"content:" + token} token={token} apiURL={API_URL} />
+          <AISettings key={token} token={token} apiURL={API_URL} />
+          <h2 id="legacy-data" className="mb-4 mt-10 text-xl font-bold">
+            互动数据
+          </h2>
+          <ul className="space-y-4">
+            {loaded &&
+              records.map((record) => (
+                <li key={record.id} className="rounded border border-border bg-card p-4">
+                  <pre
+                    data-user-content
+                    className="max-h-72 overflow-auto whitespace-pre-wrap break-words text-sm"
+                  >
+                    {JSON.stringify(record.data, null, 2)}
+                  </pre>
+                  <button
+                    className="btn-mecha mt-3"
+                    disabled={busy}
+                    onClick={() => void run(record.id)}
+                  >
+                    删除记录
+                  </button>
+                </li>
+              ))}
+          </ul>
+          {loaded && records.length === 0 && <p>当前分类暂无记录。</p>}
+        </>
+      )}
     </main>
   );
 }

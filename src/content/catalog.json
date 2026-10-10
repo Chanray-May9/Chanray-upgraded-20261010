@@ -141,6 +141,38 @@
     ]
   },
   {
+    "original": "description",
+    "groups": [
+      "调情专区",
+      "联系",
+      "相册",
+      "首页",
+      "时间线",
+      "3D",
+      "作品",
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx",
+      "src/routes/contact.tsx",
+      "src/routes/gallery.tsx",
+      "src/routes/index.tsx",
+      "src/routes/log.tsx",
+      "src/routes/model.tsx",
+      "src/routes/works.tsx",
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
+    "original": "尝试次数较多，请稍后再试。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
     "original": "处理中…",
     "groups": [
       "管理后台",
@@ -170,6 +202,42 @@
     ]
   },
   {
+    "original": "登录",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "登录失败，请稍后再试。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "登录失败。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "登录已过期，请重新登录。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
     "original": "读取 / 刷新",
     "groups": [
       "管理后台"
@@ -188,7 +256,7 @@
     ]
   },
   {
-    "original": "管理令牌",
+    "original": "管理密码",
     "groups": [
       "管理后台"
     ],
@@ -197,18 +265,7 @@
     ]
   },
   {
-    "original": "管理令牌无效。",
-    "groups": [
-      "管理后台",
-      "通用组件"
-    ],
-    "sources": [
-      "src/routes/admin.tsx",
-      "src/components/ContentEditor.tsx"
-    ]
-  },
-  {
-    "original": "后端不可用，请检查 Cloudflare 部署和绑定。",
+    "original": "后端不可用，请稍后再试。",
     "groups": [
       "管理后台"
     ],
@@ -276,6 +333,15 @@
   },
   {
     "original": "论坛帖子",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "密码不正确。",
     "groups": [
       "管理后台"
     ],
@@ -352,7 +418,7 @@
     ]
   },
   {
-    "original": "输入管理令牌后读取内容。令牌仅在当前页面内存中保存。",
+    "original": "输入管理密码登录。",
     "groups": [
       "管理后台"
     ],
@@ -379,6 +445,15 @@
     ]
   },
   {
+    "original": "退出失败，请重试。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
     "original": "网站管理",
     "groups": [
       "管理后台"
@@ -397,7 +472,16 @@
     ]
   },
   {
-    "original": "已清除当前页面的管理令牌与内容。",
+    "original": "已登录，可以管理网站。",
+    "groups": [
+      "管理后台"
+    ],
+    "sources": [
+      "src/routes/admin.tsx"
+    ]
+  },
+  {
+    "original": "已退出管理。",
     "groups": [
       "管理后台"
     ],
@@ -1738,6 +1822,25 @@
     ]
   },
   {
+    "original": "是锐锐呀",
+    "groups": [
+      "联系",
+      "相册",
+      "首页",
+      "时间线",
+      "作品",
+      "全站与错误页"
+    ],
+    "sources": [
+      "src/routes/contact.tsx",
+      "src/routes/gallery.tsx",
+      "src/routes/index.tsx",
+      "src/routes/log.tsx",
+      "src/routes/works.tsx",
+      "src/routes/__root.tsx"
+    ]
+  },
+  {
     "original": "通讯频段：GitHub / X / TikTok / 抖音 / 微信 / Mail。",
     "groups": [
       "联系"
@@ -2008,25 +2111,6 @@
     ]
   },
   {
-    "original": "是锐锐呀",
-    "groups": [
-      "全站与错误页",
-      "联系",
-      "相册",
-      "首页",
-      "时间线",
-      "作品"
-    ],
-    "sources": [
-      "src/routes/__root.tsx",
-      "src/routes/contact.tsx",
-      "src/routes/gallery.tsx",
-      "src/routes/index.tsx",
-      "src/routes/log.tsx",
-      "src/routes/works.tsx"
-    ]
-  },
-  {
     "original": "是锐锐呀，郭权锐的个人主页，记录学习、作品、影像与成长时间线。",
     "groups": [
       "全站与错误页"
@@ -2042,29 +2126,6 @@
     ],
     "sources": [
       "src/routes/__root.tsx"
-    ]
-  },
-  {
-    "original": "description",
-    "groups": [
-      "全站与错误页",
-      "调情专区",
-      "联系",
-      "相册",
-      "首页",
-      "时间线",
-      "3D",
-      "作品"
-    ],
-    "sources": [
-      "src/routes/__root.tsx",
-      "src/routes/afterdark.tsx",
-      "src/routes/contact.tsx",
-      "src/routes/gallery.tsx",
-      "src/routes/index.tsx",
-      "src/routes/log.tsx",
-      "src/routes/model.tsx",
-      "src/routes/works.tsx"
     ]
   },
   {
@@ -3361,7 +3422,7 @@
     ]
   },
   {
-    "original": "读取失败，请检查令牌与后端。",
+    "original": "读取失败，请检查登录状态。",
     "groups": [
       "通用组件"
     ],
@@ -3467,6 +3528,15 @@
     ],
     "sources": [
       "src/components/CommentManager.tsx"
+    ]
+  },
+  {
+    "original": "管理令牌无效。",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/ContentEditor.tsx"
     ]
   },
   {

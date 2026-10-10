@@ -2,6 +2,7 @@ import { handleCommentsAdmin } from "./_comments.js";
 import { handleContent } from "./_content.js";
 import { handleConfig } from "./_config.js";
 import { json, readObject } from "./_http.js";
+import { authorize } from "./_auth.js";
 
 const DATASETS = { board: "guestbook", forum: "forum", room: "room", rate: "rates" };
 const digest = async (value) =>
@@ -10,15 +11,6 @@ const recordId = async (value) =>
   Array.from(await digest(JSON.stringify(value)), (byte) =>
     byte.toString(16).padStart(2, "0"),
   ).join("");
-async function authorize(request, env) {
-  if (!env.ADMIN_TOKEN || env.ADMIN_TOKEN.length < 32)
-    return json({ error: "admin not configured" }, 503);
-  const token = request.headers.get("Authorization")?.match(/^Bearer (.+)$/)?.[1] ?? "";
-  const [actual, expected] = await Promise.all([digest(token), digest(env.ADMIN_TOKEN)]);
-  let difference = 0;
-  for (let i = 0; i < expected.length; i++) difference |= actual[i] ^ expected[i];
-  return difference ? json({ error: "unauthorized" }, 401) : null;
-}
 async function handle({ request, env }) {
   const denied = await authorize(request, env);
   if (denied) return denied;

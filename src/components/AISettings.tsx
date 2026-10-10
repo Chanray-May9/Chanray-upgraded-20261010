@@ -21,7 +21,7 @@ export function AISettings({ token, apiURL }: { token: string; apiURL: string })
     try {
       const url = new URL(apiURL, window.location.origin);
       url.searchParams.set("dataset", "ai");
-      const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
+      const headers = { "Content-Type": "application/json" };
       if (save && config) {
         const response = await fetch(url, {
           method: "POST",

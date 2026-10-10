@@ -28,7 +28,7 @@ GitHub Pages **不运行** `functions/api`。这些接口需要另行部署到 C
 
 ## 后端管理
 
-管理入口：GitHub Pages 为 `/Chanray-upgraded-20261010/admin`，Cloudflare 根站为 `/admin`。采用浅色界面，提供数据概览、评论管理、全站文案、AI 配置及四类互动数据读取/删除/导出。管理令牌只在页面内存保存，不写入 localStorage，也不出现在 URL。
+管理入口：GitHub Pages 为 `/Chanray-upgraded-20261010/admin`，Cloudflare 根站为 `/admin`。采用浅色界面，提供数据概览、评论管理、全站文案、AI 配置及四类互动数据读取/删除/导出。完整站点通过服务端秘密 `ADMIN_PASSWORD` 登录，使用 HttpOnly、Secure、SameSite=Strict Cookie 保持七天会话，退出会注销会话。密码和管理令牌不写入 localStorage，也不出现在 URL；管理令牌仅作为服务端会话签名秘密及兼容管理 API 使用。
 
 部署到 Cloudflare Pages 时：
 

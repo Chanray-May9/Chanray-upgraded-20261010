@@ -14,10 +14,16 @@ import {
   onRequestPost as commentsPost,
 } from "../../functions/api/comments.js";
 import { onRequestGet as contentGet } from "../../functions/api/content.js";
+import {
+  onRequestGet as sessionGet,
+  onRequestPost as sessionPost,
+  onRequestDelete as sessionDelete,
+} from "../../functions/api/admin-session.js";
 const store = new Map();
 const meta = new Map();
 const env = {
   ADMIN_TOKEN: randomUUID() + randomUUID(),
+  ADMIN_PASSWORD: randomUUID(),
   BOARD: {
     get: async (key) => store.get(key) || null,
     put: async (key, value, options) => {
@@ -49,7 +55,11 @@ const server = createServer(async (req, res) => {
         ...(body.length ? { body } : {}),
       });
       let response;
-      if (url.pathname === "/api/content") response = await contentGet({ request, env });
+      if (url.pathname === "/api/admin-session")
+        response = await (
+          req.method === "POST" ? sessionPost : req.method === "DELETE" ? sessionDelete : sessionGet
+        )({ request, env });
+      else if (url.pathname === "/api/content") response = await contentGet({ request, env });
       else if (url.pathname === "/api/comments")
         response = await (req.method === "POST" ? commentsPost : commentsGet)({ request, env });
       else if (url.pathname === "/api/admin")
@@ -61,7 +71,9 @@ const server = createServer(async (req, res) => {
       res.end(Buffer.from(await response.arrayBuffer()));
       return;
     }
-    const relative = decodeURIComponent(url.pathname.replace(/^\/Chanray-upgraded-20261010\/?/, ""));
+    const relative = decodeURIComponent(
+      url.pathname.replace(/^\/Chanray-upgraded-20261010\/?/, ""),
+    );
     let file = path.resolve(root, relative || "index.html");
     if (!file.startsWith(root + path.sep)) {
       res.writeHead(403);
@@ -98,6 +110,13 @@ const context = await browser.newContext({
   reducedMotion: "reduce",
 });
 const page = await context.newPage();
+const pendingRequests = new Set();
+page.on("request", (request) => pendingRequests.add(request.url()));
+page.on("requestfinished", (request) => pendingRequests.delete(request.url()));
+page.on("requestfailed", (request) => pendingRequests.delete(request.url()));
+// Third-party font availability must not hold local application checks open.
+await context.route("https://fonts.googleapis.com/**", (route) => route.abort());
+await context.route("https://fonts.gstatic.com/**", (route) => route.abort());
 const errors = [];
 context.on("page", (page) =>
   page.on("pageerror", (error) => errors.push(page.url() + " | " + error.message)),
@@ -105,10 +124,30 @@ context.on("page", (page) =>
 page.on("pageerror", (error) => errors.push(page.url() + " | " + error.message));
 const base = "http://127.0.0.1:" + server.address().port;
 const overflow = [];
+async function ensureLogin() {
+  // Wait for either session restoration or the login form.
+  await page.waitForFunction(
+    () =>
+      document.querySelector('input[autocomplete="current-password"]') ||
+      document.querySelector("#admin-overview"),
+  );
+  if (await page.getByLabel("管理密码", { exact: true }).isVisible()) {
+    await page.getByLabel("管理密码", { exact: true }).fill(env.ADMIN_PASSWORD);
+    await page.getByRole("button", { name: "登录", exact: true }).click();
+  }
+  await page.getByRole("button", { name: "刷新概览", exact: true }).waitFor();
+}
 try {
   console.log("QA: admin");
   await page.goto(base + "/Chanray-upgraded-20261010/admin/", { waitUntil: "networkidle" });
-  await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
+  await ensureLogin();
+  const loginCookie = (await context.cookies()).find(
+    (cookie) => cookie.name === "__Host-chanray-admin",
+  );
+  assert.ok(loginCookie?.httpOnly && loginCookie.secure && loginCookie.sameSite === "Strict");
+  await page.reload({ waitUntil: "networkidle" });
+  await page.getByRole("button", { name: "刷新概览", exact: true }).waitFor();
+  assert.equal(await page.getByLabel("管理密码", { exact: true }).count(), 0);
   await page.getByRole("button", { name: "读取全站文案", exact: true }).click();
   await page.getByLabel("搜索原文或新文案", { exact: true }).waitFor();
   await page.getByLabel("搜索原文或新文案", { exact: true }).fill("调情专区");
@@ -142,7 +181,7 @@ try {
   await page.getByText("评论已提交，审核后显示。", { exact: true }).waitFor();
   assert.equal(await page.locator("#page-comments li").count(), 0);
   await page.goto(base + "/Chanray-upgraded-20261010/admin/", { waitUntil: "networkidle" });
-  await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
+  await ensureLogin();
   await page.getByRole("button", { name: "刷新概览", exact: true }).click();
   await page.getByText("概览已更新。", { exact: true }).waitFor();
   assert.equal(
@@ -168,7 +207,7 @@ try {
   await page.goto(base + "/Chanray-upgraded-20261010/gallery/", { waitUntil: "networkidle" });
   assert.equal(await page.locator("#page-comments li").count(), 0);
   await page.goto(base + "/Chanray-upgraded-20261010/admin/", { waitUntil: "networkidle" });
-  await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
+  await ensureLogin();
   await page.getByRole("button", { name: "读取评论", exact: true }).click();
   await commentRow.getByRole("button", { name: "移入回收站", exact: true }).click();
   await commentRow.getByRole("button", { name: "恢复为待审核", exact: true }).waitFor();
@@ -262,12 +301,15 @@ try {
   assert.ok(await page.getByRole("heading", { name: "测试专区", exact: true }).isVisible());
   await page.goto(base + "/Chanray-upgraded-20261010/contact/", { waitUntil: "networkidle" });
   await page.getByRole("heading", { level: 1, name: "联系测试", exact: true }).waitFor();
-  await page.goto(base + "/Chanray-upgraded-20261010/cute/index.html", { waitUntil: "networkidle" });
+  await page.goto(base + "/Chanray-upgraded-20261010/cute/index.html", {
+    waitUntil: "networkidle",
+  });
   await page.getByRole("heading", { name: "旧版介绍测试", exact: true }).waitFor();
   assert.equal(await page.title(), "旧版测试标题");
   // Shared runtime safely handles dynamic DOM text, attributes, removal, and restoration.
   await page.evaluate(async () => {
-    const { createContentTranslator } = await import("/Chanray-upgraded-20261010/site-content-runtime.js");
+    const { createContentTranslator } =
+      await import("/Chanray-upgraded-20261010/site-content-runtime.js");
     const container = document.createElement("div");
     container.setAttribute("data-cms-exempt", "");
     document.body.append(container);
@@ -336,7 +378,7 @@ try {
   await page.setViewportSize({ width: 390, height: 950 });
   await page.screenshot({ path: path.join(screenshotDir, "06-flirt-mobile-current.png") });
   await page.goto(base + "/Chanray-upgraded-20261010/admin/", { waitUntil: "networkidle" });
-  await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
+  await ensureLogin();
   await page.getByRole("button", { name: "读取全站文案", exact: true }).click();
   await page.getByLabel("搜索原文或新文案", { exact: true }).waitFor();
   await page.getByLabel("搜索原文或新文案", { exact: true }).fill("调情专区");
@@ -347,7 +389,7 @@ try {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.screenshot({ path: path.join(screenshotDir, "08-cms-desktop.png") });
   await page.goto(base + "/Chanray-upgraded-20261010/admin/", { waitUntil: "networkidle" });
-  await page.getByLabel("管理令牌", { exact: true }).fill(env.ADMIN_TOKEN);
+  await ensureLogin();
   await page.getByRole("button", { name: "刷新概览", exact: true }).click();
   await page.getByText("概览已更新。", { exact: true }).waitFor();
   await page.getByRole("button", { name: "读取评论", exact: true }).click();
@@ -366,6 +408,13 @@ try {
   await page.goto(base + "/Chanray-upgraded-20261010/", { waitUntil: "networkidle" });
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: path.join(screenshotDir, "13-visual-desktop.png") });
+  await page.goto(base + "/Chanray-upgraded-20261010/admin/", { waitUntil: "networkidle" });
+  await page.getByRole("button", { name: "退出管理", exact: true }).click();
+  await page.getByLabel("管理密码", { exact: true }).waitFor();
+  assert.equal(
+    (await context.cookies()).some((cookie) => cookie.name === "__Host-chanray-admin"),
+    false,
+  );
   assert.deepEqual(errors, []);
   console.log(
     JSON.stringify({
@@ -383,10 +432,14 @@ try {
         "comments moderation and recycle",
         "WebGL palette and pause",
         "light admin overview",
+        "cookie login, reload and logout",
       ],
       browserErrors: errors,
     }),
   );
+} catch (error) {
+  console.error("Pending browser requests:", [...pendingRequests]);
+  throw error;
 } finally {
   await browser.close();
   await new Promise((resolve) => server.close(resolve));

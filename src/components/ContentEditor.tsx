@@ -79,7 +79,7 @@ export function ContentEditor({ token, apiURL }: { token: string; apiURL: string
     if (nextCursor) url.searchParams.set("cursor", nextCursor);
     const response = await fetch(url, {
       method: body ? "POST" : "GET",
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       ...(body ? { body: JSON.stringify(body) } : {}),
       signal: AbortSignal.timeout(15_000),
     });
