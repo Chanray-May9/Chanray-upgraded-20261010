@@ -40,3 +40,5 @@ git -C ../Chanray-restored switch -c restore-original d9df3033c17da6298d5008bc13
 ## 评论与浅色后台升级前
 
 标签 `backup/pre-comments-20261010` 指向 `a1da197`，完整 Git 备份为 `/workspace/backups/Chanray-before-comments-20261010.bundle`。回退该轮代码不会自动删除或还原 KV 评论；后台回收站可恢复评论至待审核。评论历史备份存于 `private:comments:history:`，评论设置备份存于 `private:comments:settings-backup:`；代码备份不包含这些线上数据，操作前单独导出。
+
+文案调整前标签 `backup/pre-copy-20261010` 指向 `834579d`。本次只修改默认文案和聊天开场白，未写入线上 KV；已发布的后台替换文案仍优先于源码默认值。

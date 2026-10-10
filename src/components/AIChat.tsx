@@ -53,7 +53,7 @@ export function AIChat() {
         消息会发送给 AI 服务处理。对话只在当前页面保留。
       </p>
       <div className="mt-6 max-h-96 space-y-4 overflow-auto" role="log" aria-live="polite">
-        {messages.length === 0 && <p className="rounded-2xl bg-pink-50 p-4">你好。</p>}
+        {messages.length === 0 && <p className="rounded-2xl bg-pink-50 p-4">主人，锐锐在这里。</p>}
         {messages.map((message, index) => (
           <div
             key={index}

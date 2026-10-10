@@ -78,6 +78,15 @@
     ]
   },
   {
+    "original": "过来，让锐锐靠一会儿。",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
     "original": "换一句",
     "groups": [
       "调情专区"
@@ -87,16 +96,7 @@
     ]
   },
   {
-    "original": "今晚想被你抱紧。",
-    "groups": [
-      "调情专区"
-    ],
-    "sources": [
-      "src/routes/afterdark.tsx"
-    ]
-  },
-  {
-    "original": "陪锐锐待一会儿。",
+    "original": "今晚不想一个人睡。",
     "groups": [
       "调情专区"
     ],
@@ -114,6 +114,15 @@
     ]
   },
   {
+    "original": "想被你抱紧，不想松开。",
+    "groups": [
+      "调情专区"
+    ],
+    "sources": [
+      "src/routes/afterdark.tsx"
+    ]
+  },
+  {
     "original": "想说的话",
     "groups": [
       "调情专区"
@@ -123,16 +132,7 @@
     ]
   },
   {
-    "original": "想听你叫我的名字。",
-    "groups": [
-      "调情专区"
-    ],
-    "sources": [
-      "src/routes/afterdark.tsx"
-    ]
-  },
-  {
-    "original": "主人，锐锐想靠近你。",
+    "original": "主人，今晚陪着锐锐。",
     "groups": [
       "调情专区"
     ],
@@ -3732,15 +3732,6 @@
     ]
   },
   {
-    "original": "你好。",
-    "groups": [
-      "通用组件"
-    ],
-    "sources": [
-      "src/components/AIChat.tsx"
-    ]
-  },
-  {
     "original": "昵称",
     "groups": [
       "通用组件",
@@ -4529,6 +4520,15 @@
   },
   {
     "original": "主人",
+    "groups": [
+      "通用组件"
+    ],
+    "sources": [
+      "src/components/AIChat.tsx"
+    ]
+  },
+  {
+    "original": "主人，锐锐在这里。",
     "groups": [
       "通用组件"
     ],

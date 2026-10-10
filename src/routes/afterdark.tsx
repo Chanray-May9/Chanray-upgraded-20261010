@@ -4,10 +4,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
 const LINES = [
-  "主人，锐锐想靠近你。",
-  "今晚想被你抱紧。",
-  "陪锐锐待一会儿。",
-  "想听你叫我的名字。",
+  "主人，今晚陪着锐锐。",
+  "想被你抱紧，不想松开。",
+  "过来，让锐锐靠一会儿。",
+  "今晚不想一个人睡。",
 ];
 export const Route = createFileRoute("/afterdark")({
   head: () => ({
