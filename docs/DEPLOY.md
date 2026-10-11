@@ -2,9 +2,9 @@
 
 公开源码仓库：`https://github.com/Chanray-May9/Chanray-upgraded-20261010`，默认分支 `main`。旧仓库和旧 Cloudflare 站点保持原样。
 
-## 完整网站
+## 正式前端与后端
 
-访问 `https://chanray-upgraded-20261010.pages.dev/`，调情专区 `/afterdark/`，后台 `/admin/`。Cloudflare Pages 运行静态页面和根目录 `functions/api`，使用新建的独立 `BOARD` KV。原站点的数据没有复制到新 KV。
+正式网站：`https://chanray-may9.github.io/Chanray-upgraded-20261010/`，调情专区 `/Chanray-upgraded-20261010/afterdark/`。后端与后台：`https://chanray-upgraded-20261010.pages.dev/`，后台 `/admin/`。GitHub Pages 后台入口自动跳转到 Cloudflare，使用同站 HttpOnly Cookie。Cloudflare Pages 运行静态页面和根目录 `functions/api`，使用新建的独立 `BOARD` KV。原站点的数据没有复制到新 KV。
 
 `ADMIN_PASSWORD`、`ADMIN_TOKEN` 和 `ADMIN_ENCRYPTION_KEY` 通过 Pages secrets 保存，源码和前端没有密钥。后台使用密码登录，HttpOnly Cookie 保持七天会话；退出后浏览器 Cookie 清除，并在 KV 中记录会话注销。管理令牌作为服务端签名秘密，加密密钥用于后台保存 AI Key。AI 仍需要管理员在后台配置API 地址、模型和 Key，或设置服务端秘密 `DEEPSEEK_API_KEY`。在没有 Key 时，AI 对话不会接通；本轮没有调用付费 AI。登录尝试由 KV 提供基础抑制，受最终一致性影响，不能代替平台限流。
 
@@ -22,13 +22,13 @@ npm run deploy:cloudflare
 
 上线后检查 `/api/content`、`/api/comments?page=home` 和后台未认证请求（应返回 401）。新评论默认先审核，后台回复和发布文案需要后台令牌。生产流量增加前需在 Cloudflare 配置限流；KV 不提供原子并发事务。
 
-## GitHub Pages 静态副本
+## GitHub Pages 正式入口
 
-`https://chanray-may9.github.io/Chanray-upgraded-20261010/` 由 `main` 推送触发 Actions 更新。`npm run build` 默认使用这个地址的路径前缀。GitHub Pages 不运行 Functions，完整交互请使用上面的 Cloudflare 地址。
+`https://chanray-may9.github.io/Chanray-upgraded-20261010/` 由 `main` 推送触发 Actions 更新。`npm run build` 默认使用这个地址的路径前缀。GitHub Pages 不运行 Functions；构建配置将文案、主题、评论、AI 请求指向 Cloudflare。旧版 cute 互动也连接同一后端。公开 API 允许 GitHub Pages 来源跨域，管理 API 不开放跨域 Cookie。
 
 ## 网站主题
 
-默认全站粉色（背景 `#fff5fa`）。顶部按钮可切换粉色/深色并记住本机选择；后台「网站主题」可发布全站默认风格、粉色背景与深色背景。主题保存前备份旧配置并检查版本。已自行切换风格的访客保留自己的选择；旧版 cute 页面也读取同一主题与背景配置。
+默认全站粉色（背景 `#fff5fa`）。后台「网站主题」可发布全站默认风格、粉色背景与深色背景。主题保存前备份旧配置并检查版本。已自行切换风格的访客保留自己的选择；旧版 cute 页面也读取同一主题与背景配置。
 
 ## 回退
 

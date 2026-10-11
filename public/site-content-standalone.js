@@ -18,7 +18,7 @@ const translator = createContentTranslator(document);
 const draft = readPreview(sessionStorage);
 async function load() {
   try {
-    const url = window.CHANRAY_CONTENT_API_URL || "/api/content";
+    const url = window.CHANRAY_CONTENT_API_URL || (location.hostname === "chanray-may9.github.io" ? "https://chanray-upgraded-20261010.pages.dev/api/content" : "/api/content");
     const response = await fetch(url, { cache: "no-store" });
     if (!response.ok) return;
     const data = await response.json();

@@ -2,7 +2,8 @@
    still works on GitHub Pages / local preview without the Cloudflare backend. */
 
 async function req(path, opts) {
-  const r = await fetch(path, opts);
+  const backend = location.hostname === "chanray-may9.github.io" ? "https://chanray-upgraded-20261010.pages.dev" : "";
+  const r = await fetch(backend + path, opts);
   if (!r.ok) throw new Error("api " + r.status);
   return r.json();
 }

@@ -19,6 +19,10 @@ export const Route = createFileRoute("/admin")({
 });
 function Admin() {
   usePageContent();
+  const adminSite = import.meta.env.VITE_ADMIN_SITE_URL;
+  useEffect(() => {
+    if (adminSite && new URL(adminSite).origin !== location.origin) location.replace(adminSite);
+  }, [adminSite]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [password, setPassword] = useState("");
   // Child controls receive only a session-ready flag, never a credential.
@@ -31,6 +35,7 @@ function Admin() {
   const sequence = useRef(0);
   const sessionURL = API_URL.replace(/\/admin$/, "/admin-session");
   useEffect(() => {
+    if (adminSite && new URL(adminSite).origin !== location.origin) return;
     const controller = new AbortController();
     const initialSequence = sequence.current;
     fetch(sessionURL, {

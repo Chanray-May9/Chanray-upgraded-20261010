@@ -37,6 +37,10 @@ jobs:
 
       - name: Build
         env:
+          VITE_CONTENT_API_URL: https://chanray-upgraded-20261010.pages.dev/api/content
+          VITE_COMMENTS_API_URL: https://chanray-upgraded-20261010.pages.dev/api/comments
+          VITE_CHAT_API_URL: https://chanray-upgraded-20261010.pages.dev/api/chat
+          VITE_ADMIN_SITE_URL: https://chanray-upgraded-20261010.pages.dev/admin/
           VITE_THEME_API_URL: https://chanray-upgraded-20261010.pages.dev/api/theme
         run: npm run build
 
