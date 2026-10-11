@@ -1,6 +1,6 @@
 # Chanray · 是锐锐呀
 
-完整网站（含后端）：https://chanray-upgraded-20261010.pages.dev/ 。调情专区为 `/afterdark/`，管理后台为 `/admin/`。新仓库部署与更新方法见 [部署说明](docs/DEPLOY.md)。
+正式前端：https://chanray-may9.github.io/Chanray-upgraded-20261010/ 。后端与管理后台：https://chanray-upgraded-20261010.pages.dev/admin/ 。GitHub Pages 管理入口自动跳转到 Cloudflare，调情专区保留在正式前端。新仓库部署与更新方法见 [部署说明](docs/DEPLOY.md)。
 
 React 19、TanStack Start、TypeScript 与 Tailwind CSS 4 构建的个人网站，保留粉色机甲视觉、作品、相册、成长记录与 3D 角色展示。
 
@@ -20,7 +20,7 @@ GitHub Pages 的部署目录为 `dist/client`，默认 URL 前缀 `/Chanray-upgr
 
 ## 后端边界
 
-GitHub Pages **不运行** `functions/api`。这些接口需要另行部署到 Cloudflare Pages 并绑定 `BOARD` KV，以及设置 `DEEPSEEK_API_KEY` 服务端密钥。`public/cute` 是独立的旧版静态页面，未迁移其交互或重新配置接口地址。不要在前端提交 API 密钥。
+GitHub Pages **不运行** `functions/api`。这些接口需要另行部署到 Cloudflare Pages 并绑定 `BOARD` KV，以及设置 `DEEPSEEK_API_KEY` 服务端密钥。`public/cute` 的互动接口也已连接 Cloudflare。不要在前端提交 API 密钥。
 
 当前 KV 实现是历史兼容方案，不保证并发写入的原子性；聊天室、评分、论坛等高并发功能应迁移至 Durable Objects 或 D1，并在上线前配置平台速率限制。此次没有声称解决 KV 丢失更新问题，也没有自动迁移线上数据。
 
@@ -35,7 +35,7 @@ GitHub Pages **不运行** `functions/api`。这些接口需要另行部署到 C
 1. 安装命令使用 `npm ci`，构建命令使用 `npm run build`，输出目录 `dist/client`。
 2. 设置构建变量 `SITE_BASE_PATH=/`；绑定 KV 命名空间 `BOARD`。
 3. 设置服务端秘密 `ADMIN_TOKEN`（至少 32 字符，建议通过 `openssl rand -hex 32` 本地生成）和所需的 `DEEPSEEK_API_KEY`。令牌不要写入任何 `VITE_*` 变量。
-4. Cloudflare Pages 将根目录 `functions` 编译为接口；通过同源 `/api/admin` 访问。GitHub Pages 上的管理页只有静态界面，无法自行运行接口。
+4. Cloudflare Pages 将根目录 `functions` 编译为接口；通过同源 `/api/admin` 访问。GitHub Pages 管理入口跳转到 Cloudflare，同站 Cookie 保存登录状态。
 
 可以通过构建变量 `VITE_ADMIN_API_URL` 指向已有的同源可信代理。管理和 AI 接口未开放跨域 CORS，直接指向跨域后端不会工作。公开文案读取接口允许跨域读取已发布文案。部署后先验证未认证请求返回 401，再用令牌读取测试数据；删除前点击导出备份。接口没有自动恢复导出的数据，恢复应由管理员在 KV 控制台验证后操作。KV 并发写入限制仍然存在，管理操作建议在低流量维护期间执行。
 
@@ -49,7 +49,7 @@ GitHub Pages **不运行** `functions/api`。这些接口需要另行部署到 C
 
 保护并单独备份 `ADMIN_ENCRYPTION_KEY`；更换它之前需要重新保存 Key，否则旧密文无法解密。KV 配置传播可能延迟，后台「已保存」不保证全球立即更新。管理员仍需在平台配置公开 AI 接口速率限制/预算；本轮未实现分布式限流、内容审核服务或多用户权限。AI 非露骨范围通过服务端系统提示词表达，未经过真实模型红队或效果验证。
 
-默认同源 `/api/chat`；`VITE_CHAT_API_URL` 可配置可信同源代理路径。GitHub Pages 上不能直接运行 AI 接口，Cloudflare Pages 部署后才能连通。后台支持自定义 HTTPS Chat Completions API 地址、模型和 Key；接口拒绝重定向和非公开主机地址。默认地址为 https://api.deepseek.com/chat/completions，默认模型为 deepseek-flash。
+默认同源 `/api/chat`；`VITE_CHAT_API_URL` 可配置可信同源代理路径。GitHub Pages 构建已配置 Cloudflare AI 接口地址，通过公开 API 跨域连接。后台支持自定义 HTTPS Chat Completions API 地址、模型和 Key；接口拒绝重定向和非公开主机地址。默认地址为 https://api.deepseek.com/chat/completions，默认模型为 deepseek-flash。
 
 ## 全站文字管理
 
